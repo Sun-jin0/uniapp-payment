@@ -1,0 +1,2363 @@
+{
+    "701769719702753280": {
+        "majorName": "计算机组成原理",
+        "examCategory": 1,
+        "categoryName": "常规科目",
+        "chapters": {
+            "703935944314720256": {
+                "name": "计算机系统概述",
+                "sort": 1,
+                "completePeopleNumber": "17878",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "158",
+                "examGroups": {
+                    "1215239527787143168": {
+                        "name": "计算机系统的基本组成",
+                        "totalNumber": 16,
+                        "examSort": 1
+                    },
+                    "1215239571428876288": {
+                        "name": "计算机硬件的基本结构",
+                        "totalNumber": 32,
+                        "examSort": 2
+                    },
+                    "1215239621408202752": {
+                        "name": "计算机软件和硬件的关系",
+                        "totalNumber": 21,
+                        "examSort": 3
+                    },
+                    "1215239685874655232": {
+                        "name": "计算机系统的工作原理",
+                        "totalNumber": 35,
+                        "examSort": 4
+                    },
+                    "1215240457991495680": {
+                        "name": "常用性能指标",
+                        "totalNumber": 37,
+                        "examSort": 5
+                    }
+                }
+            },
+            "703941662136733696": {
+                "name": "数据的表示和运算",
+                "sort": 2,
+                "completePeopleNumber": "4497",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "172",
+                "examGroups": {
+                    "1215241715267674112": {
+                        "name": "进位计数制及其数据之间的相互转换",
+                        "totalNumber": 46,
+                        "examSort": 1
+                    },
+                    "1215241761115611136": {
+                        "name": "定点数的编码表示",
+                        "totalNumber": 37,
+                        "examSort": 2
+                    },
+                    "1215242051860570112": {
+                        "name": "基本运算部件",
+                        "totalNumber": 28,
+                        "examSort": 3
+                    },
+                    "1215242157015965696": {
+                        "name": "补码加/ 减运算器",
+                        "totalNumber": 53,
+                        "examSort": 4
+                    },
+                    "1215242209012752384": {
+                        "name": "乘法运算的基本原理和运算电路",
+                        "totalNumber": 16,
+                        "examSort": 5
+                    },
+                    "1215242254848106496": {
+                        "name": "除法运算的基本原理和运算电路",
+                        "totalNumber": 16,
+                        "examSort": 6
+                    },
+                    "1215243079259529216": {
+                        "name": "定点整数的表示和运算",
+                        "totalNumber": 18,
+                        "examSort": 7
+                    },
+                    "1215243294423130112": {
+                        "name": "浮点数的表示",
+                        "totalNumber": 42,
+                        "examSort": 8
+                    },
+                    "1215243340937961472": {
+                        "name": "浮点数的加减运算",
+                        "totalNumber": 17,
+                        "examSort": 9
+                    }
+                }
+            },
+            "703964270878134272": {
+                "name": "存储器层次结构",
+                "sort": 3,
+                "completePeopleNumber": "4508",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "131",
+                "examGroups": {
+                    "1215246613153587200": {
+                        "name": "存储器的分类",
+                        "totalNumber": 25,
+                        "examSort": 1
+                    },
+                    "1215246689913544704": {
+                        "name": "存储器的性能指标",
+                        "totalNumber": 28,
+                        "examSort": 2
+                    },
+                    "1215247328999645184": {
+                        "name": "三级存储结构",
+                        "totalNumber": 22,
+                        "examSort": 3
+                    },
+                    "1215249240893431808": {
+                        "name": "SRAM存储器",
+                        "totalNumber": 31,
+                        "examSort": 4
+                    },
+                    "1215249290189086720": {
+                        "name": "DRAM存储器",
+                        "totalNumber": 32,
+                        "examSort": 5
+                    },
+                    "1215249337786048512": {
+                        "name": "只读存储器",
+                        "totalNumber": 25,
+                        "examSort": 6
+                    },
+                    "1215250143839002624": {
+                        "name": "多模块存储器",
+                        "totalNumber": 9,
+                        "examSort": 7
+                    },
+                    "1215250196892753920": {
+                        "name": "主存和CPU之间的连接",
+                        "totalNumber": 30,
+                        "examSort": 8
+                    },
+                    "1215250774398083072": {
+                        "name": "磁盘存储器",
+                        "totalNumber": 28,
+                        "examSort": 9
+                    },
+                    "1215250821210710016": {
+                        "name": "固态硬盘",
+                        "totalNumber": 3,
+                        "examSort": 10
+                    },
+                    "1215253373151092736": {
+                        "name": "程序访问的局部性原理",
+                        "totalNumber": 7,
+                        "examSort": 11
+                    },
+                    "1215253423168167936": {
+                        "name": "Cache的基本原理",
+                        "totalNumber": 28,
+                        "examSort": 12
+                    },
+                    "1215253470421196800": {
+                        "name": "Cache和主存之间的映射方式",
+                        "totalNumber": 27,
+                        "examSort": 13
+                    },
+                    "1215253522292154368": {
+                        "name": "Cache中主存块的替换算法",
+                        "totalNumber": 9,
+                        "examSort": 14
+                    },
+                    "1215253575433986048": {
+                        "name": "Cache写策略",
+                        "totalNumber": 11,
+                        "examSort": 15
+                    },
+                    "1215254980785872896": {
+                        "name": "虚拟存储器的基本概念",
+                        "totalNumber": 24,
+                        "examSort": 16
+                    },
+                    "1215255040307240960": {
+                        "name": "页式虚拟存储器",
+                        "totalNumber": 15,
+                        "examSort": 17
+                    },
+                    "1215255081897959424": {
+                        "name": "段式虚拟存储器",
+                        "totalNumber": 2,
+                        "examSort": 18
+                    },
+                    "1215255177104465920": {
+                        "name": "虚拟存储器与Cache的比较",
+                        "totalNumber": 2,
+                        "examSort": 19
+                    }
+                }
+            },
+            "703969950641033216": {
+                "name": "指令系统",
+                "sort": 4,
+                "completePeopleNumber": "3491",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "154",
+                "examGroups": {
+                    "1215258063418957824": {
+                        "name": "指令系统的发展及其性能要求",
+                        "totalNumber": 8,
+                        "examSort": 1
+                    },
+                    "1215258283389231104": {
+                        "name": "指令的基本格式",
+                        "totalNumber": 32,
+                        "examSort": 2
+                    },
+                    "1215258334547156992": {
+                        "name": "指令操作码",
+                        "totalNumber": 5,
+                        "examSort": 3
+                    },
+                    "1215259378148712448": {
+                        "name": "指令寻址",
+                        "totalNumber": 8,
+                        "examSort": 4
+                    },
+                    "1215259423933734912": {
+                        "name": "数据寻址",
+                        "totalNumber": 30,
+                        "examSort": 5
+                    },
+                    "1215262133110185984": {
+                        "name": "数据的对齐和存放方式",
+                        "totalNumber": 17,
+                        "examSort": 6
+                    },
+                    "1215262569124864000": {
+                        "name": "复杂指令系统计算机（CISC）",
+                        "totalNumber": 7,
+                        "examSort": 7
+                    },
+                    "1215262623290105856": {
+                        "name": "精简指令系统计算机（RISC）",
+                        "totalNumber": 25,
+                        "examSort": 8
+                    },
+                    "1215264474739777536": {
+                        "name": "常用汇编指令介绍",
+                        "totalNumber": 15,
+                        "examSort": 9
+                    },
+                    "1215264564564992000": {
+                        "name": "循环结构的机器级表示",
+                        "totalNumber": 2,
+                        "examSort": 10
+                    }
+                }
+            },
+            "703971519478501376": {
+                "name": "中央处理器",
+                "sort": 5,
+                "completePeopleNumber": "4054",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "151",
+                "examGroups": {
+                    "1215266947265208320": {
+                        "name": "CPU的功能",
+                        "totalNumber": 18,
+                        "examSort": 1
+                    },
+                    "1215267009533845504": {
+                        "name": "CPU的基本结构",
+                        "totalNumber": 46,
+                        "examSort": 2
+                    },
+                    "1215267908389969920": {
+                        "name": "指令周期概念",
+                        "totalNumber": 31,
+                        "examSort": 3
+                    },
+                    "1215267953801699328": {
+                        "name": "指令周期的数据流",
+                        "totalNumber": 32,
+                        "examSort": 4
+                    },
+                    "1215304376919531520": {
+                        "name": "数据通路的功能",
+                        "totalNumber": 6,
+                        "examSort": 5
+                    },
+                    "1215304433186119680": {
+                        "name": "数据通路的基本结构",
+                        "totalNumber": 9,
+                        "examSort": 6
+                    },
+                    "1215304922980163584": {
+                        "name": "控制器的结构和功能",
+                        "totalNumber": 8,
+                        "examSort": 7
+                    },
+                    "1215304973433446400": {
+                        "name": "硬布线控制器",
+                        "totalNumber": 12,
+                        "examSort": 8
+                    },
+                    "1215305027082788864": {
+                        "name": "微程序控制器",
+                        "totalNumber": 54,
+                        "examSort": 9
+                    },
+                    "1215307715409354752": {
+                        "name": "异常和中断的基本概念",
+                        "totalNumber": 21,
+                        "examSort": 10
+                    },
+                    "1215307758996561920": {
+                        "name": "异常和中断的分类",
+                        "totalNumber": 8,
+                        "examSort": 11
+                    },
+                    "1215308176141066240": {
+                        "name": "指令流水线的基本概念",
+                        "totalNumber": 16,
+                        "examSort": 12
+                    },
+                    "1215308277295095808": {
+                        "name": "指令流水线的基本实现",
+                        "totalNumber": 34,
+                        "examSort": 13
+                    },
+                    "1215308322870403072": {
+                        "name": "流水线的冒险与处理",
+                        "totalNumber": 16,
+                        "examSort": 14
+                    },
+                    "1215308370568028160": {
+                        "name": "超标量和动态流水线的基本概念",
+                        "totalNumber": 11,
+                        "examSort": 15
+                    },
+                    "1215309242454777856": {
+                        "name": "计算机体系结构分类",
+                        "totalNumber": 3,
+                        "examSort": 16
+                    },
+                    "1215309340899287040": {
+                        "name": "多核处理器",
+                        "totalNumber": 1,
+                        "examSort": 17
+                    },
+                    "1215309388341059584": {
+                        "name": "共享内存多处理器（SMP）",
+                        "totalNumber": 2,
+                        "examSort": 18
+                    }
+                }
+            },
+            "703974862724665344": {
+                "name": "总线",
+                "sort": 6,
+                "completePeopleNumber": "2631",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "101",
+                "examGroups": {
+                    "1215317198856527872": {
+                        "name": "总线的基本概念",
+                        "totalNumber": 27,
+                        "examSort": 1
+                    },
+                    "1215317242988994560": {
+                        "name": "总线的组成及性能指标",
+                        "totalNumber": 45,
+                        "examSort": 2
+                    },
+                    "1215318089932218368": {
+                        "name": "总线事务",
+                        "totalNumber": 35,
+                        "examSort": 3
+                    },
+                    "1215318147801030656": {
+                        "name": "同步定时方式",
+                        "totalNumber": 30,
+                        "examSort": 4
+                    },
+                    "1215318216210128896": {
+                        "name": "异步定时方式",
+                        "totalNumber": 25,
+                        "examSort": 5
+                    }
+                }
+            },
+            "703976576680857600": {
+                "name": "输入/输出系统",
+                "sort": 7,
+                "completePeopleNumber": "2430",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "108",
+                "examGroups": {
+                    "1215320194503942144": {
+                        "name": "I/O系统基本概念",
+                        "totalNumber": 30,
+                        "examSort": 1
+                    },
+                    "1215320420887306240": {
+                        "name": "I/O接口的功能和基本结构",
+                        "totalNumber": 18,
+                        "examSort": 2
+                    },
+                    "1215320472355610624": {
+                        "name": "I/O端口及其编址",
+                        "totalNumber": 14,
+                        "examSort": 3
+                    },
+                    "1215321523020374016": {
+                        "name": "程序查询方式",
+                        "totalNumber": 15,
+                        "examSort": 4
+                    },
+                    "1215321602355634176": {
+                        "name": "程序中断方式",
+                        "totalNumber": 57,
+                        "examSort": 5
+                    },
+                    "1215321805561274368": {
+                        "name": "DMA方式",
+                        "totalNumber": 32,
+                        "examSort": 6
+                    }
+                }
+            }
+        }
+    },
+    "704332467330486272": {
+        "majorName": "计算机操作系统",
+        "examCategory": 1,
+        "categoryName": "常规科目",
+        "chapters": {
+            "704335089991028736": {
+                "name": "操作系统概述",
+                "sort": 1,
+                "completePeopleNumber": "19440",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "144",
+                "examGroups": {
+                    "1219610768568492032": {
+                        "name": "操作系统的基本概念",
+                        "totalNumber": 46,
+                        "examSort": 1
+                    },
+                    "1219612976487866368": {
+                        "name": "操作系统的分类",
+                        "totalNumber": 37,
+                        "examSort": 2
+                    },
+                    "1219613394580283392": {
+                        "name": "CPU运行模式",
+                        "totalNumber": 33,
+                        "examSort": 3
+                    },
+                    "1219613445171978240": {
+                        "name": "系统调用",
+                        "totalNumber": 30,
+                        "examSort": 4
+                    },
+                    "1219613536033185792": {
+                        "name": "程序的链接与装入",
+                        "totalNumber": 20,
+                        "examSort": 5
+                    },
+                    "1219613588130635776": {
+                        "name": "程序运行时的内存映像与地址空间",
+                        "totalNumber": 4,
+                        "examSort": 6
+                    },
+                    "1219614802209677312": {
+                        "name": "操作系统的体系结构",
+                        "totalNumber": 16,
+                        "examSort": 7
+                    },
+                    "1219615557532524544": {
+                        "name": "操作系统引导的过程",
+                        "totalNumber": 2,
+                        "examSort": 8
+                    },
+                    "1219615651141001216": {
+                        "name": "虚拟机的分类",
+                        "totalNumber": 3,
+                        "examSort": 9
+                    }
+                }
+            },
+            "704343819814047744": {
+                "name": "进程管理",
+                "sort": 2,
+                "completePeopleNumber": "14451",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "220",
+                "examGroups": {
+                    "1219616462478778368": {
+                        "name": "进程与线程的基本概念",
+                        "totalNumber": 55,
+                        "examSort": 1
+                    },
+                    "1219616589318725632": {
+                        "name": "进程/线程的状态与转换",
+                        "totalNumber": 50,
+                        "examSort": 2
+                    },
+                    "1219616640774447104": {
+                        "name": "线程的实现",
+                        "totalNumber": 5,
+                        "examSort": 3
+                    },
+                    "1219616688052641792": {
+                        "name": "进程/线程的组织与控制",
+                        "totalNumber": 29,
+                        "examSort": 4
+                    },
+                    "1219616742855417856": {
+                        "name": "进程间通信",
+                        "totalNumber": 29,
+                        "examSort": 5
+                    },
+                    "1219652229318057984": {
+                        "name": "调度的基本概念",
+                        "totalNumber": 33,
+                        "examSort": 6
+                    },
+                    "1219652354090213376": {
+                        "name": "调度的实现",
+                        "totalNumber": 27,
+                        "examSort": 7
+                    },
+                    "1219652408309981184": {
+                        "name": "典型的调度算法",
+                        "totalNumber": 45,
+                        "examSort": 8
+                    },
+                    "1219654910665302016": {
+                        "name": "同步与互斥的基本概念",
+                        "totalNumber": 35,
+                        "examSort": 9
+                    },
+                    "1219654958736220160": {
+                        "name": "临界区互斥的实现方法",
+                        "totalNumber": 9,
+                        "examSort": 10
+                    },
+                    "1219655121286471680": {
+                        "name": "锁",
+                        "totalNumber": 7,
+                        "examSort": 11
+                    },
+                    "1219656984048181248": {
+                        "name": "信号量",
+                        "totalNumber": 37,
+                        "examSort": 12
+                    },
+                    "1219657038892900352": {
+                        "name": "管程",
+                        "totalNumber": 5,
+                        "examSort": 13
+                    },
+                    "1219658443221377024": {
+                        "name": "死锁的基本概念",
+                        "totalNumber": 46,
+                        "examSort": 14
+                    },
+                    "1219658495830532096": {
+                        "name": "死锁的处理策略",
+                        "totalNumber": 9,
+                        "examSort": 15
+                    }
+                }
+            },
+            "704343891100438528": {
+                "name": "内存管理",
+                "sort": 3,
+                "completePeopleNumber": "11073",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "254",
+                "examGroups": {
+                    "1219660085786320896": {
+                        "name": "内存管理的基本概念",
+                        "totalNumber": 40,
+                        "examSort": 1
+                    },
+                    "1219660149040619520": {
+                        "name": "连续分配管理方式",
+                        "totalNumber": 40,
+                        "examSort": 2
+                    },
+                    "1219660227406995456": {
+                        "name": "非连续分配-分页",
+                        "totalNumber": 34,
+                        "examSort": 3
+                    },
+                    "1219660307522396160": {
+                        "name": "非连续分配-分段",
+                        "totalNumber": 32,
+                        "examSort": 4
+                    },
+                    "1219660377189785600": {
+                        "name": "非连续分配-段页式",
+                        "totalNumber": 24,
+                        "examSort": 5
+                    },
+                    "1219663550998650880": {
+                        "name": "虚拟内存的基本概念",
+                        "totalNumber": 43,
+                        "examSort": 6
+                    },
+                    "1219663602068496384": {
+                        "name": "请求分页管理方式",
+                        "totalNumber": 41,
+                        "examSort": 7
+                    },
+                    "1219663653297725440": {
+                        "name": "页面置换算法",
+                        "totalNumber": 52,
+                        "examSort": 8
+                    },
+                    "1219663706984816640": {
+                        "name": "抖动和工作集",
+                        "totalNumber": 31,
+                        "examSort": 9
+                    },
+                    "1219663763725361152": {
+                        "name": "内存映射文件",
+                        "totalNumber": 1,
+                        "examSort": 10
+                    }
+                }
+            },
+            "704344722453434368": {
+                "name": "文件管理",
+                "sort": 4,
+                "completePeopleNumber": "7749",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "204",
+                "examGroups": {
+                    "1219670621219463168": {
+                        "name": "文件的基本概念",
+                        "totalNumber": 47,
+                        "examSort": 1
+                    },
+                    "1219670672268337152": {
+                        "name": "文件的逻辑结构",
+                        "totalNumber": 40,
+                        "examSort": 2
+                    },
+                    "1219670720569942016": {
+                        "name": "文件的物理结构",
+                        "totalNumber": 39,
+                        "examSort": 3
+                    },
+                    "1219671841732567040": {
+                        "name": "目录的基本概念",
+                        "totalNumber": 23,
+                        "examSort": 4
+                    },
+                    "1219671892810801152": {
+                        "name": "目录结构",
+                        "totalNumber": 36,
+                        "examSort": 5
+                    },
+                    "1219671942739795968": {
+                        "name": "文件共享",
+                        "totalNumber": 11,
+                        "examSort": 6
+                    },
+                    "1219674254979899392": {
+                        "name": "文件系统的全局结构",
+                        "totalNumber": 23,
+                        "examSort": 7
+                    },
+                    "1219674307865878528": {
+                        "name": "外存空闲空间管理方法",
+                        "totalNumber": 35,
+                        "examSort": 8
+                    },
+                    "1219674364837109760": {
+                        "name": "虚拟文件系统",
+                        "totalNumber": 1,
+                        "examSort": 9
+                    },
+                    "1219674425688072192": {
+                        "name": "文件系统挂载",
+                        "totalNumber": 3,
+                        "examSort": 10
+                    }
+                }
+            },
+            "704344818779820032": {
+                "name": "输入/输出管理",
+                "sort": 5,
+                "completePeopleNumber": "7392",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "152",
+                "examGroups": {
+                    "1219676177799847936": {
+                        "name": "I/O设备",
+                        "totalNumber": 49,
+                        "examSort": 1
+                    },
+                    "1219676230845210624": {
+                        "name": "I/O软件层次结构",
+                        "totalNumber": 36,
+                        "examSort": 2
+                    },
+                    "1219676284490358784": {
+                        "name": "I/O应用程序接口",
+                        "totalNumber": 10,
+                        "examSort": 3
+                    },
+                    "1219679960168669184": {
+                        "name": "缓冲区管理",
+                        "totalNumber": 29,
+                        "examSort": 4
+                    },
+                    "1219680011691499520": {
+                        "name": "设备分配与回收",
+                        "totalNumber": 19,
+                        "examSort": 5
+                    },
+                    "1219680062429995008": {
+                        "name": "SPOOLing技术",
+                        "totalNumber": 43,
+                        "examSort": 6
+                    },
+                    "1219680115525689344": {
+                        "name": "设备驱动程序接口",
+                        "totalNumber": 1,
+                        "examSort": 7
+                    },
+                    "1219680772731183104": {
+                        "name": "磁盘",
+                        "totalNumber": 49,
+                        "examSort": 8
+                    },
+                    "1219680830126039040": {
+                        "name": "固态硬盘",
+                        "totalNumber": 1,
+                        "examSort": 9
+                    }
+                }
+            }
+        }
+    },
+    "701769479767592960": {
+        "majorName": "数据结构",
+        "examCategory": 1,
+        "categoryName": "常规科目",
+        "chapters": {
+            "701807269960093696": {
+                "name": "绪论",
+                "sort": 1,
+                "completePeopleNumber": "16555",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "72",
+                "examGroups": {
+                    "1217877077358026752": {
+                        "name": "数据结构基本概念",
+                        "examSort": 1,
+                        "totalNumber": 96,
+                        "correctNumber": 6,
+                        "incorrectNumber": 0,
+                        "examRecordId": "1347304898299174912"
+                    },
+                    "1217877124216791040": {
+                        "name": "算法的基本概念",
+                        "examSort": 2,
+                        "totalNumber": 40,
+                        "correctNumber": 0,
+                        "incorrectNumber": 0,
+                        "examRecordId": null
+                    },
+                    "1217877174108037120": {
+                        "name": "算法效率的度量",
+                        "examSort": 3,
+                        "totalNumber": 54,
+                        "correctNumber": 0,
+                        "incorrectNumber": 0,
+                        "examRecordId": null
+                    }
+                }
+            },
+            "704294882403028992": {
+                "name": "线性表",
+                "sort": 2,
+                "completePeopleNumber": "9773",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "138",
+                "examGroups": {
+                    "1217885751837204480": {
+                        "name": "线性表的定义",
+                        "totalNumber": 42,
+                        "examSort": 1
+                    },
+                    "1217885801648758784": {
+                        "name": "线性表的基本操作",
+                        "totalNumber": 10,
+                        "examSort": 2
+                    },
+                    "1217886127407767552": {
+                        "name": "顺序表",
+                        "totalNumber": 61,
+                        "examSort": 3
+                    },
+                    "1217886412335226880": {
+                        "name": "单链表",
+                        "totalNumber": 186,
+                        "examSort": 4
+                    },
+                    "1217886462146781184": {
+                        "name": "双链表",
+                        "totalNumber": 29,
+                        "examSort": 5
+                    },
+                    "1217886523622694912": {
+                        "name": "循环链表",
+                        "totalNumber": 42,
+                        "examSort": 6
+                    },
+                    "1217886573711073280": {
+                        "name": "静态链表",
+                        "totalNumber": 4,
+                        "examSort": 7
+                    },
+                    "1217886624751558656": {
+                        "name": "线性表存储方式的比较",
+                        "totalNumber": 117,
+                        "examSort": 8
+                    }
+                }
+            },
+            "704294985763262464": {
+                "name": "栈、队列和数组",
+                "sort": 3,
+                "completePeopleNumber": "7322",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "137",
+                "examGroups": {
+                    "1217888701942865920": {
+                        "name": "栈的基本概念",
+                        "totalNumber": 161,
+                        "examSort": 1
+                    },
+                    "1217888766480621568": {
+                        "name": "栈的存储结构",
+                        "totalNumber": 27,
+                        "examSort": 2
+                    },
+                    "1217888821103042560": {
+                        "name": "栈的应用",
+                        "totalNumber": 121,
+                        "examSort": 3
+                    },
+                    "1217889258191462400": {
+                        "name": "队列的基本概念",
+                        "totalNumber": 88,
+                        "examSort": 4
+                    },
+                    "1217889304358166528": {
+                        "name": "队列的存储结构",
+                        "totalNumber": 41,
+                        "examSort": 5
+                    },
+                    "1217889354983415808": {
+                        "name": "双端队列",
+                        "totalNumber": 9,
+                        "examSort": 6
+                    },
+                    "1217889404283265024": {
+                        "name": "队列的应用",
+                        "totalNumber": 92,
+                        "examSort": 7
+                    },
+                    "1217889706919075840": {
+                        "name": "一维数组",
+                        "totalNumber": 29,
+                        "examSort": 8
+                    },
+                    "1217889755308761088": {
+                        "name": "二维数组",
+                        "totalNumber": 56,
+                        "examSort": 9
+                    },
+                    "1217889803069300736": {
+                        "name": "特殊矩阵和稀疏矩阵",
+                        "totalNumber": 55,
+                        "examSort": 10
+                    }
+                }
+            },
+            "704295076695773184": {
+                "name": "树与二叉树",
+                "sort": 5,
+                "completePeopleNumber": "7168",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "215",
+                "examGroups": {
+                    "1217891043161415680": {
+                        "name": "树的基本概念",
+                        "totalNumber": 78,
+                        "examSort": 1
+                    },
+                    "1217891098253598720": {
+                        "name": "树的存储结构",
+                        "totalNumber": 29,
+                        "examSort": 2
+                    },
+                    "1217891265379835904": {
+                        "name": "树的遍历",
+                        "totalNumber": 11,
+                        "examSort": 3
+                    },
+                    "1217892396050948096": {
+                        "name": "二叉树的基本概念",
+                        "totalNumber": 209,
+                        "examSort": 4
+                    },
+                    "1217892462312562688": {
+                        "name": "特殊的二叉树",
+                        "totalNumber": 303,
+                        "examSort": 5
+                    },
+                    "1217892530172207104": {
+                        "name": "二叉树的存储结构",
+                        "totalNumber": 80,
+                        "examSort": 6
+                    },
+                    "1217892582529703936": {
+                        "name": "二叉树的遍历",
+                        "totalNumber": 350,
+                        "examSort": 7
+                    },
+                    "1217892656559169536": {
+                        "name": "线索二叉树",
+                        "totalNumber": 41,
+                        "examSort": 8
+                    },
+                    "1217894661692334080": {
+                        "name": "森林与二叉树的转换",
+                        "totalNumber": 48,
+                        "examSort": 9
+                    },
+                    "1217894712154005504": {
+                        "name": "森林的遍历",
+                        "totalNumber": 5,
+                        "examSort": 10
+                    },
+                    "1217895012696858624": {
+                        "name": "哈夫曼树与哈夫曼编码",
+                        "totalNumber": 143,
+                        "examSort": 11
+                    },
+                    "1217895065050161152": {
+                        "name": "并查集",
+                        "totalNumber": 4,
+                        "examSort": 12
+                    }
+                }
+            },
+            "704295193825906688": {
+                "name": "图",
+                "sort": 6,
+                "completePeopleNumber": "6720",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "198",
+                "examGroups": {
+                    "1217896287110963200": {
+                        "name": "图的基本概念",
+                        "totalNumber": 198,
+                        "examSort": 1
+                    },
+                    "1217896604053544960": {
+                        "name": "图的存储结构",
+                        "totalNumber": 225,
+                        "examSort": 2
+                    },
+                    "1217896990969700352": {
+                        "name": "深度优先搜索",
+                        "totalNumber": 98,
+                        "examSort": 3
+                    },
+                    "1217897044954587136": {
+                        "name": "广度优先搜索",
+                        "totalNumber": 60,
+                        "examSort": 4
+                    },
+                    "1217897756761530368": {
+                        "name": "最小生成树",
+                        "totalNumber": 116,
+                        "examSort": 5
+                    },
+                    "1217897803054063616": {
+                        "name": "最短路径",
+                        "totalNumber": 54,
+                        "examSort": 6
+                    },
+                    "1217897853553483776": {
+                        "name": "拓扑排序",
+                        "totalNumber": 101,
+                        "examSort": 7
+                    },
+                    "1217897902350016512": {
+                        "name": "关键路径",
+                        "totalNumber": 45,
+                        "examSort": 8
+                    }
+                }
+            },
+            "704295249073278976": {
+                "name": "查找",
+                "sort": 7,
+                "completePeopleNumber": "3128",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "91",
+                "examGroups": {
+                    "1217903981112860672": {
+                        "name": "查找的基本概念",
+                        "totalNumber": 14,
+                        "examSort": 1
+                    },
+                    "1217904101590048768": {
+                        "name": "顺序查找",
+                        "totalNumber": 42,
+                        "examSort": 2
+                    },
+                    "1217904154874486784": {
+                        "name": "分块查找",
+                        "totalNumber": 15,
+                        "examSort": 3
+                    },
+                    "1217904212596498432": {
+                        "name": "折半查找",
+                        "totalNumber": 155,
+                        "examSort": 4
+                    },
+                    "1217905254696493056": {
+                        "name": " B树",
+                        "totalNumber": 55,
+                        "examSort": 5
+                    },
+                    "1217905302759022592": {
+                        "name": "B+树",
+                        "totalNumber": 12,
+                        "examSort": 6
+                    },
+                    "1217905883615600640": {
+                        "name": "散列表的基本概念",
+                        "totalNumber": 71,
+                        "examSort": 7
+                    },
+                    "1217905931195785216": {
+                        "name": "散列函数",
+                        "totalNumber": 114,
+                        "examSort": 8
+                    },
+                    "1217907546111877120": {
+                        "name": "二叉搜索树",
+                        "totalNumber": 49,
+                        "examSort": 9
+                    },
+                    "1217907592857395200": {
+                        "name": "平衡二叉树",
+                        "totalNumber": 51,
+                        "examSort": 10
+                    },
+                    "1217907642564091904": {
+                        "name": "红黑树",
+                        "totalNumber": 3,
+                        "examSort": 11
+                    },
+                    "1217909071437635584": {
+                        "name": "串的基本概念",
+                        "totalNumber": 29,
+                        "examSort": 12
+                    },
+                    "1217909120171253760": {
+                        "name": "串的模式匹配",
+                        "totalNumber": 27,
+                        "examSort": 13
+                    }
+                }
+            },
+            "704295336147030016": {
+                "name": "排序",
+                "sort": 8,
+                "completePeopleNumber": "5771",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "165",
+                "examGroups": {
+                    "1218132453932408832": {
+                        "name": "排序的基本概念",
+                        "totalNumber": 7,
+                        "examSort": 1
+                    },
+                    "1218132630336446464": {
+                        "name": "直接插入排序",
+                        "totalNumber": 82,
+                        "examSort": 2
+                    },
+                    "1218132675320356864": {
+                        "name": "折半插入排序",
+                        "totalNumber": 7,
+                        "examSort": 3
+                    },
+                    "780790779433062400": {
+                        "name": "希尔排序",
+                        "totalNumber": 39,
+                        "examSort": 4
+                    },
+                    "1218132999393255424": {
+                        "name": "起泡排序",
+                        "totalNumber": 43,
+                        "examSort": 5
+                    },
+                    "1218133134672142336": {
+                        "name": "快速排序",
+                        "totalNumber": 119,
+                        "examSort": 6
+                    },
+                    "1218133240137916416": {
+                        "name": "简单选择排序",
+                        "totalNumber": 30,
+                        "examSort": 7
+                    },
+                    "1218133293095198720": {
+                        "name": "堆排序",
+                        "totalNumber": 115,
+                        "examSort": 8
+                    },
+                    "1218133558540115968": {
+                        "name": "归并排序",
+                        "totalNumber": 37,
+                        "examSort": 9
+                    },
+                    "1218133614781538304": {
+                        "name": "基数排序",
+                        "totalNumber": 28,
+                        "examSort": 10
+                    },
+                    "1218134865606877184": {
+                        "name": "内部排序算法的比较",
+                        "totalNumber": 127,
+                        "examSort": 11
+                    },
+                    "1218134919113613312": {
+                        "name": "内部排序算法的应用",
+                        "totalNumber": 10,
+                        "examSort": 12
+                    },
+                    "1218135296563224576": {
+                        "name": "外部排序算法",
+                        "totalNumber": 14,
+                        "examSort": 13
+                    }
+                }
+            }
+        }
+    },
+    "707889875399086080": {
+        "majorName": "计算机网络",
+        "examCategory": 1,
+        "categoryName": "常规科目",
+        "chapters": {
+            "707890310843338752": {
+                "name": "计算机网络概述",
+                "sort": 1,
+                "completePeopleNumber": "19582",
+                "completeExerciseNumber": "10",
+                "incorrectChapterNumber": null,
+                "total": "69",
+                "examGroups": {
+                    "1220671004674891776": {
+                        "name": "计算机网络的基本概念",
+                        "totalNumber": 107,
+                        "examSort": 1
+                    },
+                    "1220671115861696512": {
+                        "name": "体系结构与参考模型",
+                        "totalNumber": 115,
+                        "examSort": 2
+                    }
+                }
+            },
+            "707890536400424960": {
+                "name": "物理层",
+                "sort": 2,
+                "completePeopleNumber": "13492",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "141",
+                "examGroups": {
+                    "1220672609163943936": {
+                        "name": "通信基础基本概念",
+                        "totalNumber": 37,
+                        "examSort": 1
+                    },
+                    "1220672653371908096": {
+                        "name": "奈奎斯特定理与香农定理",
+                        "totalNumber": 28,
+                        "examSort": 2
+                    },
+                    "1220672699530223616": {
+                        "name": "编码与调制",
+                        "totalNumber": 59,
+                        "examSort": 3
+                    },
+                    "1220672748024766464": {
+                        "name": "数据交换技术",
+                        "totalNumber": 37,
+                        "examSort": 4
+                    },
+                    "1220672801044963328": {
+                        "name": "数据报与虚电路",
+                        "totalNumber": 25,
+                        "examSort": 5
+                    },
+                    "1220673072269631488": {
+                        "name": "传输介质分类",
+                        "totalNumber": 55,
+                        "examSort": 6
+                    },
+                    "1220673114233643008": {
+                        "name": "物理层接口的特性",
+                        "totalNumber": 15,
+                        "examSort": 7
+                    },
+                    "1220673162736574464": {
+                        "name": "中继器",
+                        "totalNumber": 10,
+                        "examSort": 8
+                    },
+                    "1220673211310809088": {
+                        "name": "集线器",
+                        "totalNumber": 19,
+                        "examSort": 9
+                    }
+                }
+            },
+            "707890621104394240": {
+                "name": "数据链路层",
+                "sort": 3,
+                "completePeopleNumber": "9905",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "143",
+                "examGroups": {
+                    "1220673978914578432": {
+                        "name": "数据链路层的基本功能",
+                        "totalNumber": 28,
+                        "examSort": 1
+                    },
+                    "1220674032547143680": {
+                        "name": "组帧方法",
+                        "totalNumber": 13,
+                        "examSort": 2
+                    },
+                    "1220674105477701632": {
+                        "name": "检错编码",
+                        "totalNumber": 25,
+                        "examSort": 3
+                    },
+                    "1220674155717074944": {
+                        "name": "纠错编码",
+                        "totalNumber": 13,
+                        "examSort": 4
+                    },
+                    "1220674409568935936": {
+                        "name": "流量控制、可靠传输与滑动窗口机制",
+                        "totalNumber": 25,
+                        "examSort": 5
+                    },
+                    "1220674454670286848": {
+                        "name": "停止-等待协议",
+                        "totalNumber": 21,
+                        "examSort": 6
+                    },
+                    "1220674494780416000": {
+                        "name": "后退N帧协议",
+                        "totalNumber": 22,
+                        "examSort": 7
+                    },
+                    "1220675485835730944": {
+                        "name": "选择重传协议",
+                        "totalNumber": 10,
+                        "examSort": 8
+                    },
+                    "1220675996228001792": {
+                        "name": "信道划分介质访问机制",
+                        "totalNumber": 42,
+                        "examSort": 9
+                    },
+                    "1220676040247222272": {
+                        "name": "随机访问介质访问机制",
+                        "totalNumber": 53,
+                        "examSort": 10
+                    },
+                    "1220676089316384768": {
+                        "name": "轮询访问介质访问机制",
+                        "totalNumber": 8,
+                        "examSort": 11
+                    },
+                    "1220677313700831232": {
+                        "name": "局域网的基本概念和体系结构",
+                        "totalNumber": 29,
+                        "examSort": 12
+                    },
+                    "1220677468487426048": {
+                        "name": "以太网与IEEE 802.3",
+                        "totalNumber": 38,
+                        "examSort": 13
+                    },
+                    "1220677514696073216": {
+                        "name": "IEEE 802.11无线局域网",
+                        "totalNumber": 11,
+                        "examSort": 14
+                    },
+                    "1220677562272063488": {
+                        "name": "VLAN基本概念与基本原理",
+                        "totalNumber": 15,
+                        "examSort": 15
+                    },
+                    "1220678347026341888": {
+                        "name": "广域网的基本概念",
+                        "totalNumber": 30,
+                        "examSort": 16
+                    },
+                    "1220678395726405632": {
+                        "name": "PPP协议",
+                        "totalNumber": 21,
+                        "examSort": 17
+                    },
+                    "1220678549233737728": {
+                        "name": "以太网交换机",
+                        "totalNumber": 34,
+                        "examSort": 18
+                    }
+                }
+            },
+            "707890707783880704": {
+                "name": "网络层",
+                "sort": 4,
+                "completePeopleNumber": "8580",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "149",
+                "examGroups": {
+                    "1220679334461972480": {
+                        "name": "网络层的基本功能",
+                        "totalNumber": 31,
+                        "examSort": 1
+                    },
+                    "1220679437067231232": {
+                        "name": "静态路由算法",
+                        "totalNumber": 4,
+                        "examSort": 2
+                    },
+                    "1220679490221645824": {
+                        "name": "动态路由算法",
+                        "totalNumber": 19,
+                        "examSort": 3
+                    },
+                    "1220681251141459968": {
+                        "name": "IPv4分组",
+                        "totalNumber": 50,
+                        "examSort": 4
+                    },
+                    "1220681307722620928": {
+                        "name": "IPv4地址与NAT",
+                        "totalNumber": 60,
+                        "examSort": 5
+                    },
+                    "1220681393047347200": {
+                        "name": "IPv4地址概念",
+                        "totalNumber": 88,
+                        "examSort": 6
+                    },
+                    "1220681467273945088": {
+                        "name": "IPv4地址解析协议",
+                        "totalNumber": 67,
+                        "examSort": 7
+                    },
+                    "1220692843375632384": {
+                        "name": "IPv6的基本概念",
+                        "totalNumber": 11,
+                        "examSort": 8
+                    },
+                    "1220692888762195968": {
+                        "name": "IPv6地址",
+                        "totalNumber": 12,
+                        "examSort": 9
+                    },
+                    "1220692972690219008": {
+                        "name": "自治系统",
+                        "totalNumber": 2,
+                        "examSort": 10
+                    },
+                    "1220693039312543744": {
+                        "name": "域内路由与域间路由",
+                        "totalNumber": 5,
+                        "examSort": 11
+                    },
+                    "1220693117863469056": {
+                        "name": "RIP路由协议",
+                        "totalNumber": 20,
+                        "examSort": 12
+                    },
+                    "1220693230409228288": {
+                        "name": "BGP路由协议",
+                        "totalNumber": 8,
+                        "examSort": 13
+                    },
+                    "1220693177389031424": {
+                        "name": "OSPF路由协议",
+                        "totalNumber": 21,
+                        "examSort": 14
+                    },
+                    "1220693557019680768": {
+                        "name": "组播的基本概念",
+                        "totalNumber": 2,
+                        "examSort": 15
+                    },
+                    "1220693606445359104": {
+                        "name": "IP组播地址",
+                        "totalNumber": 1,
+                        "examSort": 16
+                    },
+                    "1220693663819243520": {
+                        "name": "IGMP与组播路由算法",
+                        "totalNumber": 3,
+                        "examSort": 17
+                    },
+                    "1220694310882910208": {
+                        "name": "路由器的组成和功能",
+                        "totalNumber": 51,
+                        "examSort": 18
+                    },
+                    "1220694366386135040": {
+                        "name": "路由表与分组转发",
+                        "totalNumber": 23,
+                        "examSort": 19
+                    }
+                }
+            },
+            "707890775152791552": {
+                "name": "传输层",
+                "sort": 5,
+                "completePeopleNumber": "7689",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "146",
+                "examGroups": {
+                    "1220694746717233152": {
+                        "name": "传输层的基本功能",
+                        "totalNumber": 32,
+                        "examSort": 1
+                    },
+                    "1220694796507815936": {
+                        "name": "传输层寻址与端口",
+                        "totalNumber": 27,
+                        "examSort": 2
+                    },
+                    "1220694849393795072": {
+                        "name": "传输方式",
+                        "totalNumber": 44,
+                        "examSort": 3
+                    },
+                    "1220695094299205632": {
+                        "name": "UDP数据报",
+                        "totalNumber": 23,
+                        "examSort": 4
+                    },
+                    "1220695427473743872": {
+                        "name": "TCP报文段",
+                        "totalNumber": 29,
+                        "examSort": 5
+                    },
+                    "1220695475083288576": {
+                        "name": "TCP连接管理",
+                        "totalNumber": 42,
+                        "examSort": 6
+                    },
+                    "1220695526551592960": {
+                        "name": "TCP可靠传输",
+                        "totalNumber": 29,
+                        "examSort": 7
+                    },
+                    "1220695572533747712": {
+                        "name": "TCP流量控制",
+                        "totalNumber": 25,
+                        "examSort": 8
+                    },
+                    "1220695627089059840": {
+                        "name": "TCP拥塞控制",
+                        "totalNumber": 45,
+                        "examSort": 9
+                    }
+                }
+            },
+            "707890873471471616": {
+                "name": "应用层",
+                "sort": 6,
+                "completePeopleNumber": "8061",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "112",
+                "examGroups": {
+                    "1220698002516353024": {
+                        "name": "C/S模型",
+                        "totalNumber": 7,
+                        "examSort": 1
+                    },
+                    "1220698050373361664": {
+                        "name": "P2P模型",
+                        "totalNumber": 2,
+                        "examSort": 2
+                    },
+                    "1220698150290071552": {
+                        "name": "层次域名空间",
+                        "totalNumber": 25,
+                        "examSort": 3
+                    },
+                    "1220698196775542784": {
+                        "name": "域名服务器",
+                        "totalNumber": 25,
+                        "examSort": 4
+                    },
+                    "1220698243391037440": {
+                        "name": "域名解析过程",
+                        "totalNumber": 42,
+                        "examSort": 5
+                    },
+                    "1220698296868413440": {
+                        "name": "FTP协议的工作原理",
+                        "totalNumber": 39,
+                        "examSort": 6
+                    },
+                    "1220698356817600512": {
+                        "name": "E-mail系统的组成结构",
+                        "totalNumber": 13,
+                        "examSort": 7
+                    },
+                    "1220698412408905728": {
+                        "name": "E-mail格式与MIME",
+                        "totalNumber": 20,
+                        "examSort": 8
+                    },
+                    "1220698467522060288": {
+                        "name": "SMTP协议与POP3协议",
+                        "totalNumber": 34,
+                        "examSort": 9
+                    },
+                    "1220698640641957888": {
+                        "name": "WWW的概念与组成结构",
+                        "totalNumber": 49,
+                        "examSort": 10
+                    },
+                    "1220698686770913280": {
+                        "name": "HTTP协议",
+                        "totalNumber": 32,
+                        "examSort": 11
+                    }
+                }
+            }
+        }
+    },
+     "708024163360706560": {
+        "majorName": "C语言程序设计",
+        "examCategory": 1,
+        "categoryName": "常规科目",
+        "chapters": {
+            "708028021814202368": {
+                "name": "C语言概述",
+                "sort": 1,
+                "completePeopleNumber": "9924",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "27",
+                "examGroups": {
+                    "1214874860896133120": {
+                        "name": "计算机语言相关概念",
+                        "totalNumber": 86,
+                        "examSort": 1
+                    }
+                }
+            },
+            "708029130649767936": {
+                "name": "变量和数据类型",
+                "sort": 3,
+                "completePeopleNumber": "13445",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "99",
+                "examGroups": {
+                    "1214875814387261440": {
+                        "name": "常量",
+                        "totalNumber": 17,
+                        "examSort": 2
+                    },
+                    "1214875860864344064": {
+                        "name": "标识符",
+                        "totalNumber": 19,
+                        "examSort": 3
+                    },
+                    "1214875907991543808": {
+                        "name": "变量",
+                        "totalNumber": 21,
+                        "examSort": 4
+                    },
+                    "1214875958042173440": {
+                        "name": "整型数据",
+                        "totalNumber": 21,
+                        "examSort": 5
+                    },
+                    "1214876008826806272": {
+                        "name": "字符型数据",
+                        "totalNumber": 25,
+                        "examSort": 6
+                    },
+                    "1214876080075448320": {
+                        "name": "浮点型数据",
+                        "totalNumber": 10,
+                        "examSort": 7
+                    },
+                    "1214877289888882688": {
+                        "name": "运算符",
+                        "totalNumber": 131,
+                        "examSort": 8
+                    },
+                    "1214877829607727104": {
+                        "name": "输入输出函数",
+                        "totalNumber": 49,
+                        "examSort": 9
+                    }
+                }
+            },
+            "708029349722460160": {
+                "name": "选择结构",
+                "sort": 4,
+                "completePeopleNumber": "3943",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "46",
+                "examGroups": {
+                    "1214883391410020352": {
+                        "name": "if语句",
+                        "totalNumber": 38,
+                        "examSort": 1
+                    },
+                    "1214883438679826432": {
+                        "name": "switch语句",
+                        "totalNumber": 32,
+                        "examSort": 2
+                    },
+                    "1214883496930320384": {
+                        "name": "关系运算符",
+                        "totalNumber": 23,
+                        "examSort": 3
+                    },
+                    "1214883550797766656": {
+                        "name": "关系表达式",
+                        "totalNumber": 30,
+                        "examSort": 4
+                    },
+                    "1214883858596765696": {
+                        "name": "逻辑运算符",
+                        "totalNumber": 16,
+                        "examSort": 5
+                    },
+                    "1214884041434865664": {
+                        "name": "逻辑表达式",
+                        "totalNumber": 38,
+                        "examSort": 6
+                    },
+                    "1214884338559361024": {
+                        "name": "三目运算符",
+                        "totalNumber": 20,
+                        "examSort": 7
+                    },
+                    "1214884426866237440": {
+                        "name": "if语句的嵌套",
+                        "totalNumber": 3,
+                        "examSort": 8
+                    }
+                }
+            },
+            "708029473492176896": {
+                "name": "循环结构",
+                "sort": 5,
+                "completePeopleNumber": "3804",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "114",
+                "examGroups": {
+                    "1214884983748173824": {
+                        "name": "while语句",
+                        "totalNumber": 48,
+                        "examSort": 1
+                    },
+                    "1214885037141663744": {
+                        "name": "do...while语句",
+                        "totalNumber": 25,
+                        "examSort": 2
+                    },
+                    "1214885082863771648": {
+                        "name": "for语句",
+                        "totalNumber": 89,
+                        "examSort": 3
+                    },
+                    "1214885136244678656": {
+                        "name": "循环的嵌套",
+                        "totalNumber": 43,
+                        "examSort": 4
+                    },
+                    "1214885413282652160": {
+                        "name": "break语句",
+                        "totalNumber": 17,
+                        "examSort": 5
+                    },
+                    "1214885472288120832": {
+                        "name": "continue语句",
+                        "totalNumber": 15,
+                        "examSort": 6
+                    }
+                }
+            },
+            "708029721631395840": {
+                "name": "数组",
+                "sort": 6,
+                "completePeopleNumber": "4310",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "72",
+                "examGroups": {
+                    "1214886259500261376": {
+                        "name": "一维数组的定义和引用",
+                        "totalNumber": 68,
+                        "examSort": 1
+                    },
+                    "1214886503394844672": {
+                        "name": "二维数组的定义和引用",
+                        "totalNumber": 55,
+                        "examSort": 2
+                    },
+                    "1214886711860142080": {
+                        "name": "字符数组的定义和引用",
+                        "totalNumber": 53,
+                        "examSort": 3
+                    },
+                    "1214886756902772736": {
+                        "name": "字符串处理函数",
+                        "totalNumber": 30,
+                        "examSort": 4
+                    }
+                }
+            },
+            "708029852200079360": {
+                "name": "函数",
+                "sort": 7,
+                "completePeopleNumber": "3595",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "99",
+                "examGroups": {
+                    "1214889337871933440": {
+                        "name": "函数的定义",
+                        "totalNumber": 14,
+                        "examSort": 1
+                    },
+                    "1214888885520441344": {
+                        "name": "函数的调用",
+                        "totalNumber": 168,
+                        "examSort": 2
+                    },
+                    "1214888948321755136": {
+                        "name": "函数的声明",
+                        "totalNumber": 16,
+                        "examSort": 3
+                    },
+                    "1214890122072563712": {
+                        "name": "局部变量",
+                        "totalNumber": 20,
+                        "examSort": 4
+                    },
+                    "1214890164955127808": {
+                        "name": "全局变量",
+                        "totalNumber": 21,
+                        "examSort": 5
+                    },
+                    "1214890709946212352": {
+                        "name": "变量的存储方式",
+                        "totalNumber": 5,
+                        "examSort": 6
+                    },
+                    "1214890763931099136": {
+                        "name": "局部变量的存储类别",
+                        "totalNumber": 29,
+                        "examSort": 7
+                    },
+                    "1214890814384381952": {
+                        "name": "全局变量的存储类别",
+                        "totalNumber": 4,
+                        "examSort": 8
+                    },
+                    "1214891905989746688": {
+                        "name": "内部函数",
+                        "totalNumber": 1,
+                        "examSort": 9
+                    },
+                    "1214891950856216576": {
+                        "name": "外部函数",
+                        "totalNumber": 2,
+                        "examSort": 10
+                    }
+                }
+            },
+            "708030008391766016": {
+                "name": "指针",
+                "sort": 8,
+                "completePeopleNumber": "4649",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "101",
+                "examGroups": {
+                    "1214893050695000064": {
+                        "name": "指针的定义",
+                        "totalNumber": 25,
+                        "examSort": 1
+                    },
+                    "1214893093221048320": {
+                        "name": "指针变量的定义",
+                        "totalNumber": 65,
+                        "examSort": 2
+                    },
+                    "1214893143829520384": {
+                        "name": "指针变量的引用",
+                        "totalNumber": 146,
+                        "examSort": 3
+                    },
+                    "1214894516398727168": {
+                        "name": "内存分配",
+                        "totalNumber": 4,
+                        "examSort": 4
+                    }
+                }
+            },
+            "708030175228596224": {
+                "name": "结构体",
+                "sort": 9,
+                "completePeopleNumber": "1197",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "14",
+                "examGroups": {
+                    "1214895820600778752": {
+                        "name": "结构体类型",
+                        "totalNumber": 15,
+                        "examSort": 1
+                    },
+                    "1214895873050550272": {
+                        "name": "结构体变量",
+                        "totalNumber": 37,
+                        "examSort": 2
+                    },
+                    "1214895923067625472": {
+                        "name": "结构体数组",
+                        "totalNumber": 18,
+                        "examSort": 3
+                    },
+                    "1214895972103233536": {
+                        "name": "结构体指针",
+                        "totalNumber": 10,
+                        "examSort": 4
+                    },
+                    "1214896481904107520": {
+                        "name": "链表",
+                        "totalNumber": 14,
+                        "examSort": 5
+                    },
+                    "1214896628188848128": {
+                        "name": "共用体类型",
+                        "totalNumber": 7,
+                        "examSort": 6
+                    },
+                    "1214896673453776896": {
+                        "name": "共用体变量",
+                        "totalNumber": 5,
+                        "examSort": 7
+                    },
+                    "1214896965079539712": {
+                        "name": "枚举类型的使用",
+                        "totalNumber": 8,
+                        "examSort": 8
+                    }
+                }
+            },
+            "708030326340980736": {
+                "name": "文件",
+                "sort": 10,
+                "completePeopleNumber": "2628",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "48",
+                "examGroups": {
+                    "1214899985917943808": {
+                        "name": "文件的概念",
+                        "totalNumber": 5,
+                        "examSort": 1
+                    },
+                    "1214900032839622656": {
+                        "name": "文件的分类",
+                        "totalNumber": 5,
+                        "examSort": 2
+                    },
+                    "1214900081225113600": {
+                        "name": "文件类型指针",
+                        "totalNumber": 10,
+                        "examSort": 3
+                    },
+                    "1214900144475217920": {
+                        "name": "打开与关闭文件",
+                        "totalNumber": 39,
+                        "examSort": 4
+                    },
+                    "1214900193187864576": {
+                        "name": "顺序读写",
+                        "totalNumber": 35,
+                        "examSort": 5
+                    },
+                    "1214900237727178752": {
+                        "name": "随机读写",
+                        "totalNumber": 14,
+                        "examSort": 6
+                    },
+                    "1214900285861011456": {
+                        "name": "出错检测",
+                        "totalNumber": 1,
+                        "examSort": 7
+                    }
+                }
+            }
+        }
+    },
+    "804349070033424384": {
+        "majorName": "期末考Java",
+        "examCategory": 2,
+        "categoryName": "期末考科目",
+        "chapters": {
+            "804350127748812800": {
+                "name": "Java语言概述",
+                "sort": 1,
+                "completePeopleNumber": "4503",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "21"
+            },
+            "804351205315842048": {
+                "name": "Java语言基础",
+                "sort": 2,
+                "completePeopleNumber": "4147",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "44"
+            },
+            "804351737845649408": {
+                "name": "选择与循环",
+                "sort": 3,
+                "completePeopleNumber": "925",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "30"
+            },
+            "804352007879135232": {
+                "name": "类和对象",
+                "sort": 4,
+                "completePeopleNumber": "2724",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "57"
+            },
+            "804352894752133120": {
+                "name": "数组",
+                "sort": 5,
+                "completePeopleNumber": "620",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "15"
+            },
+            "804353345610452992": {
+                "name": "字符串",
+                "sort": 6,
+                "completePeopleNumber": "417",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "16"
+            },
+            "804353821609431040": {
+                "name": "继承与多态",
+                "sort": 7,
+                "completePeopleNumber": "1314",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "25"
+            },
+            "804354591373266944": {
+                "name": "Java常用核心类",
+                "sort": 8,
+                "completePeopleNumber": "225",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "6"
+            },
+            "804355486936862720": {
+                "name": "内部类、枚举和注解",
+                "sort": 9,
+                "completePeopleNumber": "0",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "0"
+            },
+            "804355901539618816": {
+                "name": "接口与Lambda表达式",
+                "sort": 10,
+                "completePeopleNumber": "302",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "10"
+            },
+            "804357162632613888": {
+                "name": "泛型与集合",
+                "sort": 11,
+                "completePeopleNumber": "22",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "2"
+            },
+            "804358091951968256": {
+                "name": "异常处理",
+                "sort": 12,
+                "completePeopleNumber": "343",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "15"
+            },
+            "804358196499189760": {
+                "name": "JDBC数据库编程",
+                "sort": 16,
+                "completePeopleNumber": "30",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "4"
+            },
+            "804358313289584640": {
+                "name": "输入输出",
+                "sort": 13,
+                "completePeopleNumber": "250",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "13"
+            },
+            "804362452610453504": {
+                "name": "并发编程基础",
+                "sort": 17,
+                "completePeopleNumber": "286",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "16"
+            },
+            "804363862471217152": {
+                "name": "Java网络编程",
+                "sort": 18,
+                "completePeopleNumber": "142",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "11"
+            },
+            "807198157602689024": {
+                "name": "JavaFX基础",
+                "sort": 14,
+                "completePeopleNumber": "58",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "21"
+            },
+            "807198334455517184": {
+                "name": "事件处理与常用控件",
+                "sort": 15,
+                "completePeopleNumber": "4",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "1"
+            }
+        }
+    },
+    "707995511914893312": {
+        "majorName": "期末考软工",
+        "examCategory": 2,
+        "categoryName": "期末考科目",
+        "chapters": {
+            "707995777410142208": {
+                "name": "软件工程学概述",
+                "sort": 1,
+                "completePeopleNumber": "34007",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "137"
+            },
+            "707995858150494208": {
+                "name": "可行性研究",
+                "sort": 2,
+                "completePeopleNumber": "10392",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "83"
+            },
+            "707995921367044096": {
+                "name": "需求分析",
+                "sort": 3,
+                "completePeopleNumber": "9594",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "83"
+            },
+            "707995985003024384": {
+                "name": "形式化说明技术",
+                "sort": 4,
+                "completePeopleNumber": "653",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "27"
+            },
+            "707996095913005056": {
+                "name": "总体设计",
+                "sort": 5,
+                "completePeopleNumber": "11661",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "137"
+            },
+            "707996156633944064": {
+                "name": "详细设计",
+                "sort": 6,
+                "completePeopleNumber": "6582",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "90"
+            },
+            "707996212338495488": {
+                "name": "软件实现",
+                "sort": 7,
+                "completePeopleNumber": "8935",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "179"
+            },
+            "707996268902879232": {
+                "name": "软件维护",
+                "sort": 8,
+                "completePeopleNumber": "5389",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "77"
+            },
+            "707996357306224640": {
+                "name": "面向对象方法学引论",
+                "sort": 9,
+                "completePeopleNumber": "4455",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "70"
+            },
+            "707996465267609600": {
+                "name": "面向对象分析",
+                "sort": 10,
+                "completePeopleNumber": "1883",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "36"
+            },
+            "707996577398132736": {
+                "name": "面向对象设计",
+                "sort": 11,
+                "completePeopleNumber": "1019",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "30"
+            },
+            "707996634272894976": {
+                "name": "面向对象实现",
+                "sort": 12,
+                "completePeopleNumber": "650",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "23"
+            },
+            "707996697783046144": {
+                "name": "软件项目管理",
+                "sort": 13,
+                "completePeopleNumber": "4124",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "106"
+            }
+        }
+    },
+    "709171523524628480": {
+        "majorName": "期末考数据库",
+        "examCategory": 2,
+        "categoryName": "期末考科目",
+        "chapters": {
+            "709171734204518400": {
+                "name": "绪论",
+                "sort": 1,
+                "completePeopleNumber": "55233",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "135"
+            },
+            "709171804832403456": {
+                "name": "关系数据库",
+                "sort": 2,
+                "completePeopleNumber": "32787",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "169"
+            },
+            "709171881273593856": {
+                "name": "标准语言SQL",
+                "sort": 3,
+                "completePeopleNumber": "22243",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "149"
+            },
+            "709171950311837696": {
+                "name": "数据库安全性",
+                "sort": 4,
+                "completePeopleNumber": "13432",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "165"
+            },
+            "709172045874860032": {
+                "name": "数据库完整性",
+                "sort": 5,
+                "completePeopleNumber": "5355",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "45"
+            },
+            "709172148387844096": {
+                "name": "关系数据理论",
+                "sort": 6,
+                "completePeopleNumber": "11370",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "159"
+            },
+            "709172214737539072": {
+                "name": "数据库设计",
+                "sort": 7,
+                "completePeopleNumber": "9335",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "187"
+            },
+            "709172273965305856": {
+                "name": "数据库编程",
+                "sort": 8,
+                "completePeopleNumber": "651",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "18"
+            },
+            "709172377560420352": {
+                "name": "关系查询处理和优化",
+                "sort": 9,
+                "completePeopleNumber": "1636",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "28"
+            },
+            "709172442983174144": {
+                "name": "数据库恢复技术",
+                "sort": 10,
+                "completePeopleNumber": "3341",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "45"
+            },
+            "709172502668120064": {
+                "name": "并发控制",
+                "sort": 11,
+                "completePeopleNumber": "5460",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "46"
+            },
+            "709172658125803520": {
+                "name": "数据库管理系统",
+                "sort": 12,
+                "completePeopleNumber": "1726",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "53"
+            },
+            "709172744998227968": {
+                "name": "数据库技术发展概述",
+                "sort": 13,
+                "completePeopleNumber": "286",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "11"
+            },
+            "709172877815058432": {
+                "name": "大数据管理",
+                "sort": 14,
+                "completePeopleNumber": "58",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "6"
+            },
+            "709173005611307008": {
+                "name": "内存数据库系统",
+                "sort": 15,
+                "completePeopleNumber": "32",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "3"
+            },
+            "709173111538454528": {
+                "name": "数据仓库与联机分析处理技术",
+                "sort": 16,
+                "completePeopleNumber": "356",
+                "completeExerciseNumber": "0",
+                "incorrectChapterNumber": null,
+                "total": "20"
+            }
+        }
+    }
+}

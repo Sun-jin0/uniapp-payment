@@ -1,0 +1,1510 @@
+[
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374455437671403520",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703941662136733696",
+            "1215241527622901760",
+            "1215243079259529216",
+            "1215243141331034112"
+        ],
+        "stem": "<p>在 32 位计算机上执行下列 C 语言代码段后，ui的值是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>\n<pre class=\"language-markup\"><code>short si = -32767;\nunsigned int ui = si;</code></pre>",
+        "options": {
+            "A": "<p>2<sup>15</sup> −1</p>",
+            "B": "<p>2<sup>15</sup> +1</p>",
+            "C": "<p>2<sup>32</sup> −2<sup>15</sup> −1</p>",
+            "D": "<p>2<sup>32</sup> −2<sup>15</sup> +1</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>考查short型有符号数到unsigned int的转换。过程为：-32767的16位补码为 1000 0000 0000 0001B→ 符号扩展至32位为 FFFF8001H→ 将其解释为无符号数，其值为 2³² - 32767。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 12,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374457512882999296",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703941662136733696",
+            "1215241579544190976",
+            "1215243294423130112",
+            "1215243503668568064"
+        ],
+        "stem": "<p>已知 float 型变量用 IEEE 754 单精度浮点数格式表示。若 float 型变量x的机器数为4730 0000H，则x的值是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>0.375×2<sup>14</sup></p>",
+            "B": "<p>1.375×2<sup>14 </sup></p>",
+            "C": "<p>0.375×2<sup>15 </sup></p>",
+            "D": "<p>1.375×2<sup>15</sup></p>"
+        },
+        "answer": "D",
+        "analysis": "<p>考查IEEE 754单精度浮点数机器码求真值。机器数 47300000H转二进制：01000111001100000000000000000000，分解：符号位S=0（正数），阶码E=142（10001110），尾数M=0.375（011）。真值 = 1.375 × 2¹⁵（计算过程：1.M × 2<sup>(E-127)</sup>）。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 13,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374459083905699840",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703941662136733696",
+            "1215241466990043136",
+            "1215242157015965696",
+            "1215242502597255168"
+        ],
+        "stem": "<p>假设 8 位字长的计算机中，两个带符号整数x和y的补码表示分别为[x]<sub>补</sub>=A3H、[y]<sub>补</sub>=75H，则通过补码加减运算器得到的x−y的值及OF标志分别为<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>24，0</p>",
+            "B": "<p>24，1</p>",
+            "C": "<p>46，0</p>",
+            "D": "<p>46，1</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>考查补码加减运算与溢出判断。[x]<sub>补</sub>= A3H(-93)， [-y]<sub>补</sub>= 8BH(-117)。计算 x + (-y)：A3H + 8BH = 12EH，保留8位结果为2EH（+46）。溢出判断：两负数相加结果为正数，发生溢出（OF=1）。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 14,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374461046122745856",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703969950641033216",
+            "1215257599268888576",
+            "1215262133110185984",
+            "1215262203759042560"
+        ],
+        "stem": "<p>某 32 位计算机按字节编址，采用小端方式存放数据，编译器按边界对齐方式为下列 C 语言结构体数组变量employee分配存储空间。</p>\n<pre class=\"language-markup\"><code>struct record {\n    int id;\n    char name[10];\n    int salary;\n} employee[200];</code></pre>\n<p>若employee的首地址为0000 A0B0H，employee[1].id的机器数为1234 5678H，则该机器数中的56H所在存储单元的地址是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>0000&nbsp;A0C3H</p>",
+            "B": "<p>0000&nbsp;A0C4H&nbsp;</p>",
+            "C": "<p>0000&nbsp;A0C5H&nbsp;</p>",
+            "D": "<p>0000&nbsp;A0C6H</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>考查结构体内存对齐与小端存储。结构体总大小为20字节。employee[1]的起始地址为A0C4H，其id成员(值为12345678H)的存储地址为A0C4H。小端模式下，低字节存于低地址，故存储56H的地址是A0C5H。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 15,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374461765202612224",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703969950641033216",
+            "1215257431345733632",
+            "1215258063418957824",
+            "1215258132343955456"
+        ],
+        "stem": "<p>下列选项中，由指令集体系结构（ISA）规定的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>是否采用阵列乘法器</p>",
+            "B": "<p>是否采用定长指令字格式</p>",
+            "C": "<p>是否采用微程序控制器</p>",
+            "D": "<p>是否采用单总线数据通路</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>辨析指令集架构（ISA）与微架构。ISA规定软件可见部分，如指令格式、数据类型、寻址方式（B对）。微架构是硬件实现方案，如特定功能部件（A、D）或控制器设计（C）。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 16,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374694904319578112",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703969950641033216",
+            "1215257666671353856",
+            "1215262623290105856",
+            "1215262761903464448"
+        ],
+        "stem": "<p>下列关于 RISC 的叙述中，错误的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>多采用硬连线方式实现控制器</p>",
+            "B": "<p>通常采用 Load/Store 型指令设计风格</p>",
+            "C": "<p>难以采用流水线数据通路实现微架构</p>",
+            "D": "<p>多采用寄存器传递过程调用时的参数</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>辨析RISC与CISC特征。RISC的特点包括：硬布线控制（A对）、Load/Store结构（B对）、多用寄存器传参（D对）。CISC的指令复杂，更适合流水线实现，故C选项描述错误。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 17,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374695906892451840",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703964270878134272",
+            "1215245817523478528",
+            "1215253423168167936",
+            "1215253842162360320"
+        ],
+        "stem": "<p>下列关于 CPI 和 CPU 时钟周期的叙述中，错误的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>不同类型指令的 CPI 可能不一样</p>",
+            "B": "<p>程序的 CPI 与 Cache 缺失率无关</p>",
+            "C": "<p>单周期 CPU 的时钟周期以最长指令所用时间为准</p>",
+            "D": "<p>流水线 CPU 的时钟周期以最长流水段所用时间为准</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>辨析影响CPI（每条指令周期数）的因素。A、C、D描述均正确。B选项错误，因为Cache命中可以提高效率，降低平均CPI；而Cache缺失会导致CPU停顿，反而可能增加CPI。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 18,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374697946364383232",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703971519478501376",
+            "1215266068990533632",
+            "1215304376919531520",
+            "1215304484214022144"
+        ],
+        "stem": "<p>下列关于 CPU 中的数据通路和控制器的叙述中，错误的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>通用寄存器组中应该包含程序计数器</p>",
+            "B": "<p>控制器中一定包含指令译码的译码电路</p>",
+            "C": "<p>单周期 CPU 中的控制器比多周期 CPU 中的更简单</p>",
+            "D": "<p>流水线 CPU 需解决数据相关和控制相关等冒险问题</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>辨析CPU数据通路组成。A选项错误，因为程序计数器（PC）属于专用寄存器，不在通用寄存器组中。B、C、D选项关于控制器、单周期实现和流水线冒险的描述是正确的。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 19,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1374699122614996992",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703974862724665344",
+            "1215317038420205568",
+            "1215317242988994560",
+            "1215317833077235712"
+        ],
+        "stem": "<p>某处理器总线采用同步、并行传输方式，每个总线时钟周期传送 4 次数据（quadpumped 技术）。若该总线的工作频率为1333 MHz（实际单位是 MT/s，表示每秒传送1333 M次），总线宽度为 64 位，则总线带宽约为<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>10.66GB/s</p>",
+            "B": "<p>42.66GB/s</p>",
+            "C": "<p>85.31GB/s</p>",
+            "D": "<p>341.25 GB/s</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>计算存储器带宽。带宽 = 传输速率 × 数据位宽 / 8。计算过程：1333MT/s × 64 bit / 8 = 1333 × 10⁶ × 8 B/s ≈ 10.66 GB/s。注意MT/s已包含DDR的倍增效应。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 20,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1375068298550579200",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "701807269960093696",
+            "1217877015571734528",
+            "1217877174108037120",
+            "1217877249962024960"
+        ],
+        "stem": "<p>下列程序段的时间复杂度是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>\n<pre class=\"language-markup\"><code>int count=0,i,j;\nfor(i=1;i*i&lt;=n;i++)\n    for(j=1;j&lt;=i;j++)\n        count++;</code></pre>",
+        "options": {
+            "A": "<p>O(logn)</p>",
+            "B": "<p>O(n)</p>",
+            "C": "<p>O(nlogn)</p>",
+            "D": "<p>O(n²)</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>首先外层循环：i 从 1到<span class=\"math-tex\">\\( \\sqrt{n} \\)</span>，共<span class=\"math-tex\">\\( \\sqrt{n} \\)</span>次；其次内层循环：对每个 i 执行 i 次，总次数 = <span class=\"math-tex\">\\( 0+1+2+···+(\\sqrt{n}-1)=\\sqrt{n}(\\sqrt{n}-1)/2\\approx n/2 \\)</span>&nbsp;所以忽略常数因子，时间复杂度为 O (n)，选 B。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 1,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1375072639168679936",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703976576680857600",
+            "1215319955441197056",
+            "1215321805561274368",
+            "1215326901066014720"
+        ],
+        "stem": "<p>下列设备中，适合采用 DMA 输入/输出方式的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>\n<p>I. 键盘</p>\n<p>II. 网卡</p>\n<p>III. 固态硬盘</p>\n<p>IV. 针式打印机</p>",
+        "options": {
+            "A": "<p>I，II</p>",
+            "B": "<p>II，III</p>",
+            "C": "<p>II，IV</p>",
+            "D": "<p>III，IV</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>判断DMA适用场景。DMA适用于高速、大批量数据传输设备，如网卡（II）和SSD（III）。而不适用于低速、零星数据设备，如键盘（I）和针式打印机（IV）。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 21,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1375073521557966848",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703971519478501376",
+            "1215266177245519872",
+            "1215307758996561920",
+            "1215307907818856448"
+        ],
+        "stem": "<p>下列选项中，会触发外部中断请求的事件是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>DMA 传送结束</p>",
+            "B": "<p>总线事务结束</p>",
+            "C": "<p>页故障处理结束</p>",
+            "D": "<p>执行断点指令</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>区分外部中断与内部异常/中断。DMA结束中断由外部硬件触发，属于典型的外部中断（A对）。B、C、D选项均由CPU内部执行流程或特定指令引发，不属于外部中断。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 22,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1375076399987167232",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704343819814047744",
+            "1219616083460497408",
+            "1219616589318725632",
+            "1219647935231565824"
+        ],
+        "stem": "<p>在采用页式虚拟存储管理方式的系统中，当发生进程上下文切换时，下列寄存器中，操作系统不需要更新的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>通用寄存器</p>",
+            "B": "<p>页表基址寄存器</p>",
+            "C": "<p>程序计数器</p>",
+            "D": "<p>内核中断向量表基址寄存器</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>在采用页式虚拟存储管理的系统中，进程上下文切换时：</p>\n<p>通用寄存器：用于保存进程的计算状态，不同进程计算状态不同，切换时需更新。页表基址寄存器：页表是进程地址空间的映射表，不同进程页表不同，切换地址空间时需更新。程序计数器：记录进程下一条要执行的指令地址，切换进程需恢复执行位置，因此要更新。内核中断向量表基址寄存器：中断向量表是系统级的全局资源，为所有进程共享，不随进程切换而改变，所以无需更新。综上，答案选 D。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 23,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1375077710451314688",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704343891100438528",
+            "1219659947881799680",
+            "1219663550998650880",
+            "1219664347895439360"
+        ],
+        "stem": "<p>下列关于虚拟化技术的叙述中，错误的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>操作系统可以运行在虚拟机上</p>",
+            "B": "<p>虚拟化技术支持在一台计算机上构建多个虚拟机</p>",
+            "C": "<p>虚拟机监控程序（VMM）与操作系统的特权级相同</p>",
+            "D": "<p>虚拟化技术支持在一台计算机上模拟不同的指令集体系结构</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>虚拟机监控程序（VMM）的特权级特性及虚拟化技术的核心要点：选项A：虚拟机可提供独立的运行环境，操作系统能在虚拟机上运行，该叙述正确。选项B：虚拟化技术的重要能力之一就是支持在一台计算机上构建多个虚拟机，实现资源的高效利用与隔离，该叙述正确。</p>\n<p>选项C：VMM（虚拟机监控程序）必须具备比客户操作系统（Guest OS）更高的特权级，这样才能拦截特权指令、控制硬件资源，并非与操作系统特权级相同，该叙述错误。选项D：借助全系统仿真器等手段，虚拟化技术支持在一台计算机上模拟不同的指令集体系结构，该叙述正确。</p>\n<p>综上，答案选 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 24,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1375079508255838208",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704343819814047744",
+            "1219616216994553856",
+            "1219652408309981184",
+            "1219653771685273600"
+        ],
+        "stem": "<p>某基于优先权的进程调度程序中，进程就绪队列采用优先权由高到低的有序单链表实现。若就绪队列长度为n，则就绪队列的插入操作和从就绪队列中选出将要执行进程的操作的时间复杂度分别是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>O（1），O（1）</p>",
+            "B": "<p>O（1）、O（n）</p>",
+            "C": "<p>O（n），O（1）</p>",
+            "D": "<p>O（n），O（n）</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>有序单链表在进程调度场景下的插入和选出操作的时间复杂度：</p>\n<p>插入操作（时间复杂度 O(n)）：就绪队列是按优先级由高到低排序的有序单链表。插入新进程时，需从链表头开始遍历，找到合适的插入位置（保证插入后链表仍有序）。由于最坏情况下需要遍历整个链表（长度为n），因此插入操作的时间复杂度为 O(n)。</p>\n<p>选出操作（时间复杂度 O(1)）：因为链表按优先级由高到低排序，优先级最高的进程位于链表头。要选出将要执行的进程（即优先级最高的进程），直接取链表头节点即可，无需遍历链表，因此时间复杂度为O(1)。综上，插入操作时间复杂度为O(n)，选出操作时间复杂度为 O(1)，答案选 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 25,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1375081270673018880",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704343891100438528",
+            "1219659947881799680",
+            "1219663653297725440",
+            "1219666918517252096"
+        ],
+        "stem": "<p>某页式虚拟存储管理系统采用固定分配局部置换的 LRU 算法。若系统为进程P分配了 3 个页框，P从某时刻开始的页访问序列为 0，1，2，0，5，1，4，3，0，2，3，2，0，且 0，1，2 三个页已在内存中，则完成上述页序列的访问时，系统执行缺页异常处理程序的次数为<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>5</p>",
+            "B": "<p>6</p>",
+            "C": "<p>7</p>",
+            "D": "<p>8</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>固定分配局部置换的 LRU（最近最少使用）算法，模拟页访问过程来统计缺页次数：</p>\n<p>①初始状态</p>\n<p>进程 P 分配了 3 个页框，初始时内存中已有的页为 0、1、2。</p>\n<p>②模拟页访问序列（统计缺页情况）</p>\n<p>页访问序列为：0,1,2,0,5,1,4,3,0,2,3,2,0。</p>\n<p>访问0、1、2、0：这些页已在内存中，不缺页。</p>\n<p>访问5：内存中无页5 ，发生缺页，需置换（根据 LRU，置换 “最近最少使用” 的页 2）。</p>\n<p>访问1：页 1 已在内存，不缺页。</p>\n<p>访问4：内存中无页4 ，发生缺页，置换 “最近最少使用” 的页 0 。</p>\n<p>访问3：内存中无页3 ，发生缺页，置换 “最近最少使用” 的页5。</p>\n<p>访问0：内存中无页0 ，发生缺页，置换 “最近最少使用” 的页1。</p>\n<p>访问2：内存中无页2 ，发生缺页，置换 “最近最少使用” 的页4。</p>\n<p>访问3、2、0：这些页已在内存中，不缺页。</p>\n<p>③统计缺页次数</p>\n<p>缺页发生在访问 5、4、3、0、2时，共6次。</p>\n<p>综上，系统执行缺页异常处理程序的次数为 6 ，答案选B。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 26,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430509745479098368",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704294985763262464",
+            "1217888494861688832",
+            "1217888821103042560"
+        ],
+        "stem": "<p>已知算法A用于检查字符串中各类括号是否匹配，A执行过程中使用初始为空的栈保存遇到的括号。若栈的容量是3，则下列选项中，A不能处理的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>(a+[b+(c+d)/e]+f)+g−h</p>",
+            "B": "<p>[a∗((b+c)/(d−e)+f/g)−h]</p>",
+            "C": "<p>[a∗(b−(c−d)∗e/(f+g))−h]</p>",
+            "D": "<p>[a−(b+[c∗(d−e)−f]+g+h)]​</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>栈容量 3，需判断各选项括号嵌套最大深度； D &nbsp;选项括号序列为[ ( [ ( ) ] )，遍历到时(b+[c*(d+e)，栈内有[ ( [ (，深度 4，超出容量；其他选项最大深度均为 3，选 D。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 2,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430513195285749760",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295076695773184",
+            "1217890781755613184",
+            "1217892530172207104",
+            "1217893353526665216"
+        ],
+        "stem": "<p>若二叉树的结点值均为正整数，采用顺序存储方式保存在数组R中，用-1表示结点不存在，则下列数组中，不能表示一棵二叉树的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>R[]={20,15,40,−1,−1,35}</p>",
+            "B": "<p>R[]={15,40,10,18,35,−1,−1}</p>",
+            "C": "<p>R[]={15,40,10,−1,−1,−1,12}</p>",
+            "D": "<p>R[]={17,20,35,−1,18,45,−1,−1,19,27}</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>顺序存储规则：若节点为 - 1（不存在），其左 （2i）、右（2i+1）子节点必为 - 1；D 选项中，索引 4 为 - 1，但索引9（4的右子节点）为 19，违反规则； 其他选项符合规则，选D。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 3,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430516338732048384",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295076695773184",
+            "1217890781755613184",
+            "1217892396050948096",
+            "1217892854198968320"
+        ],
+        "stem": "<p>下列关于二叉树及森林的叙述中，正确的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>完全二叉树中不存在度为 1 的结点</p>",
+            "B": "<p>任意一个森林都可以转换为一棵二叉树</p>",
+            "C": "<p>二叉树的分支结点个数比叶结点个数少</p>",
+            "D": "<p>表达式树的根中保存的是最先计算的运算符</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>A 错（完全二叉树可能有度 1 节点，如倒数第二层仅左孩子的节点）；</p>\n<p>B 对（任意森林可通过 “左孩子 - 右兄弟” 表示法转为二叉树）；</p>\n<p>C 错（单支二叉树分支节点数 &gt; 叶节点数）；</p>\n<p>D 错（表达式树根节点保存最后计算的运算符）；选 B。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 4,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430519222357991424",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890536400424960",
+            "1220672380654067712",
+            "1220672748024766464"
+        ],
+        "stem": "<p>某网络拓扑及各链路带宽如题 33 图所示。网络按电路交换方式运行时，主机H1与H2建立一条带宽为10&nbsp;Mb/s的电路，建立电路时间为32&nbsp;μs；按分组交换方式运行时，分组长度为400&nbsp;B，忽略分组首部开销。现H1向H2发送一个2&nbsp;MB（1M=10<sup>6</sup>）的文件，分别采用电路交换、报文交换、分组交换方式时，H2至少需要T<sub>CS</sub>、T<sub>MS</sub>、T<sub>PS</sub>时间才能接收到全部文件内容，则T<sub>CS</sub>、T<sub>MS</sub>、T<sub>PS</sub>满足的关系是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>\n<p><img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655288365763055.png\" alt=\"\" width=\"412\" height=\"84\"></p>",
+        "options": {
+            "A": "<p>T<sub>CS</sub>&gt;T<sub>MS</sub>&gt;T<sub>PS</sub></p>",
+            "B": "<p>T<sub>MS</sub>&gt;T<sub>PS</sub>&gt;T<sub>CS</sub></p>",
+            "C": "<p>T<sub>MS</sub>&gt;T<sub>CS</sub>&gt;T<sub>PS</sub></p>",
+            "D": "<p>T<sub>PS</sub>&gt;T<sub>MS</sub>&gt;T<sub>CS</sub></p>"
+        },
+        "answer": "B",
+        "analysis": "<p>电路交换 (T<sub>cs</sub>)：建立连接时间 + 数据传输时间。计算：32μs（建立）+ (16×10⁶bit) / (10 Mbps) = 32μs + 1.6s≈1.600032s。</p>\n<p>分组交换 (T<sub>ps</sub>)：采用存储转发。计算：首包穿越所有节点的时延+后续包流水线传输时延。具体：0.3552ms + 4999 × 0.32ms ≈ 1.6000352s。报文交换 (T<sub>ms</sub>)：整个报文逐跳存储转发。计算：1.6s + 0.16s + 0.016s = 1.776s。结论：时延关系为 报文交换 &gt; 分组交换 &gt; 电路交换。综上，答案选B。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 33,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430519399978242048",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295076695773184",
+            "1217890895790350336",
+            "1217895012696858624",
+            "1217895293547454464"
+        ],
+        "stem": "<p>设字符集S包含 7 个字符，各字符出现的频次分别为 2，3，4，6，8，10，11。现为S中的各字符构造哈夫曼编码，编码长度不小于&nbsp;3 的字符个数是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>2</p>",
+            "B": "<p>3</p>",
+            "C": "<p>4</p>",
+            "D": "<p>5</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>7 个字符频次：2,3,4,6,8,10,11，构造哈夫曼树 （每次合并最小两节点）；编码长度：10 、11（2 &nbsp;位），4 、6 、8（3 &nbsp;位）， 2 、3（4位）；编码长度≥3的字符共5个，选 D。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 5,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430520464933134336",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295193825906688",
+            "1217896035360448512",
+            "1217896287110963200",
+            "1217896350176518144"
+        ],
+        "stem": "<div class=\"inter-jQQQ8P\">\n<div class=\"container-PrUkKo\">\n<div class=\"item-hGGxLi\">\n<div class=\"container-arOxqB chrome70-container\">\n<div class=\"inner-FyM8gE inner-item-f8P6nx\" data-target-id=\"message-box-target-id\" data-testid=\"union_message\">\n<div class=\"message-block-container-aFugD6\" data-testid=\"message-block-container\" data-ui-version=\"samantha\">\n<div class=\"flex flex-row w-full w-full max-w-full s-font-base text-s-color-text-secondary p-0 rounded-s-radius-s bg-transparent group data-[attr=select-mode]:-mt-10 data-[attr=select-mode]:py-10 data-[attr=select-mode]:px-16 data-[attr=select-mode]:sm:p-10 data-[attr=select-mode]:hover:bg-s-color-bg-base data-[attr=select-mode]:hover:rounded-s-radius-xs data-[attr=select-mode]:has-[:checked]:bg-s-color-bg-trans data-[attr=select-mode]:has-[:checked]:rounded-s-radius-xs data-[attr=select-mode]:pointer-events-none\" data-testid=\"receive_message\">\n<div class=\"flex flex-col flex-grow max-w-full min-w-0\">\n<div class=\"flex flex-row w-full\" data-testid=\"message_content\" data-message-id=\"25628942736968962\">\n<div class=\"w-full\" data-plugin-identifier=\"Symbol(infra:receive-message-box:text)\">\n<div class=\"container-ZYIsnH flow-markdown-body mdbox-theme-next theme-samantha-Nbr9UN\" dir=\"ltr\" data-testid=\"message_text_content\" data-show-indicator=\"false\">&nbsp;</div>\n</div>\n</div>\n<div class=\"suggest-message-list-wrapper-Hn7Sfr\" data-testid=\"suggest_message_list\">\n<div class=\"suggest-list-item suggest-message-LJeEWd\" data-testid=\"suggest_message_item\">下列关于图的叙述中，正确的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>",
+        "options": {
+            "A": "<p>有向图必存在入度为 0 的顶点</p>",
+            "B": "<p>有向无环图的拓扑有序序列存在且唯一</p>",
+            "C": "<p>各顶点的度均大于等于 2 的无向图必有回路</p>",
+            "D": "<p>可用 BFS 算法求出带权图中每一对顶点间的最短路径</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>A 错（有向环中所有节点入度≥1，无入度 0 节点）；</p>\n<p>B 错（DAG 拓扑序列存在但不唯一，如并列节点可换序）；</p>\n<p>C 对（反证：无回路则为森林，必有叶节点（度 1），与 “度≥2” 矛盾）；</p>\n<p>D 错（BFS 仅适用于无权 / 等权图，带权图需 Dijkstra 等算法）；选 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 6,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430520468418465792",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890621104394240",
+            "1220673523484467200",
+            "1220674105477701632",
+            "1220674227729080320"
+        ],
+        "stem": "<p>若某差错编码的编码集为{1001 1010,0101 1100,1111 0000,0000 1111}，则该差错编码的检错和纠错能力是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>不超过2位错的100%检错、不超过1位错的纠错</p>",
+            "B": "<p>不超过2位错的100%检错、不超过2位错的纠错</p>",
+            "C": "<p>不超过3位错的100%检错、不超过1位错的纠错</p>",
+            "D": "<p>不超过3位错的100%检错、不超过2位错的纠错</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>计算最小汉明距离 d<sub>min</sub>：汉明距离是两个编码对应位不同的位数。对编码集 {1001 1010,0101 1100,1111 0000,0000 1111}计算任意两编码的汉明距离，可得最小汉明距离 d<sub>min</sub>=4。</p>\n<p>分析检错能力：根据编码理论，检错能力满足：若最小汉明距离为d<sub>min</sub>，则可检测≤d<sub>min</sub>−1位错，且检错率100%。代入d<sub>min</sub>=4，可得：d<sub>min</sub>−1=3，即能100%检测不超过3位的错误。</p>\n<p>分析纠错能力：根据编码理论，纠错能力满足：若最小汉明距离为d<sub>min</sub>，则可纠正≤⌊ (d<sub>min</sub>−1)/2⌋位错（⌊x⌋表示向下取整）。代入d<sub>min</sub>=4，可得：⌊(4−1)/2⌋=⌊1.5⌋=1，即能纠正不超过 1 位的错误。综上，该差错编码可 100% 检测不超过 3 位的错误，且能纠正不超过 1 位的错误，答案选 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 34,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430521588587040768",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890621104394240",
+            "1220673678484971520",
+            "1220676040247222272",
+            "1220676990366130176"
+        ],
+        "stem": "<p>在某个10 BaseT 以太网的冲突域内，若主机甲向主机乙发送数据帧时发生了连续 11 次冲突，则甲再次尝试发送该数据帧的最大间隔时间是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>0.512 ms</p>",
+            "B": "<p>0.5632 ms</p>",
+            "C": "<p>52.3776 ms</p>",
+            "D": "<p>104.8064 ms</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>考察以太网二进制指数退避算法。</p>\n<p>①确定退避指数k：以太网采用二进制指数退避算法，当发生连续冲突时，退避指数 k=min(冲突次数,10)。本题中连续冲突次数为11，因此 k=min(11,10)=10。</p>\n<p>②计算最大随机数r<sub>max</sub>：退避算法中，随机数r的范围是0≤r≤2<sup>k</sup>−1，因此最大随机数r<sub>max</sub>=2<sup>10</sup>−1=1023。</p>\n<p>③计算最大间隔时间：10BaseT 以太网的槽时间为51.2μs。</p>\n<p>最大间隔时间=最大随机数×槽时间，</p>\n<p>即：1023×51.2μs=52377.6μs=52.3776ms</p>\n<p>综上，甲再次尝试发送数据帧的最大间隔时间为52.3776ms，答案选 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 35,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430523270528245760",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890707783880704",
+            "1220678912821174272",
+            "1220681467273945088",
+            "1220692643005341696"
+        ],
+        "stem": "<p>一台新接入网络的主机H通过 DHCP 服务器动态请求 IP 地址过程中，与 DHCP 服务器交换 DHCP 报文的部分过程如题 36 图所示。封装 DHCPREQUEST 报文的 IP 数据报的目的 IP 地址和源 IP 地址分别是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>\n<p><img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655287046056064.png\" alt=\"\" width=\"323\" height=\"241\"></p>",
+        "options": {
+            "A": "<p>192.168.5.1，0.0.0.0&nbsp;</p>",
+            "B": "<p>192.168.5.1，192.168.5.9</p>",
+            "C": "<p>255.255.255.255，0.0.0.0&nbsp;</p>",
+            "D": "<p>255.255.255.255，192.168.5.9</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>考察DHCP 请求过程中（主机未分配 IP 时）IP 数据报的源、目的地址特性。源 IP 地址：新接入网络的主机H尚未分配有效 IP 地址，因此封装 DHCPREQUEST 报文的 IP 数据报源 IP 地址为0.0.0.0（表示无特定源 IP）。目的 IP 地址：DHCPREQUEST 报文需要广播发送，以确保 DHCP 服务器能接收（因为此时主机还未与特定服务器建立单播通信的基础），因此目的 IP 地址为广播地址255.255.255.255。综上，封装 DHCPREQUEST 报文的 IP 数据报，目的 IP 地址为 255.255.255.255，源 IP 地址为 0.0.0.0，答案选 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 36,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430523517946044416",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704343891100438528",
+            "1219659947881799680",
+            "1219663602068496384",
+            "1219666608772096000"
+        ],
+        "stem": "<p>在页式虚拟存储管理系统中，确定进程正常运行所需的最少页框数时，下列因素中需要考虑的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>代码段长度</p>",
+            "B": "<p>进程的虚拟地址空间大小</p>",
+            "C": "<p>物理内存大小</p>",
+            "D": "<p>指令系统支持的寻址方式</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>核心逻辑：进程正常运行所需的最少页框数，需保证单条指令能完整执行。而指令执行时需访问的页面数量（如指令页、操作数页、间接寻址页等），由指令系统支持的寻址方式决定。选项A（代码段长度）：代码段长度影响进程所需的总页框数，但不影响 “最少页框数”（最少页框数关注单条指令执行的最小需求）。选项B（进程的虚拟地址空间大小）：虚拟地址空间是进程地址的范围，与 “单条指令执行所需的最少页框数” 无关。选项C（物理内存大小）：物理内存是系统级的资源限制，不直接决定 “单个进程正常运行的最少页框需求”。</p>\n<p>综上，决定进程正常运行所需最少页框数的因素是指令系统支持的寻址方式，答案选 D。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 27,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430524395952148480",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704344722453434368",
+            "1219669424844578816",
+            "1219674364837109760",
+            "1219675507835281408"
+        ],
+        "stem": "<p>下列关于虚拟文件系统（VFS）的叙述中，正确的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>VFS 是在虚拟内存中建立的文件系统</p>",
+            "B": "<p>VFS 能提高不同文件系统中文件的访问速度</p>",
+            "C": "<p>VFS 定义了可以访问不同文件系统的统一接口</p>",
+            "D": "<p>通过 VFS 只能访问本地文件，不能访问网络文件</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>考察虚拟文件系统（VFS）的核心功能与特性。选项A：VFS是操作系统中的一个抽象层，并非 “在虚拟内存中建立的文件系统”，该叙述错误。选项B：VFS主要作用是提供统一接口，不直接提高不同文件系统中文件的访问速度，访问速度的提升依赖缓存等其他机制，该叙述错误。选项C：VFS 的核心就是定义了可以访问不同文件系统（包括本地和网络文件系统）的统一接口，屏蔽了底层不同文件系统的实现差异，使应用程序能统一访问各类文件系统，该叙述正确。选项D：VFS支持访问网络文件系统（如NFS），并非只能访问本地文件，该叙述错误。综上，正确答案是C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 28,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430525346834419712",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704344722453434368",
+            "1219669289104318464",
+            "1219670621219463168",
+            "1219670927026167808"
+        ],
+        "stem": "<p>某文件系统采用目录和索引节点管理文件，当用户在目录中新建文件F时，下列操作中，文件系统不会做的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>对F的索引节点进行初始化</p>",
+            "B": "<p>在目录文件中写入F的索引节点号</p>",
+            "C": "<p>在目录文件中写入F的访问权限信息</p>",
+            "D": "<p>在目录文件中增加一条F对应的目录项</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>考察索引节点（inode）与目录项的存储分工。在采用目录和索引节点管理文件的系统中，索引节点（inode）存储文件的元数据（包括访问权限、文件大小等）；目录项仅存储 “文件名 + 索引节点号”。</p>\n<p>选项A：新建文件F时，需对F的索引节点进行初始化（填充权限、大小等元数据），文件系统会执行该操作。选项B：目录项需记录文件F的索引节点号，以便通过索引节点找到文件元数据，文件系统会执行该操作。选项C：访问权限信息存储在索引节点中，而非目录文件中，因此文件系统不会在目录文件中写入F的访问权限信息。选项D：新建文件F时，需在目录文件中增加一条 F对应的目录项（包含文件名和索引节点号），文件系统会执行该操作。综上，文件系统不会做的操作是选项 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 29,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430526533554151424",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704343891100438528",
+            "1219659947881799680",
+            "1219663763725361152"
+        ],
+        "stem": "<p>下列关于内存映射文件（memory-mapped files）机制的叙述中，正确的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>\n<p>Ⅰ. 可实现进程之间的通信</p>\n<p>Ⅱ. 可实现页到磁盘块的映射</p>\n<p>Ⅲ. 将文件映射到进程的虚拟地址空间</p>\n<p>Ⅳ. 将文件映射到系统的物理地址空间</p>",
+        "options": {
+            "A": "<p>仅 I、III</p>",
+            "B": "<p>仅 I、IV</p>",
+            "C": "<p>仅 II、III</p>",
+            "D": "<p>仅 I、II、III</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>内存映射文件（memory-mapped file）机制的核心思想是：把文件内容与进程的虚拟地址空间建立对应关系，使文件 I/O 像内存访问一样方便高效。多个进程可将同一个文件映射到各自的虚拟地址空间，通过共享这段区域实现进程间通信。选项Ⅰ正确。操作系统内核通过“页表机制”把虚拟页与文件在磁盘上的物理块对应起来，实现按需调页和回写。“内存映射文件机制”并不直接实现页到磁盘块的映射。选项Ⅱ错误。通过 mmap()等系统调用，可将文件内容直接映射到进程的虚拟地址空间。选项Ⅲ正确。内存映射文件机制将文件映射到进程的虚拟地址空间，再由页表机制实现虚拟地址空间到物理地址空间的映射。选项Ⅳ错误。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 30,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430549552850804736",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890707783880704",
+            "1220678912821174272",
+            "1220681307722620928",
+            "1220692289169661952"
+        ],
+        "stem": "<p>假设路由器实现NAT功能，内网中主机H的IP地址为192.168.1.5/24。若H运行某应用向 Internet 发送了一个 UDP 报文段，则路由器在转发封装该 UDP 报文段的 IP 数据报的过程中，UDP 报文段的首部字段会被修改的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\n<p>Ⅰ.源端口号&nbsp;&nbsp;&nbsp;&nbsp;Ⅱ.目的端口号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ⅲ.总长度&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ⅳ.校验和</p>",
+        "options": {
+            "A": "<p>&nbsp;仅Ⅰ、Ⅲ</p>",
+            "B": "<p>仅Ⅰ、Ⅳ</p>",
+            "C": "<p>仅Ⅱ、Ⅲ</p>",
+            "D": "<p>仅Ⅱ、Ⅳ</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>考察网络地址转换（NAT）对 UDP 报文首部字段的影响。 &nbsp;&nbsp;&nbsp;Ⅰ（源端口号）：NAT实现多路复用（区分不同内网主机的通信）时，需要修改源端口号，因此该字段会被修改。Ⅱ（目的端口号）：目的端口号对应外网服务的端口，在 NAT 转发过程中无需修改，因此该字段不会被修改。Ⅲ（总长度）：UDP 报文的载荷没有变化，总长度也不会改变，因此该字段不会被修改。Ⅳ（校验和）：由于源 IP 地址或端口号发生了变化，校验和需要重新计算，因此该字段会被修改。综上，UDP 报文段的首部字段中，源端口号（Ⅰ）和校验和（Ⅳ）会被修改，答案选B。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 37,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430551178902638592",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890775152791552",
+            "1220694662675963904",
+            "1220695627089059840",
+            "1220695865178726400"
+        ],
+        "stem": "<p>主机甲通过TCP向主机乙发送数据的部分过程如题 38 图所示，seq为序号，ack_seq为确认序号，rcvwnd为接收窗口。甲在t<sub>0</sub>时刻的拥塞窗口和发送窗口均为2000&nbsp;B，拥塞控制阈值为8000&nbsp;B，MSS=1000&nbsp;B，甲始终以MSS发送 TCP 段。若甲在t<sub>1</sub>时刻收到如图所示的确认段，则甲在未收到新的确认段之前，还可以继续向乙发送的TCP段数是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>\n<p><img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655286096172457.png\" alt=\"\" width=\"330\" height=\"306\"></p>",
+        "options": {
+            "A": "<p>2</p>",
+            "B": "<p>3</p>",
+            "C": "<p>4</p>",
+            "D": "<p>5</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>考察TCP 拥塞控制（慢启动阶段）与发送窗口的计算。</p>\n<p>①更新拥塞窗口 cwnd：初始时，甲的拥塞窗口 cwnd=2000B（对应2个MSS，因为 MSS=1000B）。在t1时刻，甲收到确认段的 ack_seq=3001，表示已确认 1个 MSS（1000B）的数据。根据慢启动算法，拥塞窗口增加 1个MSS，因此cwnd=2000+1000=3000B。</p>\n<p>②计算发送窗口：发送窗口的大小为 min(cwnd,rwnd)。已知 rwnd=4000B，cwnd=3000B，因此发送窗口 =min(3000,4000)=3000B。</p>\n<p>③计算可发送的TCP段数： “在途数据” 指已发送但未被确认的数据，此处为1000B（1个MSS）。可发送的数据量 = 发送窗口−在途数据 =3000−1000=2000B。由于每个 TCP 段的大小为 MSS=1000B ，因此可发送的TCP段数= 2000/1000=2 。 综上，甲在未收到新的确认段之前，还可以继续向乙发送2个TCP段，答案选A。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 38,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430551960884482048",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890873471471616",
+            "1220697681580793856",
+            "1220698002516353024"
+        ],
+        "stem": "<p>Time 是一个提供时间查询服务的C/S架构网络应用，支持客户通过 UDP 或 TCP 向 Time 服务器请求时间服务。若某客户与某 Time 服务器通信的往返时间RTT=8 ms，则该客户分别通过 UDP 和 TCP 向该服务器请求服务，所需的最少时间分别是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>8 ms，8 ms</p>",
+            "B": "<p>8 ms，16 ms</p>",
+            "C": "<p>16 ms，8 ms</p>",
+            "D": "<p>16 ms，16 ms</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>考察 UDP（无连接）和TCP（面向连接）的请求响应过程。</p>\n<p>UDP 请求服务的最少时间：UDP 是无连接协议，无需建立连接，直接发送请求报文，服务器收到后立即响应。整个过程仅需1个RTT（请求→响应），已知RTT=8ms，因此UDP请求服务最少时间为 8ms。</p>\n<p>TCP 请求服务的最少时间：TCP 是面向连接协议，需先通过三次握手建立连接（耗时 1 个 RTT），之后再发送请求报文、接收响应（又耗时 1 个 RTT）。整个过程共需 2 个 RTT，因此 TCP 请求服务最少时间为2×8=16ms。综上，UDP 请求服务最少时间为8ms，TCP 请求服务最少时间为 16ms，答案选B。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 39,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430553221386080256",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890873471471616",
+            "1220697841811595264",
+            "1220698467522060288",
+            "1220698574711693312"
+        ],
+        "stem": "<p>下列关于 POP3 协议的叙述中，正确的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\n<p>Ⅰ.支持用户代理从邮件服务器读取邮件</p>\n<p>Ⅱ.支持用户代理向邮件服务器发送邮件</p>\n<p>Ⅲ.支持邮件服务器之间发送与接收邮件</p>\n<p>Ⅳ.支持通过一条 TCP 连接收取多封邮件</p>",
+        "options": {
+            "A": "<p>仅Ⅰ、Ⅳ</p>",
+            "B": "<p>仅Ⅱ、Ⅲ</p>",
+            "C": "<p>仅Ⅰ、Ⅱ、Ⅲ</p>",
+            "D": "<p>仅Ⅰ、Ⅲ、Ⅳ</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>考察POP3 协议的核心功能，并与 SMTP协议的功能区分。</p>\n<p>Ⅰ（支持用户代理从邮件服务器读取邮件）：POP3的核心功能就是支持用户代理从邮件服务器读取邮件，该叙述正确。Ⅱ（支持用户代理向邮件服务器发送邮件）：用户代理向邮件服务器发送邮件由SMTP 协议负责，并非 POP3 的功能，该叙述错误。Ⅲ（支持邮件服务器之间发送与接收邮件）：邮件服务器之间的邮件传输由SMTP 协议负责，并非 POP3 的功能，该叙述错误。Ⅳ（支持通过一条 TCP 连接收取多封邮件）：POP3 支持通过一条 TCP 连接，多次使用RETR命令收取多封邮件，该叙述正确。综上，只有 Ⅰ、Ⅳ 的叙述正确，答案选 A。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 40,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430562432232988672",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295249073278976",
+            "1217899303222386688",
+            "1217904154874486784",
+            "1217904834024579072"
+        ],
+        "stem": "<p>已知查找表中有 400 个元素，查找每个元素的概率相同。采用分块查找法进行查找，且均匀分块。若采用顺序查找法确定元素所在的块，且块内也采用顺序查找法，为使查找效率最高，则每块包含的元素个数应为<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>8</p>",
+            "B": "<p>10</p>",
+            "C": "<p>20</p>",
+            "D": "<p>25</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>分块查找平均查找长度 <span class=\"container-rkuXQi math-inline\" data-custom-copy-text=\"\\(ASL = (m+1)/2 + (k+1)/2\\)\">ASL = (m+1)/2 + (k+1)/2</span>，其中 <span class=\"container-rkuXQi math-inline\" data-custom-copy-text=\"\\(m =\\)\">m =</span> 块数，<span class=\"container-rkuXQi math-inline\" data-custom-copy-text=\"\\(k =\\)\">k =</span> 每块元素数，<span class=\"container-rkuXQi math-inline\" data-custom-copy-text=\"\\(n = mk\\)\">n = mk</span>；</p>\n<p>最优化条件：<span class=\"math-tex\">\\( m = k = \\sqrt{n} \\)</span>，<span class=\"math-tex\">\\( n = 400 \\to \\sqrt{400} = 20 \\)</span>；每块最优元素数为 20，选 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 7,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430563137433767936",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295249073278976",
+            "1217903651843219456",
+            "1217905254696493056",
+            "1217905365698748416"
+        ],
+        "stem": "<p>给定 7 个不同的关键字，能够构造的不同 4 阶 B 树的个数最多是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>7</p>",
+            "B": "<p>8</p>",
+            "C": "<p>9</p>",
+            "D": "<p>10</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>4阶B树规则：每个节点关键字1~3个，叶节点同层；</p>\n<p>7个关键字：</p>\n<p>①高度2：8种（根1个关键字+叶2块6个/根2个+叶3块5个/根3个+叶4块 4个）；</p>\n<p>②高度3：1种（根 1 + 中层2个 + 叶4个， 共1+2+4=7）；总计9种，选C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 8,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430563731741478912",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "解答题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704343819814047744",
+            "1219616269234610176",
+            "1219656984048181248",
+            "1219657953683185664"
+        ],
+        "stem": "<p>甲、乙、丙三人一起植树，甲负责挖树坑，乙负责将树苗放入树坑中并填土，丙负责为新种的树苗浇水。植树的步骤依次为：挖树坑、放树苗、填土和浇水。现有铁锹和水桶各1个，铁锹用于挖树坑和填土，水桶用于浇水。当树坑的数量小于3时，甲才可以挖树坑。假设初始时树坑的数量为 0，铁锹和水桶均可用。请定义尽可能少的信号量，用wait()、signal()操作描述植树过程中三人之间的同步或互斥关系，并说明所用信号量的作用及其初值。</p>",
+        "options": [],
+        "answer": "<p><strong>信号量定义及作用</strong></p>\n<p>position：计数信号量，初值为3。作用是控制树坑数量不超过 3 ，甲在挖树坑前需申请该信号量，乙在种完树（填土后）释放该信号量。</p>\n<p>pit：计数信号量，初值为0。作用是表示已挖好的树坑数量，甲挖好树坑后释放该信号量，乙种树苗前申请该信号量。</p>\n<p>tree：计数信号量，初值为0。作用是表示已种好待浇水的树的数量，乙种好树后释放该信号量，丙浇水前申请该信号量。</p>\n<p>mutex：互斥信号量，初值为1。作用是保证铁锹的互斥访问，甲挖树坑和乙填土时都需申请该信号量，使用完后释放。</p>\n<p>植树过程如下：</p>\n<table style=\"border-collapse: collapse;\" border=\"1\">\n<tbody>\n<tr>\n<td colspan=\"3\" width=\"692\">\n<p>Semaphore position=3；//可挖树坑的数量</p>\n<p>Semaphore pit=0；//树坑的数量</p>\n<p>Semaphore tree=0；//待浇水的树苗数</p>\n<p>Semaphore mutex=1；//实现铁锹的互斥使用</p>\n</td>\n</tr>\n<tr>\n<td width=\"230\">\n<p>甲：</p>\n<p>for(;;)</p>\n<p>{</p>\n<p>wait(position)；</p>\n<p>wait(mutex)；</p>\n<p>挖树坑；</p>\n<p>signal(mutex)；</p>\n<p>signal(pit)；</p>\n<p>...</p>\n<p>}</p>\n</td>\n<td width=\"230\">\n<p>乙：</p>\n<p>for(;;)</p>\n<p>{</p>\n<p>wait(pit)；</p>\n<p>放树苗；</p>\n<p>signal(position)；</p>\n<p>wait(mutex)；</p>\n<p>填土；</p>\n<p>signal(mutex)；</p>\n<p>signal(tree)；</p>\n<p>...</p>\n<p>}</p>\n</td>\n<td width=\"230\">\n<p>丙：</p>\n<p>for(;;)</p>\n<p>{</p>\n<p>wait(tree)；</p>\n<p>浇水；</p>\n<p>...</p>\n<p>}</p>\n</td>\n</tr>\n</tbody>\n</table>",
+        "analysis": "",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 45,
+        "level": 2,
+        "totalScore": 7
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430564171799465984",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295249073278976",
+            "1217903771653513216",
+            "1217905931195785216",
+            "1217906337909055488"
+        ],
+        "stem": "<p>下列关于散列方法处理冲突的叙述中，正确的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>只要散列表不满，线性探查再散列一定能找到一个空闲位置</p>",
+            "B": "<p>只要散列表不满，二次探查再散列一定能找到一个空闲位置</p>",
+            "C": "<p>线性探查再散列处理的冲突，一定是发生在同义词之间的冲突</p>",
+            "D": "<p>二次探查再散列处理的冲突，一定是发生在非同义词之间的冲突</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>选项分析：选项A ，线性探查步长 1，可遍历全表，表不满必找空位，正确；选项B ，二次探查步长为平方数，无法遍历全表，表不满也可能找不到空位，错误；选项C，线性探查会处理非同义词冲突，如探查时碰撞已占用非同义词位置，错误；选项D，二次探查也会处理同义词冲突，如两关键字散列地址相同错误。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 9,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430564918347829248",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "解答题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704343891100438528",
+            "1219659893087412224",
+            "1219660085786320896",
+            "1219661292730851328"
+        ],
+        "stem": "<p>某系统中进程的虚拟地址空间包括内核区、用户栈、运行时堆、可读写数据段、只读代码段等区域，其布局如题 46 图所示，图中阴影部分表示未占用区域。现有 C 语言程序的部分代码如下。</p>\n<p><img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655285167412387.png\" alt=\"\" width=\"382\" height=\"267\"></p>\n<p>请回答下列问题：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>上述程序执行时，其进程控制块位于哪个区域？执行scanf()等待键盘输入时，该进程处于什么状态？</p>",
+                "questionAnswer": "<p><strong>进程控制块区域：</strong>进程控制块（PCB）位于内核区，因为 PCB 是内核维护的用于管理进程的数据结构，属于内核数据范畴，内核区用于存放内核相关数据结构等。</p>\n<p><strong>scanf()等待时进程状态：</strong>执行scanf()等待键盘输入时，进程处于阻塞态（I/O 等待态）。因为此时进程在等待外部输入（键盘输入）这一 I/O 事件，无法继续执行，会被内核挂起，直到键盘输入数据到达。</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>main()函数的代码位于哪个区域？其直接调用的哪些函数的功能需要通过执行驱动程序实现？</p>",
+                "questionAnswer": "<p><strong>main()函数代码区域：</strong>main()函数的代码位于只读代码段，只读代码段用于存放程序的指令等，程序代码在该区域，且具有只读可执行的访问权限。</p>\n<p><strong>需通过驱动程序实现功能的函数：</strong>scanf()和printf()函数的功能需要通过执行驱动程序实现。scanf()需要与键盘等输入设备交互，printf()需要与显示设备交互，这些设备的 I/O 操作依赖于对应的键盘 / 终端驱动、显示设备驱动来完成。</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>变量ptr被分配在哪个区域？若变量length没有被分配在寄存器中，则会被分配在哪个区域？ptr指向的字符串位于哪个区域？</p>",
+                "questionAnswer": "<p><strong>变量ptr：</strong>被分配在可读写数据段。ptr是全局指针变量，可读写数据段用于存放全局变量、静态变量等，这类变量在程序启动时分配空间，生命周期贯穿整个程序。</p>\n<p><strong>变量length：</strong>若未被分配在寄存器中，会被分配在用户栈。length是main()函数内定义的局部变量，用户栈用于存放局部变量、函数参数等，局部变量在函数执行期间在用户栈上分配空间。</p>\n<p><strong>ptr指向的字符串：</strong>位于运行时堆。ptr是通过malloc()函数动态分配内存得到的，运行时堆用于存放动态分配的内存，直到调用free()函数释放。</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            }
+        ],
+        "answer": "<p>（1）进程控制块区域：进程控制块（PCB）位于内核区，因为 PCB 是内核维护的用于管理进程的数据结构，属于内核数据范畴，内核区用于存放内核相关数据结构等。（1分）<br>scanf()等待时进程状态：执行scanf()等待键盘输入时，进程处于阻塞态（I/O 等待态）。因为此时进程在等待外部输入（键盘输入）这一 I/O 事件，无法继续执行，会被内核挂起，直到键盘输入数据到达。（1分）<br>（2）main()函数代码区域：main()函数的代码位于只读代码段，只读代码段用于存放程序的指令等，程序代码在该区域，且具有只读可执行的访问权限。（1分）<br>需通过驱动程序实现功能的函数：scanf()和printf()函数的功能需要通过执行驱动程序实现。scanf()需要与键盘等输入设备交互，printf()需要与显示设备交互，这些设备的 I/O 操作依赖于对应的键盘 / 终端驱动、显示设备驱动来完成。（2分）<br>（3）变量ptr：被分配在可读写数据段。ptr是全局指针变量，可读写数据段用于存放全局变量、静态变量等，这类变量在程序启动时分配空间，生命周期贯穿整个程序。（1分）<br>变量length：若未被分配在寄存器中，会被分配在用户栈。length是main()函数内定义的局部变量，用户栈用于存放局部变量、函数参数等，局部变量在函数执行期间在用户栈上分配空间。（1分）<br>ptr 指向的字符串：位于运行时堆。ptr是通过malloc()函数动态分配内存得到的，运行时堆用于存放动态分配的内存，直到调用free()函数释放。（1分）</p>",
+        "analysis": "",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 46,
+        "level": 3,
+        "totalScore": 8
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430565200020508672",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295336147030016",
+            "1217910035120922624",
+            "1218134865606877184",
+            "1218135030199754752"
+        ],
+        "stem": "<p>下列排序算法中，最坏情况下元素移动次数最少的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>起泡排序</p>",
+            "B": "<p>直接插入排序</p>",
+            "C": "<p>快速排序</p>",
+            "D": "<p>简单选择排序</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>移动次数分析：冒泡排序：<span class=\"container-X8VMJb math-inline\" data-custom-copy-text=\"\\(3n(n-1)/2（O(n^2)）\\)\">3n(n-1)/2(O(n<sup>2</sup>))</span>；直接插入排序：<span class=\"container-X8VMJb math-inline\" data-custom-copy-text=\"\\(n(n-1)/2（O(n^2)）\\)\">n(n-1)/2(O(n<sup>2</sup>))</span>；快速排序：<span class=\"container-rkuXQi math-inline\" data-custom-copy-text=\"\\(O(n^2)\\)\">O(n<sup>2</sup>)</span>；简单选择排序：<span class=\"container-X8VMJb math-inline\" data-custom-copy-text=\"\\(3(n-1)（O(n)，仅交换n-1次，每次3次移动）\\)\">3(n-1)（O(n)，仅交换n-1次，每次3次移动）</span>；最坏移动最少的是简单选择排序，选 D。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 10,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430566246818123776",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295336147030016",
+            "1217909613991829504",
+            "1218132725710725120"
+        ],
+        "stem": "<p>对含 9 个关键字的初始序列进行排序，若序列的变化情况如下表所示，则下列排序算法中，采用的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>\n<p><img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655284305245390.png\" alt=\"\" width=\"430\" height=\"128\"></p>",
+        "options": {
+            "A": "<p>希尔排序</p>",
+            "B": "<p>基数排序</p>",
+            "C": "<p>归并排序</p>",
+            "D": "<p>折半插入排序</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>希尔排序按增量分组插入，第 1 趟增量 gap=3，分组为 (0,3,6)、(1,4,7)、(2,5,8)，排序后重组为第 1 趟序列；第 2 趟增量 gap=2，分组后排序得第 2 趟序列，与题目一致；基数排序（按数位）、归并排序（分段有序）、折半插入排序（前缀有序）均不匹配，选 A。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 11,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430628963650379776",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "解答题",
+        "knowledgeTags": [
+            "707889875399086080",
+            "707890310843338752",
+            "1220670837447991296",
+            "1220671004674891776"
+        ],
+        "stem": "<p>某公司在承建国家重大工程项目时，工程部需要较长时间驻扎在偏远山区，工程部网络需要连接公司总部网络。假设综合考虑方案的技术可行性、安全性与经济成本等因素后，决定租用我国自主建设的天通一号卫星通信链路，连接工程部网络的路由器R1和公司总部网络的路由器R2，如题47图所示。S1和S2为千兆以太网交换机；TR1和TR2是卫星信号地面收发设备，实现全双工调制解调。天通一号卫星轨道高度是36&nbsp;000&nbsp;km，电磁波信号传播速度为300&nbsp;000&nbsp;km/s。租用的卫星链路为R1和R2之间提供对称全双工信道，每个方向的数据传输速率为200&nbsp;kb/s。</p>\n<p><img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655283115264236.png\" alt=\"\" width=\"536\" height=\"206\"><br>请回答下列问题：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>若忽略卫星信号中继以及TR1和TR2调制解调的时间开销，则R1到R2之间卫星链路的单向传播时延是多少？主机H向总部服务器传输数据时可以达到的最大吞吐量是多少？若忽略各层协议数据包的首部开销以及以太网内的传播时延，则主机H向总部服务器上传一个4000&nbsp;B大小的工程进度报告文件，至少需要多长时间？</p>",
+                "questionAnswer": "<p><strong>单向传播时延：</strong>卫星轨道高度为36000km ，信号从 R1 到卫星再到 R2 ，传输距离为 36000×2=72000km。电磁波传播速度为 300000km/s ，根据公式（时延= 距离 ÷速度）可得单向传播时延为 72000÷300000=0.24s 。</p>\n<p><strong>最大吞吐量：</strong>卫星链路每个方向的数据传输速率为 200kb/s ，且局域网段带宽通常不低于卫星链路（非瓶颈），所以主机 H 向总部服务器传输数据时的最大吞吐量为200kb/s。</p>\n<p><strong>4000B文件上传时间：</strong>首先计<strong>算序</strong>列化时间，4000B换算为比特是 4000×8=32000比特，根据公式（时间 =数据量÷ 传输速率）序列化时间为 32000÷200000=0.16s 。再加上单向传播时延0.24s ，总时间为 0.16+0.24=0.40s。</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>现需要基于 GBN 滑动窗口协议为卫星链路设计单向可靠的数据链路层协议SLP，支持R1向R2发送数据，SLP数据帧长为1500&nbsp;B，忽略ACK帧长度。若要求SLP的单向信道利用率不低于80%，则SLP的发送窗口至少为多少？SLP帧的序号字段至少需要多少位？</p>",
+                "questionAnswer": "<p><strong>发送窗口大小：</strong>首先计算帧发送时间 t<sub>f</sub>，1500B换算为比特是 1500×8=12000 比特，t<sub>f</sub>=12000÷200000=0.06s 。</p>\n<p>带宽时延积a=单向传播时延÷t<sub>f</sub>=0.24÷0.06=4。 根据GBN信道利用率公式 U=min(1,W/(1+2a)) ，要求 U≥80% ，代入计算可得发送窗口W 至少为 8 。</p>\n<p><strong>序号字段位数：</strong>GBN协议要求序号空间≥W+1，W=8，所以序号空间至少为9，则序号字段至少需要 ⌈log<sub>2</sub>9⌉=4位。</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>若公司总部为工程部网络分配的 IP 地址空间是10.10.10.0/24，工程部进一步将该 IP 地址空间分配给3个子网，其中生活区子网可分配 IP 地址数不少于120个，作业区子网和管理区子网可分配 IP 地址数均不少于60个，且主机H已正确配置了IP地址，则作业区子网、管理区子网和生活区子网的子网地址分别是什么（给出 CIDR 地址形式）？</p>",
+                "questionAnswer": "<p><strong>生活区子网：</strong>需要至少120个可用 IP 地址，子网掩码为 /25 ，子网地址为10.10.10.128/25，可用地址范围10.10.10.129−10.10.10.254 ，共126个可用地址。</p>\n<p><strong>管理区子网：</strong>需要至少60个可用IP地址，子网掩码为/26 ，子网地址为 10.10.10.0/26 ，可用地址范围10.10.10.1−10.10.10.62，共62个可用地址。</p>\n<p><strong>作业区子网：</strong>需要至少60个可用 IP 地址，子网掩码为/26 ，子网地址为 10.10.10.64/26 ，可用地址范围10.10.10.65−10.10.10.126，共62个可用地址。</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            }
+        ],
+        "answer": "<p>（1）单向传播时延：卫星轨道高度为36000km，信号从 R1 到卫星再到 R2 ，传输距离为 36000 ×2=72000km。电磁波传播速度为 300000km/s，根据公式（时延=距离÷速度）可得单向传播时延为72000÷300000=0.24s 。（1 分）<br>最大吞吐量：卫星链路每个方向的数据传输速率为 200kb/s ，且局域网段带宽通常不低于卫星链路（非瓶颈），所以主机 H 向总部服务器传输数据时的最大吞吐量为200kb/s。（1分）<br>4000B 文件上传时间：首先计算序列化时间，4000B换算为比特是 4000×8=32000比特，根据公式（时间=数据量÷传输速率）序列化时间为32000÷200000=0.16s。再加上单向传播时延0.24s ，总时间为0.16+0.24=0.40s。（1分）<br>（2）发送窗口大小：首先计算帧发送时间 tf，1500B换算为比特是 1500×8=12000 比特，tf=12000÷200000=0.06s 。<br>带宽时延积a=单向传播时延÷tf=0.24÷0.06=4。根据GBN信道利用率公式 U=min(1,W/(1+2a)) ，要求 U≥80% ，代入计算可得发送窗口W 至少为 8 。（2分）<br>序号字段位数：GBN协议要求序号空间≥W+1，W=8，所以序号空间至少为9，则序号字段至少需要 ⌈log29⌉ =4 位。（1分）<br>（3）生活区子网：需要至少120个可用 IP 地址，子网掩码为 /25 ，子网地址为10.10.10.128/25，可用地址范围 10.10.10.129−10.10.10.254 ，共 126个可用地址。（1分）<br>管理区子网：需要至少60个可用IP地址，子网掩码为/26 ，子网地址为 10.10.10.0/26 ，可用地址范围10.10.10.1−10.10.10.62，共 62 个可用地址。（1分）<br>作业区子网：需要至少60个可用 IP 地址，子网掩码为/26 ，子网地址为 10.10.10.64/26 ，可用地址范围10.10.10.65−10.10.10.126，共 62 个可用地址。（1分）</p>",
+        "analysis": "",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 47,
+        "level": 4,
+        "totalScore": 9
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430845534234746880",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704344722453434368",
+            "1219669424844578816",
+            "1219674307865878528",
+            "1219675158609141760"
+        ],
+        "stem": "<p>下列选项中，文件系统可用于记录外存空闲空间使用情况的是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>目录</p>",
+            "B": "<p>系统打开文件表</p>",
+            "C": "<p>文件分配表（FAT）</p>",
+            "D": "<p>文件控制块（FCB）</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>选项A（目录）：目录的作用是实现 “文件名→索引节点号（inode号）” 的映射，用于文件的查找与组织，不管理外存空闲空间。选项B（系统打开文件表）：系统打开文件表用于跟踪当前已打开文件的状态（如打开模式、文件指针位置等），与外存空闲空间无关。选项C（文件分配表，FAT）：FAT 表会记录所有簇的使用状态（例如，用 “0” 表示空闲簇），是文件系统管理外存空闲空间的核心组件，可用于记录外存空闲空间使用情况。选项D（文件控制块，FCB）：FCB 存储单个文件的属性（如文件名、大小、权限等），仅针对单个文件，不涉及全局外存空闲空间的管理。综上，可用于记录外存空闲空间使用情况的是文件分配表（FAT），答案选 C。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 31,
+        "level": 2,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430846632509054976",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "单选题",
+        "knowledgeTags": [
+            "704332467330486272",
+            "704344818779820032",
+            "1219676042302857216",
+            "1219680830126039040",
+            "1219681196553019392"
+        ],
+        "stem": "<p>下列选项中，文件系统需要为温彻斯特硬盘和固态硬盘都提供的功能是<span style=\"text-decoration: underline;\">&nbsp; &nbsp; &nbsp; &nbsp;</span>。</p>",
+        "options": {
+            "A": "<p>划分扇区</p>",
+            "B": "<p>确定盘块大小</p>",
+            "C": "<p>降低寻道时间</p>",
+            "D": "<p>实现均衡磨损</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>考察温彻斯特硬盘（HDD）和固态硬盘（SSD）的通用功能。选项A（划分扇区）：划分扇区是硬件或分区工具的功能，不是文件系统需要提供的功能。选项B（确定盘块大小）：文件系统在格式化时会 “确定盘块大小”，为HDD和SSD提供统一的逻辑块管理抽象，屏蔽了两种硬件的差异，是文件系统需要为两者都提供的功能。选项C（降低寻道时间）：SSD没有磁头寻道的过程，因此不需要 “降低寻道时间”，该功能不适用于 SSD。选项D（实现均衡磨损）：均衡磨损是 SSD控制器的功能（用于延长SSD寿命），HDD无需此功能，因此不是文件系统为两者都提供的功能。综上，文件系统需要为温彻斯特硬盘和固态硬盘都提供的功能是确定盘块大小，答案选B。</p>",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 32,
+        "level": 3,
+        "totalScore": 2
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430850334154301440",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "解答题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703964270878134272",
+            "1215245817523478528",
+            "1215253470421196800",
+            "1215254007094976512"
+        ],
+        "stem": "<p>现有C语言程序P的部分代码如题 43 图所示。假定运行程序P的计算机M字长为 32 位，按字节编址，数据 Cache 的数据区大小为32&nbsp;KB，采用 8 路组相联映射方式，主存块大小为64&nbsp;B，Cache 的命中时间为 2 个时钟周期，缺失损失为 200 个时钟周期；采用页式虚拟存储管理方式，页大小为4&nbsp;KB。数组d的起始虚拟地址VA<sub>31</sub>～VA<sub>0</sub>为0180&nbsp;0020H。</p>\n<p><img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655282161412497.png\" alt=\"\" width=\"280\" height=\"195\"></p>\n<p>请回答下列问题：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>主存地址中 Cache 组号字段和块内地址字段分别占几位？虚拟地址中哪些位可作为 Cache 索引？</p>",
+                "questionAnswer": "<p><strong>Cache组号字段：</strong>&nbsp;Cache数据区大小为32KB=2<sup>15</sup>B ，主存块大小为 64B=2<sup>6</sup>B ，所以Cache总块数为32KB÷64B=512=2<sup>9</sup>块。 采用8路组相联，所以组数为 512÷8=64=2<sup>6</sup>组，因此组号字段占6位。</p>\n<p><strong>块内地址字段：</strong>主存块大小为 64B=2<sup>6</sup>B ，所以块内地址字段占 6 位。</p>\n<p><strong>虚拟地址中 Cache 索引位：</strong>页大小为 4KB=2<sup>12</sup>&nbsp;B ，虚拟地址的低 12 位为页内偏移。Cache 组号占 6 位，块内地址占 6 位，所以虚拟地址中 VA<sub>11</sub>∼VA<sub>6</sub>（共 6 位）可作为 Cache 索引。</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>d[100]的虚拟地址为多少？d[100]所在主存块对应的 Cache 组号是多少？</p>",
+                "questionAnswer": "<p><strong>d[100]的虚拟地址：</strong>数组d的起始虚拟地址为01800020H，int类型占4字节，所以d[100]的虚拟地址为01800020H+100×4=01800020H+190H=018001B0H。</p>\n<p><strong>d[100]所在主存块对应的Cache 组号：</strong>主存地址中组号字段由VA <sub>11</sub>∼VA<sub>6</sub>确定，018001B0H的二进制中VA<sub>11</sub>∼VA<sub>6</sub>对应的数值经计算为6，所以组号是6。</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>假定执行for语句时对应代码已在 Cache，变量i和x已装入寄存器，数组d已调入主存但不在 Cache，则d[0]在其所在主存块内的偏移量是多少（用十进制表示）？for语句执行过程中，访问数组d的 Cache 缺失率和数组元素的平均访问时间分别是多少（Cache 缺失率的计算结果要求用百分比表示，保留两位小数）？</p>",
+                "questionAnswer": "<p><strong>d[0]在其所在主存块内的偏移量：</strong>d[0]的虚拟地址为01800020H，主存块大小为64B，将01800020H转换为二进制后，低6位为块内偏移，计算得偏移量为32（十进制）。</p>\n<p><strong>Cache 缺失率：</strong>数组d有2048个元素，每个元素访问两次（读和写），总访问次数为2048×2=4096次。数组总大小为2048×4=8192B，主存块大小为64B，则需要的主存块数为⌈8192÷64⌉=129块，每次访问新块时缺失，所以缺失次数为129次。缺失率为(129÷4096)×100%≈3.15%。</p>\n<p><strong>数组元素的平均访问时间：</strong>平均访问时间=命中时间+缺失率×缺失损失，即2+3.15%×200≈8.30个时钟周期。</p>",
+                "questionAnalysis": null,
+                "questionScore": 5.0
+            },
+            {
+                "questionOrder": 4,
+                "questionStem": "<p>数组d分布在几个页中？若执行for语句时对应代码已在主存，但数组d还未调入主存，则执行for语句过程中，访问数组d所引起的缺页次数是多少？</p>",
+                "questionAnswer": "<p><strong>数组d分布的页数：</strong>页大小为4KB=4096B，数组起始地址为01800020H（页内偏移32B），第 1 页剩余4096−32=4064B，可存储4064÷4=1016个元素；第 2 页可存储4096÷4=1024个元素；剩余2048−1016−1024=8个元素存储在第 3 页，所以分布在3个页中。</p>\n<p><strong>访问数组d引起的缺页次数：</strong>因为数组分布在3个页中，且初始数组未调入主存，所以缺页次数为3次。</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            }
+        ],
+        "answer": "<h4 class=\"header-iWP5WJ auto-hide-last-sibling-br\">（1）</h4>\n<ul class=\"auto-hide-last-sibling-br\">\n<li><strong>Cache 组号字段</strong>：Cache 数据区大小为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(32\\text{KB}=2^{15}\\text{B}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">32</span><span class=\"mord text\"><span class=\"mord\">KB</span></span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">2<sup>15</sup></span><span class=\"mord text\"><span class=\"mord\">B</span></span></span></span></span></span>，主存块大小为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(64\\text{B}=2^6\\text{B}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">64</span><span class=\"mord text\"><span class=\"mord\">B</span></span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">2<sup>6</sup></span><span class=\"mord text\"><span class=\"mord\">B</span></span></span></span></span></span>，所以 Cache 总块数为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(32\\text{KB}÷64\\text{B}=512=2^9\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">32</span><span class=\"mord text\"><span class=\"mord\">KB</span></span><span class=\"mbin\">÷</span></span><span class=\"base\"><span class=\"mord\">64</span><span class=\"mord text\"><span class=\"mord\">B</span></span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">512</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">2<sup>9</sup></span></span></span></span></span>块。采用 8 路组相联，组数为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(512÷8=64=2^6\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">512</span><span class=\"mbin\">÷</span></span><span class=\"base\"><span class=\"mord\">8</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">64</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">2<sup>6</sup></span></span></span></span></span>组，因此<strong>组号字段占 6 位</strong>。</li>\n<li><strong>块内地址字段</strong>：主存块大小为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(64\\text{B}=2^6\\text{B}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">64</span><span class=\"mord text\"><span class=\"mord\">B</span></span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">2<sup>6</sup></span><span class=\"mord text\"><span class=\"mord\">B</span></span></span></span></span></span>，所以<strong>块内地址字段占 6 位</strong>。</li>\n<li><strong>虚拟地址中 Cache 索引</strong>：页大小为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(4\\text{KB}=2^{12}\\text{B}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">4</span><span class=\"mord text\"><span class=\"mord\">KB</span></span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">2<sup>12</sup></span><span class=\"mord text\"><span class=\"mord\">B</span></span></span></span></span></span>，虚拟地址的低 12 位为页内偏移。Cache 组号占 6 位，块内地址占 6 位，所以虚拟地址中<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(\\text{VA}_{11}\\sim\\text{VA}_6\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\"><span class=\"mord text\">VA<sub>11</sub></span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist-s\">​</span></span></span></span></span><span class=\"mrel\">∼</span></span><span class=\"base\"><span class=\"mord\"><span class=\"mord text\">VA<sub>6</sub></span></span></span></span></span></span>（共 6 位）可作为 Cache 索引。</li>\n</ul>\n<h4 class=\"header-iWP5WJ auto-hide-last-sibling-br\">（2）</h4>\n<ul class=\"auto-hide-last-sibling-br\">\n<li><strong>d [100] 的虚拟地址</strong>：数组 d 的起始虚拟地址为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(01800020\\text{H}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">01800020</span><span class=\"mord text\"><span class=\"mord\">H</span></span></span></span></span></span>，int 类型占 4 字节，所以 d [100] 的虚拟地址为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(01800020\\text{H}+100×4=01800020\\text{H}+190\\text{H}=018001\\text{B}0\\text{H}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">01800020</span><span class=\"mord text\"><span class=\"mord\">H</span></span><span class=\"mbin\">+</span></span><span class=\"base\"><span class=\"mord\">100</span><span class=\"mbin\">×</span></span><span class=\"base\"><span class=\"mord\">4</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">01800020</span><span class=\"mord text\"><span class=\"mord\">H</span></span><span class=\"mbin\">+</span></span><span class=\"base\"><span class=\"mord\">190</span><span class=\"mord text\"><span class=\"mord\">H</span></span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">018001</span><span class=\"mord text\"><span class=\"mord\">B</span></span><span class=\"mord\">0</span><span class=\"mord text\"><span class=\"mord\">H</span></span></span></span></span></span>。</li>\n<li><strong>d [100] 所在主存块对应的 Cache 组号</strong>：由<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(\\text{VA}_{11}\\sim\\text{VA}_6\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\"><span class=\"mord text\">VA<sub>11</sub></span></span><span class=\"mrel\">∼</span></span><span class=\"base\"><span class=\"mord\"><span class=\"mord text\">VA<sub>6</sub></span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist-s\">​</span></span></span></span></span></span></span></span></span>确定，<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(018001\\text{B}0\\text{H}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">018001</span><span class=\"mord text\"><span class=\"mord\">B</span></span><span class=\"mord\">0</span><span class=\"mord text\"><span class=\"mord\">H</span></span></span></span></span></span>的二进制中<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(\\text{VA}_{11}\\sim\\text{VA}_6\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\"><span class=\"mord text\">VA<sub>11</sub></span></span><span class=\"mrel\">∼</span></span><span class=\"base\"><span class=\"mord\"><span class=\"mord text\">VA<sub>6</sub></span><span class=\"msupsub\"><span class=\"vlist-t vlist-t2\"><span class=\"vlist-r\"><span class=\"vlist-s\">​</span></span></span></span></span></span></span></span></span>对应数值经计算为 6，所以<strong>组号是 6</strong>。</li>\n</ul>\n<h4 class=\"header-iWP5WJ auto-hide-last-sibling-br\">（3）</h4>\n<ul class=\"auto-hide-last-sibling-br\">\n<li><strong>d [0] 在其所在主存块内的偏移量</strong>：d [0] 的虚拟地址为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(01800020\\text{H}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">01800020</span><span class=\"mord text\"><span class=\"mord\">H</span></span></span></span></span></span>，主存块大小为 64B，将<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(01800020\\text{H}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">01800020</span><span class=\"mord text\"><span class=\"mord\">H</span></span></span></span></span></span>转换为二进制后，低 6 位为块内偏移，计算得<strong>偏移量为 32（十进制）</strong>。</li>\n<li><strong>Cache 缺失率</strong>：数组 d 有 2048 个元素，每个元素访问两次（读和写），总访问次数为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(2048×2=4096\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">2048</span><span class=\"mbin\">×</span></span><span class=\"base\"><span class=\"mord\">2</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">4096</span></span></span></span></span>次。数组总大小为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(2048×4=8192\\text{B}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">2048</span><span class=\"mbin\">×</span></span><span class=\"base\"><span class=\"mord\">4</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">8192</span><span class=\"mord text\"><span class=\"mord\">B</span></span></span></span></span></span>，主存块大小为 64B，需要的主存块数为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(\\lceil 8192÷64 \\rceil=129\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mopen\">⌈</span><span class=\"mord\">8192</span><span class=\"mbin\">÷</span></span><span class=\"base\"><span class=\"mord\">64</span><span class=\"mclose\">⌉</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">129</span></span></span></span></span>块，每次访问新块时缺失，缺失次数为 129 次。缺失率为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\((129÷4096)×100\\%\\approx3.15\\%\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mopen\">(</span><span class=\"mord\">129</span><span class=\"mbin\">÷</span></span><span class=\"base\"><span class=\"mord\">4096</span><span class=\"mclose\">)</span><span class=\"mbin\">×</span></span><span class=\"base\"><span class=\"mord\">100%</span><span class=\"mrel\">≈</span></span><span class=\"base\"><span class=\"mord\">3.15%</span></span></span></span></span>。</li>\n<li><strong>数组元素的平均访问时间</strong>：平均访问时间 = 命中时间 + 缺失率 × 缺失损失，即<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(2+3.15\\%×200\\approx8.30\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">2</span><span class=\"mbin\">+</span></span><span class=\"base\"><span class=\"mord\">3.15%</span><span class=\"mbin\">×</span></span><span class=\"base\"><span class=\"mord\">200</span><span class=\"mrel\">≈</span></span><span class=\"base\"><span class=\"mord\">8.30</span></span></span></span></span>个时钟周期。</li>\n</ul>\n<h4 class=\"header-iWP5WJ auto-hide-last-sibling-br\">（4）</h4>\n<ul class=\"auto-hide-last-sibling-br\">\n<li><strong>数组 d 分布的页数</strong>：页大小为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(4\\text{KB}=4096\\text{B}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">4</span><span class=\"mord text\"><span class=\"mord\">KB</span></span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">4096</span><span class=\"mord text\"><span class=\"mord\">B</span></span></span></span></span></span>，数组起始地址为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(01800020\\text{H}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">01800020</span><span class=\"mord text\"><span class=\"mord\">H</span></span></span></span></span></span>（页内偏移 32B），第 1 页剩余<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(4096-32=4064\\text{B}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">4096</span><span class=\"mbin\">−</span></span><span class=\"base\"><span class=\"mord\">32</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">4064</span><span class=\"mord text\"><span class=\"mord\">B</span></span></span></span></span></span>，可存储<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(4064÷4=1016\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">4064</span><span class=\"mbin\">÷</span></span><span class=\"base\"><span class=\"mord\">4</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">1016</span></span></span></span></span>个元素；第 2 页可存储<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(4096÷4=1024\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">4096</span><span class=\"mbin\">÷</span></span><span class=\"base\"><span class=\"mord\">4</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">1024</span></span></span></span></span>个元素；剩余<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(2048-1016-1024=8\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">2048</span><span class=\"mbin\">−</span></span><span class=\"base\"><span class=\"mord\">1016</span><span class=\"mbin\">−</span></span><span class=\"base\"><span class=\"mord\">1024</span><span class=\"mrel\">=</span></span><span class=\"base\"><span class=\"mord\">8</span></span></span></span></span>个元素存储在第 3 页，所以<strong>分布在 3 个页中</strong>。</li>\n<li><strong>访问数组 d 引起的缺页次数</strong>：因为数组分布在 3 个页中，且初始数组未调入主存，所以<strong>缺页次数为 3 次</strong>。</li>\n</ul>",
+        "analysis": "",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 43,
+        "level": 4,
+        "totalScore": 12
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430851873111547904",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "解答题",
+        "knowledgeTags": [
+            "701769719702753280",
+            "703941662136733696",
+            "1215241466990043136",
+            "1215242254848106496",
+            "1215242913752293376"
+        ],
+        "stem": "<p>对于题 43 中计算机M和程序P，假定P的部分机器代码如题 44 图（a）所示，其中，R0～R4为通用寄存器，SEXT表示按符号扩展；M中补码除法器逻辑结构如题 44 图（b）所示。<img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655278414547440.png\" alt=\"\" width=\"648\" height=\"670\"></p>\n<p>请回答下列问题：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>若执行题 44 图（a）中idiv指令的除运算时，d[i]=0x87654321、x=0xff，则补码除法器中寄存器R、Q和Y的初始内容分别是什么（用十六进制表示）？题 44图（b）中哪个部件包含计数器？在补码除法器执行过程中，由ALUop所控制的 ALU 运算有哪几种？</p>",
+                "questionAnswer": "<p><strong>寄存器初始内容：</strong>d[i]=0x87654321（32 位负数），经符号扩展后，R（余数寄存器）初始内容为0xFFFFFFFF（被除数高 32 位）。Q（商寄存器）初始内容为0x87654321（被除数低 32 位）。x=0x000000FF（除数），所以Y（除数寄存器）初始内容为0x000000FF（1分）。<strong>含计数器部件：</strong>控制逻辑包含计数器，用于控制除法运算的循环次数等。</p>\n<p><strong>ALU 运算类型：</strong>包括试探性减法（R−Y）、恢复性加法（R+Y）、传送操作（数据移动）、比较判断（符号位检测）。</p>",
+                "questionAnalysis": null,
+                "questionScore": 6.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>假设idiv指令执行过程中会检测并触发除法异常，则执行idiv指令时，哪些情况下会发生除法异常（要求给出此时d[i]和x的十六进制表示机器数）？发生除法异常时，在异常响应过程中 CPU 需要完成哪些操作？</p>",
+                "questionAnswer": "<p><strong>除法异常情况：</strong></p>\n<p><strong>除数为零：</strong>当 x=0x00000000 （除数为 0）， d[i]为任意值（如 0x87654321）时，触发除法异常。</p>\n<p><strong>商溢出：</strong>当 d[i]=0x80000000 （−2<sup>31</sup>，INT_MIN）， x=0xFFFFFFFF（-1）时，商为 +2<sup>31</sup>，超出32位有符号数范围（ −2<sup>31</sup>≤商≤2<sup>31</sup>−1），触发商溢出异常。&nbsp;</p>\n<p><strong>异常响应时CPU操作：</strong>记录异常信息，如异常类型到异常原因寄存器、异常PC到EPC寄存器。保存执行现场，包括当前PC值、处理器状态字（PSW）、必要的通用寄存器等。 进行系统状态切换，从用户态切换到内核态，用户栈切换到内核栈，并设置中断屏蔽。 异常处理跳转，查询异常向量表，跳转到对应处理程序，同时冲刷流水线。异常处理完成后，执行RFE/ERET指令返回，或向进程发送信号、终止进程。</p>",
+                "questionAnalysis": null,
+                "questionScore": 5.0
+            }
+        ],
+        "answer": "<h4 class=\"header-iWP5WJ auto-hide-last-sibling-br\">（1）</h4>\n<ul class=\"auto-hide-last-sibling-br\">\n<li><strong>寄存器初始内容</strong>：\n<ul class=\"auto-hide-last-sibling-br\">\n<li>d [i]=0x87654321（32 位负数），经符号扩展后，<strong>R（余数寄存器）初始内容为 0xFFFFFFFF</strong>（被除数高 32 位）。</li>\n<li><strong>Q（商寄存器）初始内容为 0x87654321</strong>（被除数低 32 位）。</li>\n<li>x=0x000000FF（除数），所以<strong>Y（除数寄存器）初始内容为 0x000000FF</strong>。</li>\n</ul>\n</li>\n<li><strong>含计数器部件</strong>：控制逻辑包含计数器，用于控制除法运算的循环次数等。</li>\n<li><strong>ALU 运算类型</strong>：包括试探性减法（R-Y）、恢复性加法（R+Y）、传送操作（数据移动）、比较判断（符号位检测）。</li>\n</ul>\n<h4 class=\"header-iWP5WJ auto-hide-last-sibling-br\">（2）</h4>\n<ul class=\"auto-hide-last-sibling-br\">\n<li><strong>除法异常情况</strong>：\n<ul class=\"auto-hide-last-sibling-br\">\n<li><strong>除数为零</strong>：当 x=0x00000000（除数为 0），d [i] 为任意值（如 0x87654321）时，触发除法异常。</li>\n<li><strong>商溢出</strong>：当 d [i]=0x80000000（<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(-2^{31}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">−</span><span class=\"mord\">2<sup>31</sup></span></span></span></span></span>，INT_MIN），x=0xFFFFFFFF（-1）时，商为<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(+2^{31}\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">+</span><span class=\"mord\">2<sup>31</sup></span></span></span></span></span>，超出 32 位有符号数范围（<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(-2^{31} \\leq\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">−</span><span class=\"mord\">2<sup>31</sup></span><span class=\"mrel\">≤</span></span></span></span></span>商<span class=\"container-mbkw8x math-inline\" data-custom-copy-text=\"\\(\\leq 2^{31}-1\\)\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mrel\">≤</span></span><span class=\"base\"><span class=\"mord\">2<sup>31</sup></span><span class=\"mbin\">−</span></span><span class=\"base\"><span class=\"mord\">1</span></span></span></span></span>），触发商溢出异常。</li>\n</ul>\n</li>\n<li><strong>异常响应时 CPU 操作</strong>：\n<div class=\"container-Uxvbjy md-box-line-break wrapper-GYqxgQ undefined\">&nbsp;</div>\n记录异常信息，如异常类型到异常原因寄存器、异常 PC 到 EPC 寄存器；保存执行现场，包括当前 PC 值、处理器状态字（PSW）、必要的通用寄存器等；进行系统状态切换，从用户态切换到内核态，用户栈切换到内核栈，并设置中断屏蔽；异常处理跳转，查询异常向量表，跳转到对应处理程序，同时冲刷流水线；异常处理完成后，执行 RFE/ERET 指令返回，或向进程发送信号、终止进程。</li>\n</ul>",
+        "analysis": "",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 44,
+        "level": 3,
+        "totalScore": 11
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430864997931819008",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "解答题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704294985763262464",
+            "1217888605822001152",
+            "1217889706919075840",
+            "1217890011937251328"
+        ],
+        "stem": "<p>设有两个长度均为n的一维整型数组A和res，对数组A中的每个元素A[i]，计算A[i]与A[j]（0⩽i⩽j⩽n−1）乘积的最大值，并将其保存到res[i]中。例如，若A[]={1,4,−9,6}，则得到res[]={6,24,81,36}。现给定数组A，请设计一个时间和空间上尽可能高效的算法calMulMax，求res中各元素的值。函数原型为：void calMulMax(int A[], int res[], int n)。要求如下：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>给出算法的基本设计思想。</p>",
+                "questionAnswer": "<p>算法的基本设计思想</p>\n<p>从后向前扫描一趟数组&nbsp;A，对每个&nbsp;A[i]（0⩽i⩽n−1），分别找到从&nbsp;A[n−1]&nbsp;到&nbsp;A[i]&nbsp;中的最大值&nbsp;Max&nbsp;和最小值&nbsp;Min，然后分以下情况处理：</p>\n<p>若&nbsp;A[i]⩾0，则&nbsp;A[i]&nbsp;与&nbsp;Max&nbsp;相乘；</p>\n<p>若 A[i]&lt;0，则 A[i] 与 Min 相乘；相乘的结果保存在 res[i] 中。</p>",
+                "questionAnalysis": null,
+                "questionScore": 4.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。</p>",
+                "questionAnswer": "<pre class=\"language-markup\"><code>void calMulMax(int A[], int res[], int n)\n{\n    int i, Max, Min;\n    Max = Min = A[n - 1];\n    for(i = n - 1; i &gt;= 0; i--) // 从后向前扫描数组 A\n    {\n        if(A[i] &gt; Max) Max = A[i];\n        else if(A[i] &lt; Min) Min = A[i];\n        if(A[i] &gt;= 0) res[i] = A[i] * Max; // 根据 A[i] 的正负性分别处理\n        else res[i] = A[i] * Min;\n    }\n}</code></pre>",
+                "questionAnalysis": null,
+                "questionScore": 7.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>说明你所设计算法的时间复杂度和空间复杂度。</p>",
+                "questionAnswer": "<p>算法复杂度</p>\n<p>时间复杂度为 O(n)；空间复杂度为 O(1)。</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            }
+        ],
+        "answer": "<section class=\"ybc-p\">\n<h3><strong>（1）算法的设计思想</strong></h3>\n</section>\n<section class=\"ybc-p\">从后向前扫描一趟数组A，对每个A[i]（<span class=\"ybc-markdown-katex\"><span class=\"katex\"><span class=\"katex-html\" aria-hidden=\"true\"><span class=\"base\"><span class=\"mord\">0</span><span class=\"mrel\">≤</span></span><span class=\"base\"><span class=\"mord mathnormal\">i</span><span class=\"mrel\">≤</span></span><span class=\"base\"><span class=\"mord mathnormal\">n</span><span class=\"mbin\">−</span></span><span class=\"base\"><span class=\"mord\">1</span></span></span></span></span>），分别找到从A[n-1]到A[i]中的最大值Max和最小值Min，然后分以下情况处理：</section>\n<p>若A[i] ≥ 0，则A[i]与Max相乘；</p>\n<p>若A[i] &lt; 0，则A[i]与Min相乘；</p>\n<section class=\"ybc-p\">相乘的结果保存在res[i]中。(4分)</section>\n<section class=\"ybc-p\"><strong><span class=\"hljs-type\">（2）</span></strong></section>\n<section class=\"ybc-p\"><span class=\"hljs-type\">void</span> <span class=\"hljs-title function_\">calMulMax</span><span class=\"hljs-params\">(<span class=\"hljs-type\">int</span> A[], <span class=\"hljs-type\">int</span> res[], <span class=\"hljs-type\">int</span> n)</span> { <span class=\"hljs-type\">int</span> i, Max, Min; Max = Min = A[n<span class=\"hljs-number\">-1</span>]; <span class=\"hljs-keyword\">for</span> (i = n<span class=\"hljs-number\">-1</span>; i &gt;= <span class=\"hljs-number\">0</span>; i--) <span class=\"hljs-comment\">// 从后向前扫描数组A</span> { <span class=\"hljs-keyword\">if</span> (A[i] &gt; Max) Max = A[i]; <span class=\"hljs-keyword\">else</span> <span class=\"hljs-keyword\">if</span> (A[i] &lt; Min) Min = A[i]; <span class=\"hljs-keyword\">if</span> (A[i] &gt;= <span class=\"hljs-number\">0</span>) res[i] = A[i] * Max; <span class=\"hljs-comment\">// 根据A[i]的正负性分别处理</span> <span class=\"hljs-keyword\">else</span> res[i] = A[i] * Min; } }</section>\n<section class=\"ybc-p\">\n<section class=\"ybc-p\">(7分)</section>\n<h3>（3）算法复杂度</h3>\n<p>时间复杂度为 O(n) (1分)；</p>\n<section class=\"ybc-p\">空间复杂度为 O(1) (1分)。</section>\n</section>",
+        "analysis": "",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 41,
+        "level": 3,
+        "totalScore": 13
+    },
+    {
+        "examId": "1449087605995081728",
+        "exerciseId": "1430880461068046336",
+        "categoryId": "1372147373874356224",
+        "exerciseType": "解答题",
+        "knowledgeTags": [
+            "701769479767592960",
+            "704295193825906688",
+            "1217896193536040960",
+            "1217897902350016512",
+            "1217898836371185664"
+        ],
+        "stem": "<p>某工程包含12个活动，使用题42图所示的 AOE 网描述，图中各边上标注了活动及其持续时间。</p>\n<p><img src=\"https://cheese.yanzhishi.cn/exerciseImages/2025/12/12/17655277241333843.png\" alt=\"\" width=\"429\" height=\"167\"></p>\n<p>请回答下列问题（活动均用活动名表示）：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>完成该工程的最短时间是多少？哪些活动是关键活动？</p>",
+                "questionAnswer": "<p>完成该工程的最短时间是 12。关键活动是 a, e, m, n。</p>\n<p>解析：该工程的最短完成时间由从源点（节点1）到汇点（节点7）的最长路径（即关键路径） 决定。这条路径是 1→2→4→6→7，路径上的活动 a（持续时间2）、e（持续时间3）、m（持续时间4）、n（持续时间3）之和为12。这些活动即为关键活动，它们的延迟会导致整个工程的延期。</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>若以最短时间完成工程，则与活动e同时进行的活动可能有哪些？</p>",
+                "questionAnswer": "<p>与活动 e 同时进行的活动可能有 b, c, d。</p>\n<p>解析： 当活动 e 在节点2开始后，其持续时间为3个单位时间。在此期间，活动 b, c, d 都可以从各自的起始节点开始执行，与活动 e 在时间上存在重叠，因此可能同时进行。</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>时间余量最大的活动是哪个？其时间余量是多少？</p>",
+                "questionAnswer": "<p>时间余量最大的活动是 j。时间余量是6。</p>\n<p>解析：时间余量（或称松弛时间、总浮动时间）是指一个活动在不影响工程最短工期的前提下，可以延迟开始的最大时间。通过计算各活动的最迟开始时间与最早开始时间之差，得出活动 j 的时间余量最大，为6。</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 4,
+                "questionStem": "<p>假设工程从时刻 0 启动，因某种原因，活动b在时刻 6 开始。为了保证工程不延期，在其他活动持续时间均不变的情况下，b的持续时间最多是多少？若不改变b的持续时间，则压缩哪个活动的持续时间也能保证工程不延期？</p>",
+                "questionAnswer": "<p>b 的持续时间最多是4。若不改变 b 的持续时间，可通过压缩活动 k 的持续时间来保证工程不延期。</p>\n<p>解析：b 的持续时间计算： 如果活动 b 在时刻6开始，为了不影响总工期12，其完成时间必须满足后续活动 k（持续2）能在工期12前完成。因此，b 的最长持续时间为 12 - 6 - 2 = 4。</p>\n<p>压缩 k 的原因： 活动 k 不在关键路径上，存在时间余量。压缩 k 的持续时间可以有效利用这段余量，为活动 b 留出更多时间，从而保证工程整体不被延误。</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            }
+        ],
+        "answer": "<div class=\"inter-jQQQ8P\">\n<div class=\"container-PrUkKo\">\n<div class=\"item-hGGxLi\">\n<div class=\"container-arOxqB chrome70-container\">\n<div class=\"inner-FyM8gE inner-item-f8P6nx\" data-target-id=\"message-box-target-id\" data-testid=\"union_message\">\n<div class=\"message-block-container-aFugD6\" data-testid=\"message-block-container\" data-ui-version=\"samantha\">\n<div class=\"flex flex-row w-full w-full max-w-full s-font-base text-s-color-text-secondary p-0 rounded-s-radius-s bg-transparent group data-[attr=select-mode]:-mt-10 data-[attr=select-mode]:py-10 data-[attr=select-mode]:px-16 data-[attr=select-mode]:sm:p-10 data-[attr=select-mode]:hover:bg-s-color-bg-base data-[attr=select-mode]:hover:rounded-s-radius-xs data-[attr=select-mode]:has-[:checked]:bg-s-color-bg-trans data-[attr=select-mode]:has-[:checked]:rounded-s-radius-xs data-[attr=select-mode]:pointer-events-none\" data-testid=\"receive_message\">\n<div class=\"flex flex-col flex-grow max-w-full min-w-0\">\n<div class=\"flex flex-row w-full\" data-testid=\"message_content\" data-message-id=\"25750182010961410\">\n<div class=\"w-full\" data-plugin-identifier=\"Symbol(infra:receive-message-box:text)\">\n<div class=\"container-ZYIsnH flow-markdown-body mdbox-theme-next theme-samantha-Nbr9UN\" dir=\"ltr\" data-testid=\"message_text_content\" data-show-indicator=\"false\">\n<div class=\"auto-hide-last-sibling-br paragraph-JOTKXA paragraph-element br-paragraph-space\">(1) 完成该工程的最短时间是 12（1 分）。关键活动是 a、e、m、n（2 分）。\n<div class=\"container-utlnW2 md-box-line-break wrapper-d0Cc1k undefined\">&nbsp;</div>\n解析：该工程的最短完成时间由从源点（节点 1）到汇点（节点 7）的最长路径（即关键路径）决定。这条路径是 1→3→4→7→5，路径上的活动 a（持续时间 2）、e（持续时间 3）、m（持续时间 4）、n（持续时间 3）之和为 12。这些活动即为关键活动，它们的延迟会导致整个工程的延期。\n<div class=\"container-utlnW2 md-box-line-break wrapper-d0Cc1k undefined\">&nbsp;</div>\n(2) 与活动 e 同时进行的活动可能有 b、c、d（3 分）。\n<div class=\"container-utlnW2 md-box-line-break wrapper-d0Cc1k undefined\">&nbsp;</div>\n解析：当活动 e 开始后，其持续时间为 3 个单位时间。在此期间，活动 b、c、d 都可以从各自的起始节点开始执行，与活动 e 在时间上存在重叠，因此可能同时进行。\n<div class=\"container-utlnW2 md-box-line-break wrapper-d0Cc1k undefined\">&nbsp;</div>\n(3) 时间余量最大的活动是 j（1 分）。时间余量是 6（1 分）。\n<div class=\"container-utlnW2 md-box-line-break wrapper-d0Cc1k undefined\">&nbsp;</div>\n解析：时间余量（或称松弛时间、总浮动时间）是指一个活动在不影响工程最短工期的前提下，可以延迟开始的最大时间。通过计算各活动的最迟开始时间与最早开始时间之差，得出活动 j 的时间余量最大，为 6。\n<div class=\"container-utlnW2 md-box-line-break wrapper-d0Cc1k undefined\">&nbsp;</div>\n(4) b 的持续时间最多是 4（1 分）。若不改变 b 的持续时间，可通过压缩活动 k 的持续时间来保证工程不延期（1 分）。\n<div class=\"container-utlnW2 md-box-line-break wrapper-d0Cc1k undefined\">&nbsp;</div>\n【解析】b 的持续时间计算：如果活动 b 在时刻 6 开始，为了不影响工期 12，其完成时间必须满足后续活动 k（持续 2）能在工期 12 前完成。因此，b 的最长持续时间为 12 - 6 - 2 = 4。\n<div class=\"container-utlnW2 md-box-line-break wrapper-d0Cc1k undefined\">&nbsp;</div>\n压缩 k 的原因：活动 k 不在关键路径上，存在时间余量。压缩 k 的持续时间可以有效利用这段余量，为活动 b 留出更多时间，从而保证工程整体不被延误。</div>\n</div>\n</div>\n</div>\n<div class=\"flex-row flex max-w-full min-w-0 flex-grow\">\n<div class=\"flex flex-col justify-end h-40 w-full select-none opacity-100\" data-testid=\"message_action_bar\">\n<div class=\"message-action-bar-ghR0JC flex flex-row w-full group\">&nbsp;</div>\n</div>\n</div>\n<div class=\"suggest-message-list-wrapper-Hn7Sfr\" data-testid=\"suggest_message_list\">\n<div class=\"suggest-list-item suggest-message-LJeEWd\" data-testid=\"suggest_message_item\">&nbsp;</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n<div class=\"top-lAPxtl\">\n<div class=\"container-arOxqB chrome70-container\">&nbsp;</div>\n</div>",
+        "analysis": "",
+        "videoUrl": null,
+        "fromSchool": "全国统考",
+        "examTime": "2025年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合",
+        "exerciseNumber": 42,
+        "level": 3,
+        "totalScore": 10
+    }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "isTag": 0,
+    "tagName": "答案很明确",
+    "tagCode": "10",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "答案有争议",
+    "tagCode": "11",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "考点已过时",
+    "tagCode": "9",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "考点很重要",
+    "tagCode": "4",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "解析一般",
+    "tagCode": "2",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "解析可以",
+    "tagCode": "7",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "解析超棒",
+    "tagCode": "1",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "评论很精彩",
+    "tagCode": "5",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "评论无看点",
+    "tagCode": "6",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "题目质量低",
+    "tagCode": "3",
+    "tagCount": 0
+  },
+  {
+    "isTag": 0,
+    "tagName": "题目质量高",
+    "tagCode": "8",
+    "tagCount": 0
+  }
+]

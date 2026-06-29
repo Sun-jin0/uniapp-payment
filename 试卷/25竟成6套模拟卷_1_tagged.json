@@ -1,0 +1,1118 @@
+[
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>C语言函数f1、f2是求解斐波那契数的两种方式，则f1、f2的空间复杂度分别为（）。</p><p>int f1(int n) { if $(\\mathrm{n} == 1)$ return 1; if $(\\mathrm{n} == 0)$ return 0; return f1(n - 1) + f1(n - 2); } int f2(int n) { int dp[n + 2], i; dp[0] = 0; dp[1] = 1; for $(\\mathrm{i} = 2;\\mathrm{i} <= \\mathrm{n};\\mathrm{i}++)$ { dp[i] = dp[i - 1] + dp[i - 2]; } return dp[n]; }</p>",
+        "options": {
+            "A": "<p>$O(n), O(1)$</p>",
+            "B": "<p>$O(2^{n})$ 、 $O(1)$</p>",
+            "C": "<p>$O(n), O(n)$</p>",
+            "D": "<p>$O(2^{n})$ 、 $O(n)$</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>空间复杂度主要包括程序开辟的额外数据结构所占的空间复杂度和递归栈帧所占的空间复杂度。函数 f1 主要的空间复杂度来自递归栈的空间复杂度，递归栈最深由 f1(n) 一直调用到 f1(1)，所以函数 f1 的空间复杂度为 $O(n)$ 。函数 f2 是通过动态规划递推的方式，主要的空间复杂度来自数组 dp[n+2]，故函数 f2 的空间复杂度为 $O(n)$ 。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 1,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217877124216791040"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列不属于队列基本操作的是（ ）。</p>",
+        "options": {
+            "A": "<p>判断队列是否为空</p>",
+            "B": "<p>删除队尾元素</p>",
+            "C": "<p>队列初始化</p>",
+            "D": "<p>获取队头元素</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>B错误，在队列中，删除元素，也称出队，是在队头进行的，队尾进行的是插入元素，故B错误。A、C、D均属于队列的基本操作。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 2,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217889258191462400"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>若使用大小为 3 的操作数栈来求解表达式的数值，则下列表达式中会发生上溢的是（）。</p>",
+        "options": {
+            "A": "<p>$A - B * (C - D) + E$</p>",
+            "B": "<p>$(A - B)*C - D + E$</p>",
+            "C": "<p>$(A - B * C + E) - D$</p>",
+            "D": "<p>$(A - B)*(C - D)$</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>A 选项计算子式 $A - B \\times (C - D)$ 需要在操作数栈中存放 4 个数字。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 3,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217888766480621568"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于并查集的说法正确的是（ ）。</p>",
+        "options": {
+            "A": "<p>如果同时使用路径压缩算法和 Union 优化算法，在含有 $n$ 个元素的并查集上进行 $m$ 次查询和合并操作，其时间复杂度是 $O(m\\log_2n)$</p>",
+            "B": "<p>并查集不能处理是否存在环路的问题</p>",
+            "C": "<p>并查集可以用来验证树的边数加一等于结点数这个规律</p>",
+            "D": "<p>并查集可以用来计算两个结点间的路径长度</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>如果同时使用路径压缩算法和 Union 优化算法的话，对有 $n$ 个元素的并查集上进行 $m$ 次查询和合并操作，其时间复杂度是 $O(m \\times \\alpha(n))$ ，其中 $\\alpha(n)$ 为阿克曼函数 $A(n, n)$ 的反函数，A 错。当两个顶点的根结点相同时，就代表添加了这一条边后会出现环路。依次向顶点集内填入每个边，填入时用并查集检查边的两个顶点的是否已经属于同一集合，是则存在环路，B 错。边数可在确认两个待合并的顶点的各自所属的集合不同时进行记录。顶点数即整个合并过程中参与进来的顶点个数可用 bool 数组进行记录，出现后将相应位置设为 true，最后进行一轮统计即可，C 对。并查集只能判断两个结点是否属于同一集合，要返回两个结点间的最短路径可使用迪杰斯特拉算法，D 错。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 4,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217895065050161152"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于最小生成树的叙述中，错误的是（）。</p><p>I. 无向连通图中任何一个边数最少且连通所有顶点的子图都是该图的生成树</p><p>II. 不同的求最小生成树的方式得到的结果都是相同的</p><p>III.在图 $G$ 的最小生成树 $G^{\\prime}$ 中，某条边的权值有可能会大于某条未入选边的权值</p><p>IV. 生成树就是最小生成树</p>",
+        "options": {
+            "A": "<p>IV</p>",
+            "B": "<p>II、III、IV</p>",
+            "C": "<p>II、IV</p>",
+            "D": "<p>II</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>I正确，符合图的生成树的定义：连通图G的生成树是一棵包含图G的所有顶点的树。II错误，一个图的最小生成树结果不是唯一的。III正确，最小生成树的 $n - 1$ 条边不一定是全局最小的边，因为构造最小生成树过程中，所选择的边或顶点都是受限的，不一定每次选择的都是权值是全局最小的边。倘若每次都是选择权值最小的 $n - 1$ 条边，则形成的图不一定是连通图，就更谈不上是最小生成树了。IV错误，最小生成树有边权之和最小的要求，生成树没有。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 5,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217897756761530368"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于最短路径的叙述中，错误的是（）。</p><p>I. 在Floyd算法求解各顶点间的最短路径时，每个表示两点间路径的 $path^{k-1}[i,j]$ 的非无穷元素的集合一定是 $path^k [i,j]$ 的非无穷元素集合的子集</p><p>II. Floyd算法不能处理有负权回路的图</p><p>III.Flyod算法不能处理负权图</p>",
+        "options": {
+            "A": "<p>II、III</p>",
+            "B": "<p>I、III</p>",
+            "C": "<p>I、II、III</p>",
+            "D": "<p>I、II</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>I 错误，Floyd 算法中每个表示两点间路径的 $path^{k-1}[i, j]$ 不是 $path^k [i, j]$ 的子集，二者的非无穷元素的集合间没有严格意义上的子集关系，因为新的 path 矩阵可能会将原先矩阵的一个非无穷元素更新为一个更小的数值。II 正确，负权回路是指回路上所有权值和为负数的回路，Floyd 算法不能处理有负权回路的图。III 错误，Dijkstra 不能处理负权图，Floyd 能处理负权图。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 6,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217897803054063616"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>关于平衡二叉树，下述说法正确的是（ ）。</p><p>I. 在AVL树中，若某个结点的左右孩子的平衡因子均为0，则该结点的平衡因子也是0</p><p>II. 从平衡因子角度看，完全二叉树肯定是一棵AVL树</p><p>III.一棵AVL树的任意两个叶结点的层次差的绝对值不大于1</p>",
+        "options": {
+            "A": "<p>II</p>",
+            "B": "<p>I、II、III</p>",
+            "C": "<p>II、III</p>",
+            "D": "<p>I、III</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>I 错误, 反例如下图 (a) 所示, 下图 AVL 树根节点的左右孩子平衡因子为 0 , 但根节点的平衡因子为 -1 。II 正确, 完全二叉树是 AVL 树。III 错误, 反例如下图 (b) 所示, 下图为一</p><p>棵 AVL 树, 但叶结点 1、2 的层次差为 2 ; 故本题选 A。</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/ebbf110f0740e79a9250789aadfbc909c60096c831c24821777e8204209f071c-1771672792581.jpg)</p><p>(a)反例1</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/39895ed6b6ae18e634570cf85d045621bb5b987f3c1a95bd733e70bc9b7f16ac-1771672790861.jpg)</p><p>(b)反例2</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 7,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217907592857395200"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>若某折半查找判定树包含20个结点，则其查找失败的查找长度最小是（）。</p>",
+        "options": {
+            "A": "<p>1</p>",
+            "B": "<p>2</p>",
+            "C": "<p>3</p>",
+            "D": "<p>4</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>折半查找判定树是平衡二叉树，因此拥有20个结点的折半查找判定树最小高度为 $\\lceil \\log_2(20 + 1)\\rceil = 5$ ，因此该折半查找判定树的叶结点高度为4或者5，因此其查找失败的查找长度最小是4(查找到叶结点才能判断查找成功或失败)。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 8,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217904212596498432"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>高度为 $h$ 的 B 树插入一个新关键字后最多可能生成（）个新结点（提示：本题的新结点指的是与原来 B 树内容不相同的结点）。</p>",
+        "options": {
+            "A": "<p>$h + 1$</p>",
+            "B": "<p>${2h}$</p>",
+            "C": "<p>${3h}$</p>",
+            "D": "<p>${2h} + 1$</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>插入过程首先需要将新结点插入到叶结点处，该过程需要遍历 $h$ 个结点，最差情况下从叶结点到根结点都要分裂（即每个结点原本就有 $m - 1$ 个元素），共分裂 $h$ 次，每次结点元素数目满发生上溢进行分裂时都会使原结点变成两个新结点，同时向原结点的父结点传入一个数据，如此往复进行 $h$ 次，加上在根节点处的溢出会向上分裂出一个新的根结点，因此高度为 $h$ 的B树插入一个新关键字后最多可能生成 $2h + 1$ 个新结点。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 9,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217905254696493056"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>在下列各种数据结构中，一般而言查找操作效率较低的是（）。</p>",
+        "options": {
+            "A": "<p>二叉堆</p>",
+            "B": "<p>二叉排序树</p>",
+            "C": "<p>B树</p>",
+            "D": "<p>红黑树</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>因为二叉堆左右孩子结点关键字是无序的，所以二叉堆中查询一个元素需要遍历整个二叉堆，查找效率低于其他几个数据结构。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 10,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1217905254696493056"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>对采用单链表实现的线性表进行排序，要求只能通过调整链表指针的方式进行排序。则下列排序算法平均时间复杂度最低的是（）。</p>",
+        "options": {
+            "A": "<p>冒泡排序</p>",
+            "B": "<p>归并排序</p>",
+            "C": "<p>快速排序</p>",
+            "D": "<p>插入排序</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>首先 A、D 错误，即使是对顺序表形式进行排序，冒泡和插入排序的时间复杂度都有 $O(n^{2})$ ，采用单链表不会降低二者的时间复杂度。对于快速排序，假设每次均匀划分，确定枢轴位置的 partition 函数时间复杂度由顺序表的 $O(n)$ 降为单链表的 $O(n^{2})$ ，快排的时间复杂度可以列式为 $T(n) = O(n^{2})$ （确认枢轴） $+2T(n / 2)$ （递归处理左右子序列），由主定理得知在单链表中进行快速排序的时间复杂度提升为 $O(n^{2})$ 。而对于归并排序，无论是采用顺序表还是单链表存储线性表，最重要的归并过程的时间复杂度仍为 $O(n)$ ，所以在单链表中进行归并排序的时间复杂度仍为 $O(n\\log n)$ ，所以本题选择 B 选项。</p><p>注：读者记住单链表通过调整指针排序时归并排序的平均时间复杂度最低即可。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 11,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1218132999393255424"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列软件中，不属于系统软件的是（）。</p>",
+        "options": {
+            "A": "<p>编译程序</p>",
+            "B": "<p>操作系统</p>",
+            "C": "<p>文本处理程序</p>",
+            "D": "<p>数据库管理系统</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>文本处理程序(例如记事本)是企业面向文本编辑应用领域开发的应用软件，而其余三者为用于管理系统资源或为应用软件提供服务的系统软件，因此选择C选项。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 12,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215239621408202752"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>对于一个4位二进制补码 $x_{1}x_{2}x_{3}x_{4}$ ，其算数左移一位发生溢出的条件是（）。</p>",
+        "options": {
+            "A": "<p>$x_{1} = 1$</p>",
+            "B": "<p>$x_{1} = x_{2}$</p>",
+            "C": "<p>$x_{1} \\neq x_{2}$</p>",
+            "D": "<p>$x_{2} = 1$</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>补码算数移位规则为算数左移，低位补0，高位移出；算数右移时，高位补符号位，低位移出。由此可见，若补码算数左移时符号位发生改变，则算数左移出现溢出。在补码算数左移1位时，如果补码前两位不同，就会发生溢出，因此，本题选择C选项。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 13,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215242051860570112"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>如果浮点数的尾数改为用补码表示，则下列选项（）是规格化尾数形式（提示：以下各选项中，首位均为符号位）。</p>",
+        "options": {
+            "A": "<p>1.111111</p>",
+            "B": "<p>0.000000</p>",
+            "C": "<p>0.0101010</p>",
+            "D": "<p>1.0110110</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>规格化数需要除符号位外的第一位数字真值为“1”（类似科学计数法），因此在补码形式下，若符号位为0，表示正数，则数值位第一位数字为1；若符号位为1，表示负数，则数值位第一位数字为0。四个选项中只有D选项符合这个规律，符号位为1，数值位第一位数字为0，故D正确。</p><p>技巧：补码形式的尾数判断是否规格化只需判断符号位和除符号位外第一位数字是否相异即可。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 14,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215243340937961472"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>某八体低位交叉存储器由容量为 $128\\mathrm{M} \\times 32$ 位的存储体组成，每个存储体的存储周期为 $800\\mathrm{ns}$ ，存取时间为 $100\\mathrm{ns}$ ，则该存储器提供的最大带宽为（）。</p>",
+        "options": {
+            "A": "<p>${40}\\mathrm{{MB}}/\\mathrm{s}$</p>",
+            "B": "<p>${320}\\mathrm{{MB}}/\\mathrm{s}$</p>",
+            "C": "<p>$5120 \\mathrm{TB} / \\mathrm{s}$</p>",
+            "D": "<p>$5 \\mathrm{MB} / \\mathrm{s}$</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>由于单个存储体容量为 $128\\mathrm{M} \\times 32$ 位，因此每个存储周期一个存储体可以提供4B数据，该存储器由8个存储体低位交叉编址构成，因此每个存储周期最多可以提供 $8 \\times 4 = 32\\mathrm{B}$ 数据，故该存储器提供的最大带宽为 $32\\mathrm{B} \\div 800\\mathrm{ns} = 40\\mathrm{MB/s}$ 。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 15,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215250143839002624"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>某计算机按字节编址，内部 Cache 由 64 组构成，每组包括 4 个 Cache 行，内存块大小为 32B，主存共有 8192 个内存块，则主存地址中标记位长度为（）位。</p>",
+        "options": {
+            "A": "<p>7</p>",
+            "B": "<p>8</p>",
+            "C": "<p>9</p>",
+            "D": "<p>10</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>内存共有 8192 块，因此物理块号（包括标记位和 Cache 组号）一共有 13 位，Cache64 组，因此 Cache 组号占据 6 位，故标记位占据 7 位。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 16,
+        "totalScore": 2
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>二维数组 a 的定义为：int a[32][64]。数组 a 在内存中按行优先存储，在 16 题所述计算机中执行下述程序段访问数组 a。假设 Cache 初始为空，则访问 a 的 Cache 命中率为（）。</p><p>$$</p><p>\\begin{array}{r l} \\text {f o r (j = 0 ; j <   6 4 ; j + +)} \\\\ \\text {f o r (i = 0 ; i <   3 2 ; i + +)} \\\\ \\text {a [ i ] [ j ] = 1 ;} \\end{array}</p><p>$$</p>",
+        "options": {
+            "A": "<p>$0\\%$</p>",
+            "B": "<p>$12.5\\%$</p>",
+            "C": "<p>$75\\%$</p>",
+            "D": "<p>$87.5\\%$</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>一个内存块大小为 32B，可以存放 $32 \\div 4 = 8$ 个 int 数据（一个 int 数据占据 4B），故数组 a 一共占据 $32 \\times 64 \\div 8 = 256$ 个内存块。这些内存块在内存中顺序存储，因此可以按照地址依次映射到 Cache 中（例如 Cache 第 0 组第 0 行 ~ 第 7 组第 0 行存储 a[0][0]~a[0][63]，第 8 组第 0 行 ~ 第 15 组第 0 行存储 a[1][0]~a[1][63]，…，第 56 组第 0 行 ~ 第 63 组第 0 行存储 a[7][0]~a[7][63]，然后各组的其他行依次存储数组 a[8][0]~a[31][63]）。而 Cache 一共有 64 组，每组有 4 行，可以映射 $64 \\times 4 = 256$ 个连续地址的内存块，故数组 a 刚好可以被该 Cache 存储且不发生替换，故每次访问一个新的内存块的第一次不命中，后续对该内存块的访问都可以命中。一个内存块（Cache 行）可以存储 8 个 int 数据，故命中率为 $(8 - 1) \\div 8 = 87.5\\%$ ，D 正确。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 17,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215246689913544704"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列对于寻址方式的叙述正确的是（）</p>",
+        "options": {
+            "A": "<p>寄存器间接寻址方式的操作数存储在通用寄存器中</p>",
+            "B": "<p>程序执行过程中指令寻址和数据寻址往往交替进行</p>",
+            "C": "<p>堆栈寻址方式下数据的存储顺序是先进先出</p>",
+            "D": "<p>变址寻址方式下有效地址 EA 存储在内存中</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>A错误，寄存器间接寻址的操作数存储在主存中，EA存储在寄存器中；B正确；C错误，堆栈寻址方式下数据的存储顺序是后进先出；D错误，变址寻址方式下有效地址EA是由指令字中的形式地址A和变址寄存器IX的内容相加得到，并不存储在内存中。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 18,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215259423933734912"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于数据通路叙述错误的是（ ）。</p>",
+        "options": {
+            "A": "<p>通用寄存器包含在数据通路中</p>",
+            "B": "<p>控制器不包含在数据通路中</p>",
+            "C": "<p>单周期数据通路的每个部件在一条指令执行过程中只能使用一次</p>",
+            "D": "<p>数据通路包含状态元件 ALU, 负责进行逻辑和算数运算</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>D错误。ALU属于操作元件，即通过组合逻辑电路根据输入生成输出的元件，如ALU。状态元件则是可以存储计算结果的元件，又叫存储元件，如寄存器。技巧：具有存储功能的元件为状态元件，否则为操作元件。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 19,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215304433186119680"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>某计算机采用微程序控制器，共有63条指令，各指令对应的微程序平均由4条微指令组成。若采用断定法确定下条微指令地址，微指令中下地址字段的位数为8位，则公共的取指令微程序包含的微指令条数最多为（）。</p>",
+        "options": {
+            "A": "<p>2</p>",
+            "B": "<p>4</p>",
+            "C": "<p>64</p>",
+            "D": "<p>189</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>8位下地址字段最多可以指向 $2^{8} = 256$ 条微指令，而计算机63条指令对应非公有指令数为 $63 \\times 4 = 252$ 条指令，故下地址字段剩下可用来指向的公共的取指令微程序包含的微指令条数最多为 $256 - 252 = 4$ 条。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 20,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215305027082788864"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于 I/O 端口和 I/O 接口的说法错误的是（）。</p>",
+        "options": {
+            "A": "<p>一个 I/O 端口对应一个地址</p>",
+            "B": "<p>一个 I/O 接口可能对应多个地址</p>",
+            "C": "<p>数据端口和命令端口都属于 I/O 端口</p>",
+            "D": "<p>独立编址方式下 CPU 不需要设置专门的输入/输出指令访问 I/O 端口</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>A、B、C正确，D错误。独立编址方式下I/O端口有独立的地址空间，可能与主存有相同的地址，因此在地址形式上可能会无法区分指令访问的是主存单元还是I/O端口，因此独立编址方式下CPU需要设置专门的输入/输出指令来访问I/O端口。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 21,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215320472355610624"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于DMA说法正确的是（ ）。</p>",
+        "options": {
+            "A": "<p>DMA 读入数据需要经过 CPU 才可以到达内存</p>",
+            "B": "<p>DMA 请求是希望让 CPU 让出总线控制权</p>",
+            "C": "<p>DMA方式可用于键盘输入</p>",
+            "D": "<p>DMA方式下数据传送由软硬件共同完成</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>A 错误，DMA 方式下数据可以通过 DMA 总线直接从 I/O 接口读取到内存中而不经过 CPU。B 正确。C 错误，DMA 方式适合进行块传输的高速设备，键盘输入更适合中断方式。D 错误，DMA 方式下数据传送由硬件完成。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 22,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1215321805561274368"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列说法正确的是（ ）。</p><p>I. 设备与设备之间可以不借助处理机就完成通信</p><p>II. 分时操作系统中，所有的任务必须在约定时间内完成</p><p>III.在多道批处理系统中，各程序的执行过程存在不确定性</p><p>IV. 多任务操作系统需要多CPU支持才能工作</p>",
+        "options": {
+            "A": "<p>I、II</p>",
+            "B": "<p>I、III</p>",
+            "C": "<p>II、III</p>",
+            "D": "<p>II、IV</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>设备与设备之间可以通过DMA总线进行通信，不需要借助处理器来完成（主存属于内部设备，主存与主存间可以通过DMA总线传输数据），I正确；在硬实时操作系统中，所有的任务必须在约定时间内完成，II错误；在多道批处理系统中，各程序轮流使用CPU，程序的执行过程存在不确定性，III正确；多任务操作系统不需要多CPU支持就可以工作，因为只需要实现并发即可，不需要实现并行，IV错误。故选择B。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 23,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219676177799847936"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列选项执行或发生过程中，导致用户态切换到内核态的指令是（）。</p>",
+        "options": {
+            "A": "<p>关中断指令</p>",
+            "B": "<p>访管指令</p>",
+            "C": "<p>将计算结果送进内存</p>",
+            "D": "<p>输入/输出指令</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>关中断指令、输入/输出指令都是特权指令，在内核态执行；将计算结果送进内存是在用户态下完成的；访管指令又称为trap指令，用于从用户态陷入到内核态以便执行特权指令，因此本题选择B。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 24,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219613394580283392"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列说法正确的是（ ）。</p>",
+        "options": {
+            "A": "<p>线程是资源分配的基本单位</p>",
+            "B": "<p>管道的一端用于读、一端用于写，因此管道是单工通信</p>",
+            "C": "<p>如果父进程比子进程先结束, 则子进程拥有的资源将一直不会被释放</p>",
+            "D": "<p>间接消息通信方式下，进程会借助消息邮箱完成收发操作</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>进程是资源分配的基本单位，线程是调度的最小单位，A错误；管道是半双工通信，不是单工通信，B错误；在linux下，如果父进程比子进程先结束，则子进程短期内会成为孤儿进程，但最终会被init进程领养，由init进程代为管理以及释放资源，C错误；消息通信分为直接消息通信和间接消息通信。直接消息通信下，进程会将消息挂到对方的消息</p><p>队列上，而间接消息通信下，进程间是借助邮箱进程通信的，D正确。</p><p>故本题选择D。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 25,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219616462478778368"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>在一个单处理器单道操作系统中，存在以下3个进程，其到达时间和运行时间如下表所示。使用多级反馈队列调度算法，队列设置如下表所示，则这三个进程的周转时间之和为（）。</p><table><tr><td>进程</td><td>到达时间</td><td>运行时间</td></tr><tr><td>A</td><td>0</td><td>5</td></tr><tr><td>B</td><td>1</td><td>3</td></tr><tr><td>C</td><td>3</td><td>1</td></tr></table>",
+        "options": {
+            "A": "<p>13</p>",
+            "B": "<p>14</p>",
+            "C": "<p>15</p>",
+            "D": "<p>16</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>A 进程：0 时刻到达，0~1 时刻在一级队列运行、2~3、6~8 时刻在二级队列运行、8~9 时刻在三级队列运行。B 进程：1 时刻到达，1~2 时刻在一级队列运行，4~6 时刻在二级队列运行。C 进程：3 时刻到达，3~4 时刻在一级队列运行。因此三个进程的周转时间之和为 $9 + 5 + 1 = 15$ ，故选择 C。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 26,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219652408309981184"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列存储管理方式中，可实现紧凑技术的存储管理方式为（）。</p>",
+        "options": {
+            "A": "<p>动态重定位分区分配</p>",
+            "B": "<p>单一连续分配</p>",
+            "C": "<p>固定分区分配</p>",
+            "D": "<p>分页存储管理</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>动态重定位分区分配可以在内存无足够大分区时移动内存中的程序使其互相连成一片，消除外部碎片以获得更大的内存分区，故 A 正确。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 27,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219660149040619520"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>索引顺序文件需要将文件记录进行分组，下列关于文件分组，组间和组内关键字顺序的说法正确的是（）。</p>",
+        "options": {
+            "A": "<p>分组组间关键字有序，组内关键字有序</p>",
+            "B": "<p>分组组间关键字有序, 组内关键字可以无序</p>",
+            "C": "<p>分组组间关键字可以无序，组内关键字有序</p>",
+            "D": "<p>分组组间关键字可以无序, 组内关键字可以无序</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>索引顺序表将顺序文件分组，为每组的第一条记录在索引表中建立一个对应的索引项，其中分组的组间关键字必须是有序的，而组内关键字可以无序，故 B 正确。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 28,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219670720569942016"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>以下关于文件控制块（FCB）的描述中，正确的是（）。</p><p>I. 文件控制块是操作系统创建的、用来控制和管理一个文件属性信息的数据结构</p><p>II. 文件控制块是一个文件存在的唯一证明</p><p>III. 文件控制块存储了文件访问控制信息</p><p>IV. 文件被首次打开时，仅文件控制块的信息会被读入内存</p>",
+        "options": {
+            "A": "<p>I、II、III</p>",
+            "B": "<p>I、II、IV</p>",
+            "C": "<p>I、III、IV</p>",
+            "D": "<p>I、II、III、IV</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>文件控制块是操作系统为每个文件建立的唯一数据结构，用于管理、控制和按名存取文件，其中包含了文件的全部属性，I、II正确；文件控制块中通常包含了三类信息，即文件基本信息、存取控制信息与使用信息，III正确；文件被首次打开时，只会将该文件对应的FCB读入内存，并在打开文件表上做相应记录，并不会将完整的文件内容读人内存，IV正确。故正确答案为D。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 29,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219670672268337152"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>某树形目录结构文件系统，采用混合索引的方式管理外存空间。该文件系统的每个目录项占128B，其中8B存放索引节点号，120B存放文件名。索引节点中含有13个地址项，其中直接地址项为10个，一级、二级、三级地址项各1个，磁盘块大小为4KB，一个磁盘块中可放置1024个地址。则该文件系统能创建的文件数量上限为（）。</p>",
+        "options": {
+            "A": "<p>$2^{64}$</p>",
+            "B": "<p>$2^{120}$</p>",
+            "C": "<p>$10 + 1\\mathrm{K} + 1\\mathrm{M} + 1\\mathrm{G}$</p>",
+            "D": "<p>$1024 \\times (10 + 1\\mathrm{K} + 1\\mathrm{M} + 1\\mathrm{G})$</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>索引节点号编号占 8B，可表示 $2^{64}$ 个文件。由于树形目录结构中不同目录下文件的文件名可相同，因此在计算文件系统创建文件的上限时只需考虑索引节点个数，其它条件都是对考生的干扰，A 选项正确。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 30,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219670672268337152"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>在设备分配与回收过程中，计算机需要访问的数据结构有：设备控制表DCT、控制器控制表COCT、通道控制表CHCT和系统设备表SDT，它们在设备分配流程中访问的先后顺序为（）。</p>",
+        "options": {
+            "A": "<p>DCT $\\rightarrow$ COCT $\\rightarrow$ CHCT $\\rightarrow$ SDT</p>",
+            "B": "<p>SDT $\\rightarrow$ DCT $\\rightarrow$ COCT $\\rightarrow$ CHCT</p>",
+            "C": "<p>SDT $\\rightarrow$ COCT $\\rightarrow$ CHCT $\\rightarrow$ DCT</p>",
+            "D": "<p>DCT $\\rightarrow$ COCT $\\rightarrow$ SDT $\\rightarrow$ CHCT</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>设备分配过程中题干中数据结构访问的先后顺序为系统设备表 SDT → 设备控制表 DCT → 控制器控制表 COCT → 通道控制表 CHCT，故本题选择 B 选项。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 31,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219680011691499520"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列不属于缓冲池组成部分的是（ ）。</p>",
+        "options": {
+            "A": "<p>空白缓冲队列</p>",
+            "B": "<p>输入队列</p>",
+            "C": "<p>输出队列</p>",
+            "D": "<p>循环缓冲</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>缓冲池中的队列可以根据使用情况情况分成以下 3 种队列：① 空白缓冲队列：由空缓冲区链成的队列；② 输入队列：装满输入数据的缓冲区链成的队列；③ 输出队列：装满输出数据的缓冲区链成的队列。而循环缓冲则是不同于缓冲池的一种缓冲区管理技术，因此不属于缓冲池，本题选 D。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 32,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1219679960168669184"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>DHCP协议属于OSI参考模型中的（ ）。</p>",
+        "options": {
+            "A": "<p>数据链路层</p>",
+            "B": "<p>网络层</p>",
+            "C": "<p>传输层</p>",
+            "D": "<p>应用层</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>动态主机配置协议(DHCP协议)是基于UDP的应用层协议，因此本题选择D选项。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 33,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1220698686770913280"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于检错码和纠错码的说法，错误的是（）。</p>",
+        "options": {
+            "A": "<p>在线路误码率较低时，纠错码一般比检错码编码效率更高</p>",
+            "B": "<p>奇偶校验码属于检错码</p>",
+            "C": "<p>海明码属于纠错码</p>",
+            "D": "<p>以太网使用的检错码不能保证发送的数据帧一定成功交付</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>纠错码由于需要更多的冗余位用来编码，因此一般比检错码的编码效率更低，即使在误码率较低的线路中也是如此，故 A 选项错误。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 34,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1220674105477701632"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>主机甲和主机乙在数据链路层采用停止-等待协议进行数据帧的发送，RTT 为 $100\\mathrm{ms}$ ，数据传输速率为 $20\\mathrm{kbps}$ ，忽略确认帧的传输时延。主机甲的最大信道利用率约为 $33.3\\%$ ，则数据帧的长度为（）。</p>",
+        "options": {
+            "A": "<p>125B</p>",
+            "B": "<p>250B</p>",
+            "C": "<p>1000B</p>",
+            "D": "<p>2000B</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>在忽略确认帧的传输时延的情况下，最大信道利用率 $=$ 发送时延/(发送时延 + RTT)，故发送时延约为 50ms，数据帧的长度 $= 50\\mathrm{ms} \\times 20\\mathrm{kbps} = 125\\mathrm{B}$ 。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 35,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1220674454670286848"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列 IP 地址中，只能作为 IP 分组的目的地址而不能作为源地址的是（）。</p>",
+        "options": {
+            "A": "<p>0.0.0.0</p>",
+            "B": "<p>223.255.255.250</p>",
+            "C": "<p>192.168.101.1</p>",
+            "D": "<p>230.1.1.1</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>A 选项只可作源地址，表示本网络上本主机。B 选项为 C 类地址，C 选项为私有地址，二者既可做源地址也可做目的地址。D 选项为 D 类地址，为组播地址，只可做目的地址。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 36,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1220692888762195968"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于移动IP的描述中，错误的是（）。</p>",
+        "options": {
+            "A": "<p>移动IP可以让移动设备用户从一个网段移动到另一个网段，仍保持原有设备的IP地址不变</p>",
+            "B": "<p>归属地址是永久的，转交地址是暂时的</p>",
+            "C": "<p>在数据的传送中, 其他主机若想和在其它网段的移动主机通信, 需要将数据先发送给归属代理, 再通过外地代理转交给移动主机</p>",
+            "D": "<p>在数据的传送中，在其它网段的移动主机想要与远程主机进通信，需要将数据先通过外地代理交给归属代理</p>"
+        },
+        "answer": "D",
+        "analysis": "<p>移动 IP 是一种将移动设备从一个网段段移动到另一个网段，仍保持原有设备的 IP 地址不变的网络传输协议标准，选项 A 正确；在移动 IP 的定义中，归属地址是主机在归属网络的地址，是永久存在的，而转交地址是主机在外地网络的临时地址，选项 B 正确；数据的传输中，远程主机若想要与移动到其他网段的移动主机通信，其数据的目的 IP 是归属地址，数据发送至归属代理再转发至外地代理，最后转交给主机，选项 C 正确；当处在其它网段的移动主机想和远程主机通信时，直接发送即可，无需先转发给归属代理，选项 D 错误。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 37,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1220678347026341888"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于 UDP 的叙述中，正确的是（）。</p><p>I. TCP和UDP的端口号相互独立，可以存在于同一台主机</p><p>II. 用户程序在传输层采用 UDP 协议时，传输的可靠性全部由应用层协议承担</p><p>III.UDP计算校验和时使用的伪首部需要传输给应用层和网络层</p>",
+        "options": {
+            "A": "<p>I、II</p>",
+            "B": "<p>I、III</p>",
+            "C": "<p>II、III</p>",
+            "D": "<p>I、II、III</p>"
+        },
+        "answer": "A",
+        "analysis": "<p>端口号用于识别应用层进程，TCP 和 UDP 协议在传输层独立工作，二者互不影响，使用 TCP 和 UDP 的不同进程可以使用相同的 TCP 端口号和 UDP 端口号，I 正确；UDP 没有保障可靠性的机制，采用 UDP 时，所有的可靠性工作由应用层承担，II 正确；伪首部只是用于计</p><p>算 UDP 校验和的一个逻辑字段, 不会传输给应用层和网络层, III 错误。故选择 A 选项。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 38,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1220695094299205632"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>主机甲和主机乙建立了一个TCP连接，且不支持快重传。 $\\mathrm{MSS} = 1\\mathrm{KB}$ ，RTT $= 2\\mathrm{ms}$ ，主机甲初始慢开始门限为 $32\\mathrm{KB}$ 。 $t$ 时刻甲的慢开始门限再次变为 $32\\mathrm{KB}$ ，从主机甲建立连接的时刻开始计算，整个过程直到第一次拥塞窗口达到慢开始门限前未发生拥塞（超时），则 $t$ 至少为（）。</p>",
+        "options": {
+            "A": "<p>50ms</p>",
+            "B": "<p>${52}\\mathrm{{ms}}$</p>",
+            "C": "<p>${74}\\mathrm{{ms}}$</p>",
+            "D": "<p>76ms</p>"
+        },
+        "answer": "C",
+        "analysis": "<p>由于拥塞控制阈值 ssthresh 只会在拥塞时减半, 故问题实际是 cwnd 达到 64KB 需要的最短时间, 慢开始的阶段增长到 $32 \\mathrm{KB}$ 的过程为 $1 \\rightarrow 2 \\rightarrow 4 \\rightarrow 8 \\rightarrow 16 \\rightarrow 32$ , 需要 5 个 RTT, 进入到拥塞避免阶段, 每经过一个 RTT, cwnd 增加 1 , 故还需要 32 个 RTT, cwnd 才能增加到 64KB, 此时发送拥塞, ssthresh 减半, 变为 $32 \\mathrm{KB}$ , 即需要 37RTT, 共 74ms, 选择 C 选项。</p><p>【提示】①本题所求的是慢开始门限再次变为32KB的时间，而不是拥塞窗口再次达到32KB的时间；②拥塞发生时ssthresh、cwnd会立刻变化，而不是等到下一个发送轮次才改变。</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 39,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1220674454670286848"
+        ]
+    },
+    {
+        "exerciseType": "单选题",
+        "stem": "<p>下列关于 HTTP 的说法正确的是（）</p>",
+        "options": {
+            "A": "<p>HTTP协议是有状态协议</p>",
+            "B": "<p>HTTP 服务端默认端口号是 80</p>",
+            "C": "<p>HTTP/1.1 默认使用非持续连接</p>",
+            "D": "<p>HTTP 请求报文的 Host 字段是客户端的主机名和端口号</p><p># 二、综合应用题： $41\\sim 47$ 小题，共70分。</p>"
+        },
+        "answer": "B",
+        "analysis": "<p>A错误，HTTP协议是无状态的协议。B正确。C错误，HTTP/1.1默认的是使用带流水线的持续连接。D错误，Host指明请求将要发送到的服务器的主机名和端口号。</p><p># 二、综合应用题</p>",
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 40,
+        "totalScore": 2,
+        "knowledgeTags": [
+            "1220698686770913280"
+        ]
+    },
+    {
+        "exerciseType": "解答题",
+        "stem": "<p>(13分)请设计一个算法，实现求给定二叉树每一层结点最小值的功能。该算法对应的C语言函数声明如下：int* smallestValues(struct TreeNode* root, int* returnSize)。其中root为给定二叉树的根结点，返回值为int类型数组，该数组存储每一层结点的最小值，returnSize存储总的最小值个数。要求：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>给出算法的基本设计思想</p>",
+                "questionAnswer": "<p>本题属于树的层次遍历的一道变式题, 需要对二叉树的每层进行层次遍历, 在每一层记录该层遍历到的最小值并在最后放入返回数组中, 同时 returnSize 进行相应计数。(3 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>根据设计思想，采用C或 $\\mathrm{C + + }$ 语言描述算法，关键之处给出注释。</p>",
+                "questionAnswer": "<p>【提示】408算法题主要考察思维。（8分）。</p><p>int\\*smallestValues(structTreeNode\\*root，int\\*returnSize){ //存储层次遍历中结点的队列。数组大小取值合理，够用即可。 structTreeNode\\*queue[10001]，TreeNode\\*p; int\\*re $=$ (int\\*)malloc(sizeof(int)\\*10001）；//返回数组 intfront $= 0$ ，rear $= 0$ · intflag $= 0$ ；//设计前后指针是为了区别是否遍历完该层 inti $= 0$ ，min $= 0$ ，c $= 0$ ： queue[rear $+ + ] =$ root;//第一层结点数为1，rear置为1即可 if(root $\\equiv =$ NULL）{//空树直接返回NULL \\*returnSize $= 0$ ： return NULL; } while(front<rear）{//当front与rear相同时，表示整个树已遍历完成 flag $\\equiv$ rear；//记录rear，后续rear在放入结点时会改变 min $\\equiv$ INT_MAX; while(front<flag）{//front $\\equiv$ flag时表明该层所有的结点都已访问过， 且孩子均已放入队列中 p $\\equiv$ queue-front $^{+ + }$ ； c $\\equiv$ p->val; min $= \\mathrm{c} <   \\mathrm{min}$ ?c：min；//min始终维持为该层结点最小值 if(p->left！ $= \\mathrm{NULL})$ ： queue[rear $+ + ] = \\mathrm{p - > }$ left；//当前访问结点的左孩子放入队列 if(p->right！ $= \\mathrm{NULL})$ ： queue[rear $+ + ] = \\mathrm{p - > }$ right；//当前访问结点的右孩子放入队列 } re[i++] $= \\mathrm{min}$ ;//最小值放入返回数组同时计数。 } \\*returnSize $\\equiv$ i; return re;</p>",
+                "questionAnalysis": null,
+                "questionScore": 8.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>说明你的算法的时间复杂度和空间复杂度</p>",
+                "questionAnswer": "<p>由于每个结点仅进入队列一次, 故该算法的时间复杂度为 $O(n)$ , 空间复杂度为 $O(n)$ , $n$ 为二叉树结点个数。(2 分)</p><p>【提示】本题改编自力扣：https://leetcode.cn/problems/find-largest-value-in-each-tree-row/, 感兴</p><p>趣的同学可以上机尝试下。</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            }
+        ],
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 41,
+        "totalScore": 13,
+        "knowledgeTags": [
+            "1217892396050948096",
+            "1217892582529703936",
+            "1217895012696858624"
+        ]
+    },
+    {
+        "exerciseType": "解答题",
+        "stem": "<p>(10分) 现需对整数序列 $\\{18, 25, 3, 7, 50, 19\\}$ 通过堆排序调整为从小到大的序列，据此回答以下问题。</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>给出构造完成的初始堆以及构造初始堆的时间复杂度。</p>",
+                "questionAnswer": "<p>题干数组序列构建的初始堆如右图所示（注意：进行从小到大排序需要构建大根堆）。建堆操作的时间复杂度为 $O(n)$ 。(3分)</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/1284d075126dacff94f63252ed724d083c422b34184d17e8ccd77f99773d66b4-1771672772365.jpg)</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>给出由初始堆到有序序列的完整堆排序过程。</p>",
+                "questionAnswer": "<p>排序过程如下：（5分）</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/4203023a225067cd2199949e01876826a9b9716edc36dfadecacf66731d9743b-1771672768021.jpg)</p><p>交换3、50</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/da37d4cf2b6e059a2a13f30b2f97be7aa250f4fdda1bcee9dfc49a40ab268ffb-1771672770386.jpg)</p><p>调整堆</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/51e83712a16de69ea3c50090d77df8afb024b98824f64c67176a4f73a8e99ea9-1771672752767.jpg)</p><p>交换3、25</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/276d415043306b6ad1b82f657fec9ecb3bbc61be79ff1ae7d95403c9ff4df71e-1771672784761.jpg)</p><p>调整堆</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/f4b57790ca87f88959e1d27235453e153b64d5255d4852cd5f0c4379e93d7579-1771672762048.jpg)</p><p>交换7、19</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/44d7a2bded3b64df73549372b5e40e60699ea883ad54764664b750c539e76494-1771672794450.jpg)</p><p>调整堆</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/ff133ddb4b535eb38a4f176cca5b9e42aeaad4028ea38ccc08dc08a7c3ca7224-1771672766461.jpg)</p><p>交换3、18</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/a326e403bf73061be5fd35f353ce43f4d36fb0a679e385a74c6f8a3e0d614b41-1771672757124.jpg)</p><p>调整堆</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/b72660832a687beca978106ef16e85eaa0d9e584caaf05ac9914eae7a81dfb3f-1771672778908.jpg)</p><p>交换3、7</p><p>排序完成，有序序列为{3,7,18,19,25,50}</p>",
+                "questionAnalysis": null,
+                "questionScore": 5.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>堆是否为二叉排序树？是否为完全二叉树？</p>",
+                "questionAnswer": "<p>以大根堆为例, 其只保证父亲结点关键字大于孩子结点, 但不保证左孩子结点关键字小于右孩子结点关键字, 故堆并不是二叉有序树。由建堆过程可知, 堆是完全二叉树。(2分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            }
+        ],
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 42,
+        "totalScore": 10,
+        "knowledgeTags": [
+            "1218132453932408832",
+            "1218133293095198720",
+            "1218133558540115968"
+        ]
+    },
+    {
+        "exerciseType": "解答题",
+        "stem": "<p>(13分)某计算机CPU的单总线数据通路的主要组成部分如下图所示，其中Y为暂存器，R0～R5为通用寄存器，Z为寄存器，A、B、C为三种特殊寄存器。存储器M未在下图标出，M读写控制信号分别为Read、Write。已知该计算机需要执行指令 $\\mathsf{R}[\\mathsf{R}1]\\gets \\mathsf{R}[\\mathsf{R}1] + \\mathsf{M}[\\mathsf{Imm}16]$ ，且该计</p><p>算机指令阶段划分较为特殊，取指令阶段会将 $\\mathrm{Imm}16$ 取到MDR中，之后进入执行阶段，该指令在执行阶段每个时钟周期的有效控制信号如下表所示。</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/50e291c9504e652f19a2f0357255667a320e9c617d87746d4bb765d05ebc1ec4-1771672764350.jpg)</p><table><tr><td>时钟周期</td><td>有效控制信号</td></tr><tr><td>C1</td><td>MDRout, MARin</td></tr><tr><td>C2</td><td>Read, MDRinE; R1out,Yin</td></tr><tr><td>C3</td><td>MDRout, Yout, add, Zin</td></tr><tr><td>C4</td><td>Zout, R1in</td></tr></table><p>据此回答以下问题：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>寄存器 A、B、C 分别是什么寄存器部件？</p>",
+                "questionAnswer": "<p>寄存器 A 的数据需要流转到指令译码器, 因此 A 为 IR; 寄存器 B 外连地址线, 因此寄存器 B 为 MAR; 寄存器 C 外连数据线, 因此寄存器 C 为 MDR。(3 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>$\\mathrm{R}[\\mathrm{R}1] \\leftarrow \\mathrm{R}[\\mathrm{R}1] + \\mathrm{M}[\\mathrm{Imm}16]$ 取操作数采用了哪些寻址方式？</p>",
+                "questionAnswer": "<p>由指令 $\\mathrm{R}[\\mathrm{R}1] \\gets \\mathrm{R}[\\mathrm{R}1] + \\mathrm{M}[\\mathrm{Imm}16]$ 执行阶段控制信号表可知, 该指令取操作数使用的寻址方式有寄存器寻址和直接寻址 (2 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>时钟周期C1、C2完成的功能是什么？</p>",
+                "questionAnswer": "<p>时钟周期 C1 完成的功能为 MAR $\\leftarrow$ (MDR), 时钟周期 C2 完成的功能为 MDR $\\leftarrow$ M(MAR); Y $\\leftarrow$ (R1)。(4 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 4.0
+            },
+            {
+                "questionOrder": 4,
+                "questionStem": "<p>参照上表，取指令阶段将 $\\mathrm{Imm16}$ 放入MDR后进入执行阶段，给出指令 $\\mathrm{R[R1] \\leftarrow R[R1] + M[M[Imm16]}$ 在执行阶段每个时钟周期的控制信号（假设时钟周期从D1开始）。</p>",
+                "questionAnswer": "<p>控制信号如下表所示：(4 分)</p><table><tr><td>时钟</td><td>有效控制信号</td></tr><tr><td>D1</td><td>MDRout, Marin</td></tr><tr><td>D2</td><td>Read, MDRinE</td></tr><tr><td>D3</td><td>MDRout, Marin</td></tr><tr><td>D4</td><td>Read, MDRinE; R1out, Yin</td></tr><tr><td>D5</td><td>MDRout, Yout,add, Zin</td></tr><tr><td>D6</td><td>Zout, R1in</td></tr></table>",
+                "questionAnalysis": null,
+                "questionScore": 4.0
+            }
+        ],
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 43,
+        "totalScore": 13,
+        "knowledgeTags": [
+            "1215304376919531520",
+            "1215304433186119680",
+            "1215304922980163584"
+        ]
+    },
+    {
+        "exerciseType": "解答题",
+        "stem": "<p>(10分)假设某计算机采用“IF（取指）、ID（译码及取数）、EXE（执行）、MEM（访存）、WB（写回寄存器）”的5段流水线RISC处理器，流水线采用“按序发射，按序完成”方式执行以下指令序列：</p><p>1 loop: load a1,0(a0) //R[a1] $\\leftarrow$ M[R[a0] + 0]</p><p>2 load a2,8(a0) //R[a2] $\\leftarrow$ M[R[a0] + 8]</p><p>3 sub a3,a1,a2 //R[a3] $\\leftarrow$ R[a1] - R[a2]</p><p>4 bne a3,a4,loop //if R[a3] != R[a4] goto loop</p><p>5 L1: ...</p><p>其中，a0、a1、a2、a3、a4均为寄存器编号。同一寄存器可以在同一时钟周期的前半周期写入，后半周期读出，跳转指令检测结果是否为“零”并更新PC的操作在EX阶段完成。据此回答以下问题：</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>假如不采用转发技术处理数据冒险，则需要在指令3之前加入几条nop指令才可以解决数据冒险？如果采用转发技术则需要加入几条nop指令？</p>",
+                "questionAnswer": "<p>假如不采用转发技术处理数据冒险，则需要在指令 3 之前加入 2 条 nop 指令才能解决数据冒险。如果采用转发技术则需要在指令 3 之前加入 1 条 nop 指令才能解决数据冒险。（4 分）</p>",
+                "questionAnalysis": null,
+                "questionScore": 4.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>对于指令 4 执行产生的控制相关，若采用分支延迟的方式进行处理，需要的分支延迟槽为多少？</p>",
+                "questionAnswer": "<p>如下图所示, 需要的分支延迟槽为 2。(2 分)</p><table><tr><td>时钟</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr><tr><td></td><td>IF</td><td>ID</td><td>EX</td><td>MEM</td><td>WB</td><td></td></tr><tr><td></td><td></td><td>nop</td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>nop</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td>IF</td><td></td><td></td></tr></table>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>对于指令 4 执行产生的控制相关，若采用两位动态预测的方式进行处理，初始预测弱转移。该指令 5 次执行情况为：T-N-N-N-T（T 表示转移，N 表示不转移），状态转移图如下图所示。请给出该预测方式的预测准确率。</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/adf6b8f7faa836812e5fb8f546f367181427fe5bf429ad6081a28863980e76ae-1771672788942.jpg)</p>",
+                "questionAnswer": "<p>由下图可知:</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/ab02bc2e205bd6e88151d2e511dd5c0eeb7830de6372a17fc427d944ccc7b5ee-1771672774100.jpg)</p><p>该执行情况的预测情况为：T（状态10，预测正确）-N（状态11，预测错误）-N（状态10，预测错误）-N（状态00，预测正确）-T（状态00，预测错误），5次预测一共有两次正确，故该预测方式的预测准确率为 $2 / 5 = 40\\%$ 。（4分）</p>",
+                "questionAnalysis": null,
+                "questionScore": 4.0
+            }
+        ],
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 44,
+        "totalScore": 10,
+        "knowledgeTags": [
+            "1215308277295095808",
+            "1215308322870403072"
+        ]
+    },
+    {
+        "exerciseType": "解答题",
+        "stem": "<p>(7分)Lamport面包店算法的伪代码描述如下所示。共有 $n$ 个进程参与临界区竞争，PRi为进程Pi相关的伪代码描述（ $0\\leqslant i\\leqslant n - 1$ )。据此回答以下问题。</p><p>```c</p><p>int getting[n];//getting[i]为1表示进程Pi正在取号，为0表示进程Pi不在取号</p><p>//number[i]为0表示进程Pi未取号；number[i]为正整数表示进程Pi取到的号码</p><p>int number[n];</p><p>int cmp(int number1, int number2, int k, int i) {</p><p>if (number1 < number2) return 1;</p><p>else if (number1 == number2 && k < i) return 1;</p><p>else return 0;</p><p>}</p><p>//比较两个进程取到号码的优先级，进程Pk优先级大于进程Pi则返回1，否则返回0。</p><p>PRi{</p><p>while</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>{</p><p>getting[i] = 1;</p><p>//max()函数功能为取最大值</p><p>number[i] = max(number[0], number[1], |$\\cdots|, number[n-1]) + 1;</p><p>getting[i] = 0;</p><p>for(k = 0; k < n; k++) {</p><p>while(getting[k]);</p><p>while((number[k] != 0) && cmp(number[k], number[i], k, i));</p><p>}</p><p>临界区；</p><p>number[i] = 0;</p><p>剩余区；</p><p>}</p><p>```</p>",
+                "questionAnswer": "<p>Lamport 面包店算法的设计思路是把进程类比为顾客买面包，顾客在买面包前首先需要取一个号，依据号码顺序先后进入临界区。不同的顾客可能取到相同的号码，因此若顾客号码相同则需要根据顾客的唯一代号排序，例如对于进程 $P_{k}$ 和 $P_{i}$ ，当二者取到的号码相同时，若 $k < i$ ，则进程 $P_{k}$ 先进入临界区，进程 $P_{i}$ 就需要等候。从 cmp 函数的设计可以看出，number1 < number2 则返回 1，故进程取到的号码越小优先级越高。(2 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>该算法进程进程 Pi 取到的号码越大优先级越高还是越小优先级越高？</p>",
+                "questionAnswer": "<p>Lamport 面包店算法的设计思路是把进程类比为顾客买面包，顾客在买面包前首先需要取一个号，依据号码顺序先后进入临界区。不同的顾客可能取到相同的号码，因此若顾客号码相同则需要根据顾客的唯一代号排序，例如对于进程 $P_{k}$ 和 $P_{i}$ ，当二者取到的号码相同时，若 $k < i$ ，则进程 $P_{k}$ 先进入临界区，进程 $P_{i}$ 就需要等候。从 cmp 函数的设计可以看出，number1 < number2 则返回 1，故进程取到的号码越小优先级越高。(2 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>该算法能否实现多个进程互斥访问临界区？说明理由。</p>",
+                "questionAnswer": "<p>由上题解析可以看出，Lamport面包店算法确实可以实现不同进程互斥访问临界区。</p><p>注：实现临界区互斥必须遵守 1. 两个进程不能同时进入临界区。2. 允许进程访问空闲的临界资源。3. 进程等待进入临界区的时间是有限的。以上 Lamport 面包店算法均实现。(3 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>该算法违背了哪条临界区同步准则？说明理由。</p>",
+                "questionAnswer": "<p>在不能进入临界区时，进程会一直在 while() 循环中等待，而不会放弃处理器资源，故该算法违背了“让权等待”临界区同步准则。</p><p>【注意】实现临界区互斥并不需要一定遵守“让权等待”准则。（2分）</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            }
+        ],
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 45,
+        "totalScore": 7,
+        "knowledgeTags": [
+            "1219654910665302016",
+            "1219654958736220160",
+            "1219656984048181248"
+        ]
+    },
+    {
+        "exerciseType": "解答题",
+        "stem": "<p>(8 分) 某文件系统的目录文件采用隐式链接分配方式组织文件, 目录树如下图所示。物理块大小为 1KB, 每个目录项的大小为 255B, 每个目录文件磁盘块的最后 4B 供拉链使用。文件 F 由 600 个记录组成, 每个记录的大小为 510B, 一个物理块最多可以存放两个记录。根目录表已调入内存。据此回答以下问题 (提示: 目录中目录项的顺序不一定与下图中顺序相同)。</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>假设文件 F 采用隐式链接分配方式组织文件, 则将文件 F 全部读入内存最少需要访问多少次磁盘? 最多需要访问多少次磁盘? 请给出理由。</p>",
+                "questionAnswer": "<p>$(1\\mathrm{KB} - 4\\mathrm{B}) \\div 255\\mathrm{B} = 4$ ，故一个物理块最多只能存放4个目录项。目录项大小为 $510\\mathrm{B}$ ，所占空间较大，故推测目录项为文件FCB而不是文件名和索引节点地址。根目录表已调入内存，第一次访问磁盘需要将目录文件user调入内存，但目录文件user的目录表一共有5个目录项，占据两个物理块大小。理想情况下，E的FCB在第一个块中，此时第1次访问磁盘即可将E的FCB调入内存，第2次访问磁盘将文件E(即文件F的FCB)调入内存，此时已经得到文件第一个块的物理地址。而文件F一共占据 $600 \\div 2 = 300$ 个物理块，采用链式分配的方式需要访问磁盘300次才可全部调入内存，故将文件F部读入内存最少需要访问</p><p>$2 + 300 = 302$ 次磁盘；倘若E的FCB在文件user的第二个物理块中，则需要2次访问磁盘才能将E的FCB调入内存，需要3次访问磁盘才能将F的FCB调入内存比上述过程多了一次访问磁盘数，故将文件F全部读入内存最多需要 $302 + 1 = 303$ 次访问磁盘。(4分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 4.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>假设文件F采用混合索引方式组织文件，F的FCB中有直接地址、一级间接地址和二级间接地址，则将文件F的一个记录读入内存最少需要访问多少次磁盘？最多需要访问多少次</p><p>磁盘？请给出理由。</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/b1d2ec02015635ea18d3c5d770531c3cea3d6bc744d7d7f121094214c63f9b88-1771672783072.jpg)</p>",
+                "questionAnswer": "<p>由上题可知, 将文件 F 的 FCB 读入内存最少需要 2 次访问磁盘, 最多需要 3 次访问磁盘。而文件 F 的 FCB 包括直接地址、一级间接地址和二级间接地址, 其中直接地址直接可以得到一个记录的地址, 后续只需 1 次访问磁盘即可取出该记录, 而二级间接地址需要 3 次访问磁盘才能取出对应的记录 (第一次取出一级间址块, 第二次取出二级间址块, 第二次取出记录), 故将文件 F 的一个记录读入内存最少需要访问最少需要 $2 + 1 = 3$ 次访问磁盘, 最多需要 $3 + 3 = 6$ 次访问磁盘。(4 分)</p><p>注：本题是为了让读者了解实际物理存储可能存在与图中逻辑结构不同的可能，也有的题目默认物理存储顺序与图示相同，这种情况下本题只有E的FCB存放在文件user第二个块这一种可能。具体读者可以从题目中推测设计意图，比如题目只问读取文件的某一个块最少和最多需要多少次访存，则默认物理存储顺序与图示相同；题目若像本题这样询问将文件全部读入内存最少和最多需要多少次访存，则默认物理存储顺序可能与图示不同。</p>",
+                "questionAnalysis": null,
+                "questionScore": 4.0
+            }
+        ],
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 46,
+        "totalScore": 8,
+        "knowledgeTags": [
+            "1219670720569942016",
+            "1219674307865878528",
+            "1219674364837109760"
+        ]
+    },
+    {
+        "exerciseType": "解答题",
+        "stem": "<p>(9 分) 某单位的网络拓扑如下图所示。其中 $\\mathrm{R}1 \\sim \\mathrm{R}3$ 为路由器, $\\mathrm{L}1 \\sim \\mathrm{L}5$ 、 $\\mathrm{X}1 \\sim \\mathrm{X}3$ 为对应的路由器接口。其中 $\\mathrm{X}1 \\sim \\mathrm{X}3$ 分别连接部门一、部门二和部门三的局域网。部门一有主机 120 台, 部门二有主机 60 台, 部门三有主机 60 台。路由器接口 $\\mathrm{L}1 \\sim \\mathrm{L}5$ 的 IP 地址已在下图中进行标注, 其网络前缀均为/30。路由器 R2 通过接口 L3 连接到 Internet。据此回答以下问题。</p>",
+        "options": [
+            {
+                "questionOrder": 1,
+                "questionStem": "<p>现计划将 IP 地址段 200.168.9.0/24 提供给部门一、部门二和部门三使用，其中部门二子网分配的 IP 地址为 200.168.9.128/26。请采用合适的分配方案将剩下的地址空间分配给部门一和部门三，并给出地址空间分配方案。</p>",
+                "questionAnswer": "<p>地址段 200.168.9.0/24 一共可以划分 256 个 IP 地址, 依据题意需要划分为 3 部分, 且不等长,因此不可以均等划分。由于部门一需要 $120+\\mathrm{IP}$ 地址, 因此我们可以先将子网 200.168.9.0/25 划分给部门一, 子网 200.168.9.0/25 去除网络地址和广播地址仍有 126 个 IP 地址可供使用,而剩下的子网 200.168.9.128/25 已有一半 (即 200.168.9.128/26) 划分给了部门二, 因此需要将剩下的 200.168.9.192/26 划分给部门三, 其内部有 62 个 IP 地址可分配给主机使用, 符合题意。综上, 分配方案为: 部门一子网: 200.168.9.0/25, 部门二子网: 200.168.9.128/26, 部门三子网: 200.168.9.192/26。(2 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 2,
+                "questionStem": "<p>假设各网络部件均正常运行且路由表均已收敛，请给出路由器R3的路由表，要求路由表项尽可能少（路由表项应包括目的网络、子网掩码、下一跳、转发接口）。</p>",
+                "questionAnswer": "<p>要求路由表项尽可能少，因此需要采用路由聚合，答案如下：（3分）</p><table><tr><td>目的网络</td><td>子网掩码</td><td>下一跳</td><td>转发接口</td></tr><tr><td>200.168.9.192</td><td>255.255.255.192</td><td>—</td><td>X3</td></tr><tr><td>200.168.9.128</td><td>255.255.255.192</td><td>—</td><td>X2</td></tr><tr><td>200.168.9.0</td><td>255.255.255.128</td><td>—</td><td>X1</td></tr><tr><td>0.0.0.0</td><td>0.0.0.0</td><td>200.168.10.2</td><td>L1</td></tr></table>",
+                "questionAnalysis": null,
+                "questionScore": 3.0
+            },
+            {
+                "questionOrder": 3,
+                "questionStem": "<p>假设主机1的默认网关误设置为200.168.10.5，网络中无其他配置错误，请问主机1能否与主机2、主机3进行双向正常通信？</p>",
+                "questionAnswer": "<p>200.168.10.5 是 L4 的地址, 说明主机 1 的默认网关配置错误且不可达, 主机 2 和主机 1 在同一局域网, 发送的数据可以直接交付, 因此主机 1 可以和主机 2 正常通信。而主机 3 和主机 1 不在同一局域网, 主机 1 发往主机 3 的数据必须经路由器 R3 转发, 但默认网关配置错误导致无法送达 R3, 因此主机 1 和主机 3 不能正常通信。(2 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            },
+            {
+                "questionOrder": 4,
+                "questionStem": "<p>假设主机3的IP地址设置为200.168.9.130，子网掩码误设置为255.255.255.0，网络中无其他配置错误，请问主机3能够否与主机4和主机5进行双向正常通信？</p><p>![image](https://s3.hi168.com/hi168-26998-7111ilq6/exercises/2217aadc01d49e9cb6c42d35e62fd51fddb28d6e6cf62cf07acc59c2d81b71d0-1771672776528.jpg)</p>",
+                "questionAnswer": "<p>主机 3 在向目的主机发送数据前首先需要将自身 IP 地址、目的主机的 IP 地址与自身子网掩码相与, 若结果相同则判断目的主机与自身处于同一局域网, 可以直接交付数据。而主机 3、 4、5 的 IP 地址与 255.255.255.0 相与都是 200.168.9.0 , 因此主机 3 判断与主机 4、5 处于同一局域网, 都进行直接交付。主机 5 与主机 3 确实处于同一局域网, 可以正常通信, 但主机 3 与主机 4 不处于同一局域网, 不可以正常通信。(2 分)</p>",
+                "questionAnalysis": null,
+                "questionScore": 2.0
+            }
+        ],
+        "fromSchool": "25竟成6套",
+        "examTime": "2024年",
+        "examCode": "408",
+        "examFullName": "计算机学科基础综合（一）",
+        "exerciseNumber": 47,
+        "totalScore": 9,
+        "knowledgeTags": [
+            "1220679334461972480",
+            "1220681307722620928",
+            "1220681393047347200"
+        ]
+    }
+]

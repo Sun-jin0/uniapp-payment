@@ -1,0 +1,68 @@
+{
+  "total": 6,
+  "pages": 1,
+  "page": 1,
+  "size": 100,
+  "list": [
+    {
+      "courseId": "100101",
+      "questionBankCategoryId": "1001",
+      "courseName": "生理学",
+      "sort": 1,
+      "isUnlocked": 0,
+      "createTime": "2025-12-20 19:22:00",
+      "totalQuestionCount": 1205,
+      "doneQuestionCount": 6
+    },
+    {
+      "courseId": "100102",
+      "questionBankCategoryId": "1001",
+      "courseName": "生物化学与分子生物学",
+      "sort": 2,
+      "isUnlocked": 0,
+      "createTime": "2025-12-20 19:22:01",
+      "totalQuestionCount": 915,
+      "doneQuestionCount": 0
+    },
+    {
+      "courseId": "100103",
+      "questionBankCategoryId": "1001",
+      "courseName": "病理学",
+      "sort": 3,
+      "isUnlocked": 0,
+      "createTime": "2025-12-20 19:22:01",
+      "totalQuestionCount": 905,
+      "doneQuestionCount": 0
+    },
+    {
+      "courseId": "100104",
+      "questionBankCategoryId": "1001",
+      "courseName": "内科学",
+      "sort": 4,
+      "isUnlocked": 0,
+      "createTime": "2025-12-20 19:22:01",
+      "totalQuestionCount": 1927,
+      "doneQuestionCount": 0
+    },
+    {
+      "courseId": "100105",
+      "questionBankCategoryId": "1001",
+      "courseName": "外科学",
+      "sort": 5,
+      "isUnlocked": 0,
+      "createTime": "2025-12-20 19:22:01",
+      "totalQuestionCount": 1280,
+      "doneQuestionCount": 0
+    },
+    {
+      "courseId": "100106",
+      "questionBankCategoryId": "1001",
+      "courseName": "人文精神",
+      "sort": 6,
+      "isUnlocked": 0,
+      "createTime": "2025-12-20 19:22:01",
+      "totalQuestionCount": 352,
+      "doneQuestionCount": 0
+    }
+  ]
+}

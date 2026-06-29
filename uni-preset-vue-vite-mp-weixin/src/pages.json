@@ -1,0 +1,509 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "QuizMaster刷题"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/practice/practice",
+			"style": {
+				"navigationBarTitleText": "题库",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/exam/exam",
+			"style": {
+				"navigationBarTitleText": "资料"
+			}
+		},
+		{
+			"path": "pages/profile/profile",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"navigationBarBackgroundColor": "#6366f1",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/membership/membership-center",
+			"style": {
+				"navigationBarTitleText": "会员中心",
+				"navigationBarBackgroundColor": "#ff9800",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/membership/membership-admin",
+			"style": {
+				"navigationBarTitleText": "会员管理",
+				"navigationBarBackgroundColor": "#ff9800",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/membership/membership-buy",
+			"style": {
+				"navigationBarTitleText": "开通会员",
+				"navigationBarBackgroundColor": "#ff9800",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/membership/membership-orders",
+			"style": {
+				"navigationBarTitleText": "我的订单",
+				"navigationBarBackgroundColor": "#ff9800",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/profile/avatar-frame-select",
+			"style": {
+				"navigationBarTitleText": "选择头像框"
+			}
+		},
+		{
+			"path": "pages/profile/privacy-policy",
+			"style": {
+				"navigationBarTitleText": "隐私政策",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/english/english-main",
+			"style": {
+				"navigationBarTitleText": "考研英语",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/politics/politics-main",
+			"style": {
+				"navigationBarTitleText": "背诵"
+			}
+		},
+		{
+			"path": "pages/result/result",
+			"style": {
+				"navigationBarTitleText": "考试结果"
+			}
+		},
+		{
+			"path": "pages/webview/webview",
+			"style": {
+				"navigationBarTitleText": "正在加载..."
+			}
+		},
+		{
+			"path": "pages/ranking/ranking",
+			"style": {
+				"navigationBarTitleText": "排行榜",
+				"navigationBarBackgroundColor": "#e0f7fa",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/user-info/user-info",
+			"style": {
+				"navigationBarTitleText": "个人资料",
+				"navigationBarBackgroundColor": "#6366f1",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/qq-group/qq-group-list",
+			"style": {
+				"navigationBarTitleText": "Q群讨论",
+				"navigationBarBackgroundColor": "#e0f2fe",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/draw-card/draw-card",
+			"style": {
+				"navigationBarTitleText": "祈福抽卡",
+				"navigationBarBackgroundColor": "#e53935",
+				"navigationBarTextStyle": "white"
+			}
+		},
+		{
+			"path": "pages/checkin/checkin-home",
+			"style": {
+				"navigationBarTitleText": "每日打卡"
+			}
+		},
+		{
+			"path": "pages/checkin/checkin-category",
+			"style": {
+				"navigationBarTitleText": "打卡详情"
+			}
+		},
+		{
+			"path": "pages/checkin/checkin",
+			"style": {
+				"navigationBarTitleText": "每日打卡",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/checkin/checkin-history",
+			"style": {
+				"navigationBarTitleText": "打卡记录",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/privacy/app-privacy",
+			"style": {
+				"navigationBarTitleText": "用户服务协议",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/privacy/mini-program-privacy",
+			"style": {
+				"navigationBarTitleText": "隐私保护指引",
+				"navigationBarBackgroundColor": "#fff",
+				"navigationBarTextStyle": "black"
+			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "pages/computer",
+			"pages": [
+				{
+					"path": "computer-chapter-detail",
+					"style": {
+						"navigationBarTitleText": "章节详情",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-question-detail",
+					"style": {
+						"navigationBarTitleText": "题目详情",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-test",
+					"style": {
+						"navigationBarTitleText": "模拟测试",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-my-favorites",
+					"style": {
+						"navigationBarTitleText": "我的收藏",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-generated-paper",
+					"style": {
+						"navigationBarTitleText": "智能练习卷",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-generated-paper-analysis",
+					"style": {
+						"navigationBarTitleText": "练习卷解析",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-chapter-select",
+					"style": {
+						"navigationBarTitleText": "选择资源",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-practice-search",
+					"style": {
+						"navigationBarTitleText": "题目搜索",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-paper-import",
+					"style": {
+						"navigationBarTitleText": "计算机试卷结构导入",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-practice",
+					"style": {
+						"navigationBarTitleText": "计算机综合练习",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-list",
+					"style": {
+						"navigationBarTitleText": "计算机题目列表",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-wrong-book",
+					"style": {
+						"navigationBarTitleText": "错题本"
+					}
+				},
+				{
+					"path": "computer-online-exam",
+					"style": {
+						"navigationBarTitleText": "在线考试"
+					}
+				},
+				{
+					"path": "tutorial-detail",
+					"style": {
+						"navigationBarTitleText": "教辅章节"
+					}
+				},
+				{
+					"path": "tutorial-practice",
+					"style": {
+						"navigationBarTitleText": "题集刷题",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-exam-detail",
+					"style": {
+						"navigationBarTitleText": "正在考试",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "computer-exam-result",
+					"style": {
+						"navigationBarTitleText": "考试结果"
+					}
+				},
+				{
+					"path": "computer-exam-ranking",
+					"style": {
+						"navigationBarTitleText": "考试排名",
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/math",
+			"pages": [
+				{
+					"path": "math-bookshelf",
+					"style": {
+						"navigationBarTitleText": "考研数学"
+					}
+				},
+				{
+					"path": "math-book-detail",
+					"style": {
+						"navigationBarTitleText": "书籍详情"
+					}
+				},
+				{
+					"path": "math-question-detail",
+					"style": {
+						"navigationBarTitleText": "题目详情",
+						"navigationBarBackgroundColor": "#4db6ac",
+						"navigationBarTextStyle": "white"
+					}
+				},
+				{
+					"path": "math-practice",
+					"style": {
+						"navigationBarTitleText": "模拟真题"
+					}
+				},
+				{
+					"path": "math-knowledge-point-practice",
+					"style": {
+						"navigationBarTitleText": "考点刷题"
+					}
+				},
+				{
+					"path": "math-knowledge-questions",
+					"style": {
+						"navigationBarTitleText": "考点题目"
+					}
+				},
+				{
+					"path": "math-all-books",
+					"style": {
+						"navigationBarTitleText": "全部书籍"
+					}
+				},
+				{
+					"path": "math-my-favorites",
+					"style": {
+						"navigationBarTitleText": "我的收藏"
+					}
+				},
+				{
+					"path": "math-smart-paper-config",
+					"style": {
+						"navigationBarTitleText": "智能组卷配置"
+					}
+				},
+				{
+					"path": "math-generated-paper",
+					"style": {
+						"navigationBarTitleText": "智能练习卷",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "math-generated-paper-analysis",
+					"style": {
+						"navigationBarTitleText": "练习卷解析"
+					}
+				},
+				{
+					"path": "practice-search",
+					"style": {
+						"navigationBarTitleText": "题目练习搜索"
+					}
+				},
+				{
+					"path": "math-webview",
+					"style": {
+						"navigationBarTitleText": "数学刷题网页版"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/med",
+			"pages": [
+				{
+					"path": "med-list",
+					"style": {
+						"navigationBarTitleText": "西医综合",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "med-practice",
+					"style": {
+						"navigationBarTitleText": "西医综合练习",
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/public",
+			"pages": [
+				{
+					"path": "public-practice",
+					"style": {
+						"navigationBarTitleText": "公共题库练习",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "public-book-detail",
+					"style": {
+						"navigationBarTitleText": "书籍详情",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "public-category-list",
+					"style": {
+						"navigationBarTitleText": "分类列表",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "public-book-list",
+					"style": {
+						"navigationBarTitleText": "书籍列表",
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/article",
+			"pages": [
+				{
+					"path": "article-detail",
+					"style": {
+						"navigationBarTitleText": "文章详情"
+					}
+				},
+				{
+					"path": "my-collections",
+					"style": {
+						"navigationBarTitleText": "我的收藏"
+					}
+				}
+			]
+		}
+	],
+	"preloadRule": {
+		"pages/index/index": {
+			"network": "all",
+			"packages": ["pages/public"]
+		}
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "QuizMaster刷题",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#666666",
+		"selectedColor": "#2196F3",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-active.png"
+			},
+			{
+				"pagePath": "pages/practice/practice",
+				"text": "题库",
+				"iconPath": "static/tabbar/practice.png",
+				"selectedIconPath": "static/tabbar/practice-active.png"
+			},
+			{
+				"pagePath": "pages/exam/exam",
+				"text": "资料",
+				"iconPath": "static/tabbar/resource.png",
+				"selectedIconPath": "static/tabbar/resource-active.png"
+			},
+			{
+				"pagePath": "pages/profile/profile",
+				"text": "我的",
+				"iconPath": "static/tabbar/profile.png",
+				"selectedIconPath": "static/tabbar/profile-active.png"
+			}
+		]
+	}
+}

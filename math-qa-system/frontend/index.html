@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学题智能解答系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #5DADE2;
+            --success-color: #28a745;
+            --warning-color: #F39C12;
+            --page-width: 210mm;
+            --page-margin-top: 15mm;
+            --page-margin-bottom: 15mm;
+            --page-margin-sides: 20mm;
+            --q-label-fontsize: 11pt;
+            --q-content-fontsize: 11pt;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif, "SimSun", "STSong", serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f2f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), #3498db);
+            color: white;
+            padding: 15mm 20mm;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3mm;
+        }
+
+        .header p {
+            font-size: 10pt;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 95vw;
+            margin: 10mm auto;
+            padding: 0 10mm;
+        }
+
+        .main-layout {
+            display: flex;
+            gap: 10mm;
+        }
+
+        .left-panel {
+            flex: 0 0 400px;
+        }
+
+        .right-panel {
+            flex: 1;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            padding: 8mm;
+            margin-bottom: 10mm;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .panel-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5mm;
+            padding-bottom: 3mm;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .panel-title.success {
+            border-bottom-color: var(--success-color);
+        }
+
+        .input-group {
+            margin-bottom: 5mm;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 10pt;
+            color: #666;
+            margin-bottom: 2mm;
+        }
+
+        .input-group textarea {
+            width: 100%;
+            min-height: 80mm;
+            padding: 3mm;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-family: inherit;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 3mm;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 3mm 6mm;
+            border: none;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3498db;
+        }
+
+        .btn-primary:disabled {
+            background: #b0d4e8;
+            cursor: not-allowed;
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .message {
+            padding: 3mm;
+            border-radius: 4px;
+            margin-top: 3mm;
+            font-size: 9pt;
+            display: none;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.success {
+            background: #d4edda;
+            border: 1px solid var(--success-color);
+            color: #155724;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            border: 1px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .stats {
+            display: flex;
+            gap: 5mm;
+            padding: 3mm;
+            background: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 5mm;
+            font-size: 10pt;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 10mm;
+            color: #666;
+        }
+
+        .loading .spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 5mm;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 预览区域样式 */
+        .preview-content {
+            font-size: var(--q-content-fontsize);
+            line-height: 1.7;
+            overflow-x: visible !important;
+        }
+
+        .katex-display {
+            margin: 0.5em 0 !important;
+            overflow-x: visible !important;
+            display: block;
+            text-align: center;
+        }
+
+        .katex {
+            overflow: visible !important;
+            white-space: nowrap !important;
+            font-size: 1.1em !important;
+        }
+
+        /* 数据列表 */
+        .data-list {
+            max-height: 150mm;
+            overflow-y: auto;
+        }
+
+        .data-item {
+            padding: 3mm;
+            background: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 3mm;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .data-item:hover {
+            background: #e9ecef;
+        }
+
+        .data-item .item-preview {
+            font-size: 9pt;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .data-item .item-meta {
+            font-size: 8pt;
+            color: #999;
+            margin-top: 1mm;
+        }
+
+        .data-item .item-actions {
+            display: flex;
+            gap: 2mm;
+            margin-top: 2mm;
+        }
+
+        .data-item .item-actions button {
+            padding: 1mm 3mm;
+            border: none;
+            border-radius: 3px;
+            font-size: 8pt;
+            cursor: pointer;
+        }
+
+        .data-item .item-actions .edit-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .data-item .item-actions .delete-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* 结果展示 */
+        .result-box {
+            padding: 5mm;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .result-item {
+            margin-bottom: 5mm;
+        }
+
+        .result-label {
+            font-weight: bold;
+            margin-bottom: 2mm;
+            color: #333;
+        }
+
+        .result-content {
+            padding: 3mm;
+            background: white;
+            border-radius: 4px;
+            min-height: 20mm;
+        }
+
+        /* Token统计 */
+        .token-stats {
+            margin-top: 5mm;
+            padding: 3mm;
+            background: #f8f9fa;
+            border-radius: 4px;
+            font-size: 9pt;
+        }
+
+        .token-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1mm 0;
+        }
+
+        .token-label {
+            color: #666;
+        }
+
+        .token-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* 示例信息 */
+        .examples-info {
+            margin-top: 3mm;
+            padding: 2mm;
+            background: #e8f4f8;
+            border-radius: 4px;
+            font-size: 9pt;
+            color: #666;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <h1>📐 数学题智能解答系统</h1>
+            <p>基于 Few-shot Learning + DeepSeek-V3.2 模型</p>
+        </div>
+
+        <div class="container">
+            <!-- 数据统计 -->
+            <div class="panel">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span>数据集文件：</span>
+                        <span class="stat-value">math_one_finetune_dataset.jsonl</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>当前条目数：</span>
+                        <span class="stat-value">{{ dataset.length }}</span>
+                    </div>
+                    <div class="stat-item">
+                        <button class="btn btn-secondary" @click="loadDataset" style="padding:2mm 4mm;font-size:9pt;">🔄 刷新</button>
+                        <input type="file" ref="fileInput" @change="handleFileUpload" accept=".jsonl" style="display:none;">
+                        <button class="btn btn-secondary" @click="$refs.fileInput.click()" style="padding:2mm 4mm;font-size:9pt;">📂 上传文件</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-layout">
+                <!-- 左侧输入面板 -->
+                <div class="left-panel">
+                    <div class="panel">
+                        <div class="panel-title">📝 输入题目</div>
+
+                        <div class="input-group">
+                            <label>题目（input）：</label>
+                            <textarea v-model="question" @input="updatePreview" placeholder="输入数学题目..."></textarea>
+                        </div>
+
+                        <div class="input-group">
+                            <label>解析（output）：</label>
+                            <textarea v-model="answer" @input="updatePreview" placeholder="AI生成的解析会显示在这里..."></textarea>
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn btn-success" @click="solveQuestion" :disabled="loading || !question">
+                                🤖 AI解答
+                            </button>
+                            <button class="btn btn-primary" @click="saveData" :disabled="!question || !answer">
+                                💾 保存
+                            </button>
+                            <button class="btn btn-secondary" @click="clearInput">
+                                🗑️ 清空
+                            </button>
+                        </div>
+
+                        <div class="message" :class="['show', messageType]" v-if="message">
+                            {{ message }}
+                        </div>
+
+                        <div class="loading" v-if="loading">
+                            <div class="spinner"></div>
+                            <p>🤔 AI思考中，请稍候...</p>
+                            <p style="font-size:9pt;color:#999;">Few-shot Learning 动态学习中...</p>
+                        </div>
+
+                        <div class="examples-info" v-if="usedExamples.length > 0 && !loading">
+                            📚 本次使用了 {{ usedExamples.length }} 条示例进行Few-shot学习
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧显示面板 -->
+                <div class="right-panel">
+                    <div class="panel" v-if="question || answer">
+                        <div class="panel-title success">📖 解答结果</div>
+
+                        <div class="result-box">
+                            <div class="result-item">
+                                <div class="result-label">【题目】</div>
+                                <div class="result-content preview-content" ref="questionContent"></div>
+                            </div>
+
+                            <div class="result-item">
+                                <div class="result-label">【解析】</div>
+                                <div class="result-content preview-content" ref="answerContent"></div>
+                            </div>
+                        </div>
+
+                        <div class="token-stats" v-if="tokenUsage">
+                            <div class="token-item">
+                                <span class="token-label">输入Token</span>
+                                <span class="token-value">{{ tokenUsage.prompt_tokens || '-' }}</span>
+                            </div>
+                            <div class="token-item">
+                                <span class="token-label">输出Token</span>
+                                <span class="token-value">{{ tokenUsage.completion_tokens || '-' }}</span>
+                            </div>
+                            <div class="token-item">
+                                <span class="token-label">总Token</span>
+                                <span class="token-value">{{ tokenUsage.total_tokens || '-' }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-title">📋 数据列表</div>
+                        <div class="data-list">
+                            <div v-if="dataset.length === 0" style="color:#999;font-size:9pt;text-align:center;padding:10mm;">
+                                暂无数据，请上传文件或添加数据
+                            </div>
+                            <div v-for="(item, index) in dataset" :key="index" class="data-item">
+                                <div class="item-preview">{{ index + 1 }}. {{ item.input.substring(0, 80) }}...</div>
+                                <div class="item-meta">解析长度: {{ item.output.length }} 字符</div>
+                                <div class="item-actions">
+                                    <button class="edit-btn" @click="loadItem(index)">编辑</button>
+                                    <button class="delete-btn" @click="deleteItem(index)">删除</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, nextTick, watch } = Vue;
+
+        createApp({
+            setup() {
+                const API_BASE = 'http://localhost:8000';
+
+                const question = ref('');
+                const answer = ref('');
+                const dataset = ref([]);
+                const loading = ref(false);
+                const message = ref('');
+                const messageType = ref('success');
+                const tokenUsage = ref(null);
+                const usedExamples = ref([]);
+                const fileInput = ref(null);
+                const answerContent = ref(null);
+                const questionContent = ref(null);
+
+                // 加载数据集
+                const loadDataset = async () => {
+                    try {
+                        const res = await axios.get(`${API_BASE}/dataset`);
+                        dataset.value = res.data.items || [];
+                        showMessage(`已加载 ${dataset.value.length} 条数据`);
+                    } catch (error) {
+                        console.error('加载失败:', error);
+                        showMessage('加载数据失败，请确保后端服务已启动', 'error');
+                    }
+                };
+
+                // 上传文件
+                const handleFileUpload = async (event) => {
+                    const file = event.target.files[0];
+                    if (!file) return;
+
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    try {
+                        const res = await axios.post(`${API_BASE}/dataset/upload`, formData);
+                        showMessage(res.data.message);
+                        await loadDataset();
+                    } catch (error) {
+                        console.error('上传失败:', error);
+                        showMessage('上传失败: ' + (error.response?.data?.detail || error.message), 'error');
+                    }
+
+                    event.target.value = '';
+                };
+
+                // AI解答
+                const solveQuestion = async () => {
+                    if (!question.value.trim()) {
+                        showMessage('请输入题目', 'error');
+                        return;
+                    }
+
+                    loading.value = true;
+                    message.value = '';
+                    answer.value = '';
+                    tokenUsage.value = null;
+                    usedExamples.value = [];
+
+                    try {
+                        const res = await axios.post(`${API_BASE}/solve`, {
+                            question: question.value,
+                            example_count: 3
+                        });
+
+                        answer.value = res.data.answer;
+                        tokenUsage.value = res.data.usage;
+                        usedExamples.value = res.data.examples || [];
+
+                        showMessage(`解答成功！使用了 ${res.data.examples_used} 条示例进行Few-shot学习`);
+
+                        // 等待DOM更新后再设置内容和渲染公式
+                        nextTick(() => {
+                            if (questionContent.value) {
+                                questionContent.value.innerHTML = transformText(question.value);
+                                renderMath(questionContent.value);
+                            }
+                            if (answerContent.value) {
+                                answerContent.value.innerHTML = transformText(res.data.answer);
+                                renderMath(answerContent.value);
+                            }
+                        });
+                    } catch (error) {
+                        console.error('解答失败:', error);
+                        showMessage('解答失败: ' + (error.response?.data?.detail || error.message), 'error');
+                    } finally {
+                        loading.value = false;
+                    }
+                };
+
+                // 保存数据
+                const saveData = async () => {
+                    if (!question.value.trim() || !answer.value.trim()) {
+                        showMessage('题目和解析都不能为空', 'error');
+                        return;
+                    }
+
+                    try {
+                        const res = await axios.post(`${API_BASE}/dataset`, {
+                            input: question.value,
+                            output: answer.value
+                        });
+                        showMessage(res.data.message);
+                        await loadDataset();
+                    } catch (error) {
+                        console.error('保存失败:', error);
+                        showMessage('保存失败: ' + (error.response?.data?.detail || error.message), 'error');
+                    }
+                };
+
+                // 删除数据
+                const deleteItem = async (index) => {
+                    if (!confirm(`确定删除第 ${index + 1} 条数据吗？`)) return;
+
+                    try {
+                        const res = await axios.delete(`${API_BASE}/dataset/${index}`);
+                        showMessage(res.data.message);
+                        await loadDataset();
+                    } catch (error) {
+                        console.error('删除失败:', error);
+                        showMessage('删除失败', 'error');
+                    }
+                };
+
+                // 加载单条数据
+                const loadItem = (index) => {
+                    const item = dataset.value[index];
+                    question.value = item.input;
+                    answer.value = item.output;
+                    // 先设置HTML内容，然后立即渲染公式（与math-qa-demo.html一致）
+                    nextTick(() => {
+                        if (questionContent.value) {
+                            questionContent.value.innerHTML = transformText(item.input);
+                            renderMath(questionContent.value);
+                        }
+                        if (answerContent.value) {
+                            answerContent.value.innerHTML = transformText(item.output);
+                            renderMath(answerContent.value);
+                        }
+                    });
+                    window.scrollTo(0, 0);
+                    showMessage(`已加载第 ${index + 1} 条数据`);
+                };
+
+                // 清空
+                const clearInput = () => {
+                    question.value = '';
+                    answer.value = '';
+                    tokenUsage.value = null;
+                    usedExamples.value = [];
+                };
+
+                // 实时更新预览
+                const updatePreview = () => {
+                    nextTick(() => {
+                        if (questionContent.value && question.value) {
+                            questionContent.value.innerHTML = transformText(question.value);
+                            renderMath(questionContent.value);
+                        } else if (questionContent.value) {
+                            questionContent.value.innerHTML = '';
+                        }
+                        if (answerContent.value && answer.value) {
+                            answerContent.value.innerHTML = transformText(answer.value);
+                            renderMath(answerContent.value);
+                        } else if (answerContent.value) {
+                            answerContent.value.innerHTML = '';
+                        }
+                    });
+                };
+
+                // 显示消息
+                const showMessage = (msg, type = 'success') => {
+                    message.value = msg;
+                    messageType.value = type;
+                    setTimeout(() => {
+                        message.value = '';
+                    }, 5000);
+                };
+
+                // 格式化文本 - 与 test-pdf-export.html 完全一致的 transformText 函数
+                const transformText = (text) => {
+                    if (!text) return '';
+
+                    let content = text.trim()
+                        .replace(/／/g, '/')
+                        .replace(/\．/g, '.')
+                        .replace(/\\r\\n/g, '\n')
+                        .replace(/\\n(?![a-zA-Z])/g, '\n');
+
+                    // 将 \\( 和 \\) 转换为 \( 和 \)，以便 KaTeX 识别
+                    content = content.replace(/\\\\\(/g, '\\(').replace(/\\\\\)/g, '\\)');
+                    content = content.replace(/\\\\\[/g, '\\[').replace(/\\\\\]/g, '\\]');
+
+                    const latexBlocks = [];
+
+                    // 保护 $$...$$ 块级公式
+                    content = content.replace(/\$\$[\s\S]*?\$\$/g, (match) => {
+                        latexBlocks.push(match);
+                        return `__LATEX_BLOCK_${latexBlocks.length - 1}__`;
+                    });
+
+                    // 保护 $...$ 行内公式
+                    content = content.replace(/\$[^\$]+\$/g, (match) => {
+                        latexBlocks.push(match);
+                        return `__LATEX_INLINE_${latexBlocks.length - 1}__`;
+                    });
+
+                    // 保护 \(...\) 行内公式
+                    content = content.replace(/\\\([\s\S]*?\\\)/g, (match) => {
+                        latexBlocks.push(match);
+                        return `__LATEX_PAREN_${latexBlocks.length - 1}__`;
+                    });
+
+                    // 保护 \[...\] 块级公式
+                    content = content.replace(/\\\[[\s\S]*?\\\]/g, (match) => {
+                        latexBlocks.push(match);
+                        return `__LATEX_BRACKET_${latexBlocks.length - 1}__`;
+                    });
+
+                    // 处理 Markdown 图片语法 ![alt](url)
+                    content = content.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(match, alt, url) {
+                        let cleanUrl = url.replace(/(_yjs|_thumb|_small|_medium|_large)(\?.*)?$/i, '$2');
+                        return '<div style="width:50%;"><img src="' + cleanUrl + '" style="max-width:100%;height:auto;display:block;margin:5px 0;" alt="' + alt + '" /></div>';
+                    });
+
+                    // 标签样式
+                    const answerLabelStyle = 'color:#fff;background-color:#009688;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+                    const analysisLabelStyle = 'color:#fff;background-color:#009688;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+                    const stepLabelStyle = 'color:#fff;background-color:#E91E63;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+
+                    // 处理 《答案》【答案】《/答案》
+                    content = content.replace(/《答案》\s*【答案】\s*《\/答案》/g, `<span style="${answerLabelStyle}">答案</span>`);
+                    // 处理 《答案》【证明】《/答案》
+                    content = content.replace(/《答案》\s*【证明】\s*《\/答案》/g, `<span style="${answerLabelStyle}">证明</span>`);
+                    // 处理 《答案》【解析】《/答案》
+                    content = content.replace(/《答案》\s*【解析】\s*《\/答案》/g, `<span style="${answerLabelStyle}">答案</span>`);
+                    // 处理 《答案》...《/答案》
+                    content = content.replace(/《答案》([\s\S]*?)《\/答案》/g, '<span style="' + answerLabelStyle + '">答案</span>$1');
+
+                    // 处理 《分析》【解析】《/分析》
+                    content = content.replace(/《分析》\s*【解析】\s*《\/分析》/g, `<span style="${analysisLabelStyle}">解析</span>`);
+                    // 处理 《分析》【思路分析】《/分析》
+                    content = content.replace(/《分析》\s*【思路分析】\s*《\/分析》/g, `<span style="${analysisLabelStyle}">思路分析</span>`);
+                    // 处理 《分析》...《/分析》
+                    content = content.replace(/《分析》([\s\S]*?)《\/分析》/g, '<span style="' + analysisLabelStyle + '">分析</span><span style="color:#009688;">$1</span>');
+
+                    // 处理 《注释》...《/注释》- 青色字体
+                    content = content.replace(/《注释》([\s\S]*?)《\/注释》/g, '<span style="color:#009688;">$1</span>');
+
+                    // 处理 《步骤》...《/步骤》- 橙色加粗
+                    content = content.replace(/《步骤》([\s\S]*?)《\/步骤》/g, '<span style="color:#FF9800;font-weight:bold;">$1</span>');
+
+                    // 处理 《点评》...《/点评》- 直接删除不显示
+                    content = content.replace(/《点评》[\s\S]*?《\/点评》/g, '');
+
+                    // 处理 【欧几里得...】相关内容 - 直接删除不显示
+                    content = content.replace(/【欧几里得[^】]*?】/g, '');
+
+                    // 处理 【命题人...】相关内容 - 直接删除不显示
+                    content = content.replace(/【命题人[^】]*?】/g, '');
+
+                    // 处理 Markdown 标题
+                    content = content.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+                    content = content.replace(/^## (.+)$/gm, '<h3>$1</h3>');
+                    content = content.replace(/^# (.+)$/gm, '<h3>$1</h3>');
+
+                    // 处理代码块
+                    content = content.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+                    content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+                    // 处理粗体和斜体
+                    content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                    content = content.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+                    // 处理换行
+                    content = content.replace(/\n/g, '<br/>');
+
+                    // 恢复 LaTeX 公式
+                    content = content.replace(/__LATEX_BLOCK_(\d+)__/g, (match, index) => latexBlocks[index]);
+                    content = content.replace(/__LATEX_INLINE_(\d+)__/g, (match, index) => latexBlocks[index]);
+                    content = content.replace(/__LATEX_PAREN_(\d+)__/g, (match, index) => latexBlocks[index]);
+                    content = content.replace(/__LATEX_BRACKET_(\d+)__/g, (match, index) => latexBlocks[index]);
+
+                    return content;
+                };
+
+                // 渲染数学公式
+                const renderMath = (element) => {
+                    if (element && typeof renderMathInElement === 'function') {
+                        try {
+                            renderMathInElement(element, {
+                                delimiters: [
+                                    {left: "$$", right: "$$", display: true},
+                                    {left: "$", right: "$", display: false},
+                                    {left: "\\[", right: "\\]", display: true},
+                                    {left: "\\(", right: "\\)", display: false}
+                                ],
+                                throwOnError: false,
+                                trust: true,
+                                strict: false
+                            });
+                        } catch (e) {
+                            console.error('KaTeX渲染错误:', e);
+                        }
+                    }
+                };
+
+                // 格式化文本
+                const formatText = (text) => {
+                    return transformText(text);
+                };
+
+                // 监听 question 变化，自动渲染公式
+                watch(question, (newVal) => {
+                    if (newVal && questionContent.value) {
+                        questionContent.value.innerHTML = transformText(newVal);
+                        renderMath(questionContent.value);
+                    }
+                });
+
+                // 监听 answer 变化，自动渲染公式
+                watch(answer, (newVal) => {
+                    if (newVal && answerContent.value) {
+                        answerContent.value.innerHTML = transformText(newVal);
+                        renderMath(answerContent.value);
+                    }
+                });
+
+                // 初始化
+                loadDataset();
+
+                return {
+                    question,
+                    answer,
+                    dataset,
+                    loading,
+                    message,
+                    messageType,
+                    tokenUsage,
+                    usedExamples,
+                    fileInput,
+                    answerContent,
+                    questionContent,
+                    loadDataset,
+                    handleFileUpload,
+                    solveQuestion,
+                    saveData,
+                    deleteItem,
+                    loadItem,
+                    clearInput,
+                    updatePreview,
+                    formatText,
+                    renderMath
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

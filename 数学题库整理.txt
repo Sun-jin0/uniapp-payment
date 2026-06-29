@@ -1,0 +1,2 @@
+cd f:\Code\uniapp\demo\backend
+node scripts/fix_math_content.js

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学题数据集管理</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #5DADE2;
+            --success-color: #28a745;
+            --warning-color: #F39C12;
+            --page-width: 210mm;
+            --page-margin-top: 15mm;
+            --page-margin-bottom: 15mm;
+            --page-margin-sides: 20mm;
+            --q-label-fontsize: 11pt;
+            --q-content-fontsize: 11pt;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif, "SimSun", "STSong", serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f2f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), #3498db);
+            color: white;
+            padding: 15mm 20mm;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3mm;
+        }
+
+        .header p {
+            font-size: 10pt;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: var(--page-width);
+            margin: 10mm auto;
+            background: white;
+            padding: var(--page-margin-top) var(--page-margin-sides) var(--page-margin-bottom);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            min-height: 200mm;
+        }
+
+        .section {
+            margin-bottom: 10mm;
+            padding-bottom: 10mm;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5mm;
+            padding-bottom: 3mm;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .input-group {
+            margin-bottom: 5mm;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 10pt;
+            color: #666;
+            margin-bottom: 2mm;
+        }
+
+        .input-group textarea {
+            width: 100%;
+            min-height: 60mm;
+            padding: 3mm;
+            border: 2px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-family: inherit;
+            line-height: 1.6;
+            resize: vertical;
+        }
+
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 3mm;
+            margin-top: 5mm;
+        }
+
+        .btn {
+            padding: 3mm 8mm;
+            border: none;
+            border-radius: 4px;
+            font-size: 10pt;
+            font-family: inherit;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3498db;
+        }
+
+        .btn-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .message {
+            padding: 3mm;
+            border-radius: 4px;
+            margin-top: 3mm;
+            font-size: 9pt;
+            display: none;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.success {
+            background: #d4edda;
+            border: 1px solid var(--success-color);
+            color: #155724;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            border: 1px solid #e74c3c;
+            color: #721c24;
+        }
+
+        .stats {
+            margin-top: 5mm;
+            padding: 3mm;
+            background: #f8f9fa;
+            border-radius: 4px;
+            font-size: 9pt;
+        }
+
+        .stats-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 2mm 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stats-item:last-child {
+            border-bottom: none;
+        }
+
+        .preview-section {
+            margin-top: 10mm;
+        }
+
+        .preview-section h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5mm;
+            padding-bottom: 3mm;
+            border-bottom: 2px solid var(--success-color);
+        }
+
+        .preview-content {
+            font-size: var(--q-content-fontsize);
+            line-height: 1.7;
+            overflow-x: visible !important;
+        }
+
+        .katex-display {
+            margin: 0.5em 0 !important;
+            overflow-x: visible !important;
+            display: block;
+            text-align: center;
+        }
+
+        .katex {
+            overflow: visible !important;
+            white-space: nowrap !important;
+        }
+
+        .katex {
+            font-size: 1.1em !important;
+        }
+
+        .data-list {
+            margin-top: 10mm;
+        }
+
+        .data-list h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5mm;
+            padding-bottom: 3mm;
+            border-bottom: 2px solid #9b59b6;
+        }
+
+        .data-item {
+            padding: 3mm;
+            background: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 3mm;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .data-item:hover {
+            background: #e9ecef;
+        }
+
+        .data-item .item-preview {
+            font-size: 9pt;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .data-item .item-meta {
+            font-size: 8pt;
+            color: #999;
+            margin-top: 1mm;
+        }
+
+        .data-item .item-actions {
+            display: flex;
+            gap: 2mm;
+            margin-top: 2mm;
+        }
+
+        .data-item .item-actions button {
+            padding: 1mm 3mm;
+            border: none;
+            border-radius: 3px;
+            font-size: 8pt;
+            cursor: pointer;
+        }
+
+        .data-item .item-actions .edit-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .data-item .item-actions .delete-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                padding: 10mm;
+                margin: 5mm;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📚 数学题数据集管理</h1>
+        <p>Few-shot Learning 训练数据管理</p>
+    </div>
+
+    <div class="container">
+        <!-- 数据统计 -->
+        <div class="stats" id="stats">
+            <div class="stats-item">
+                <span>数据集文件：</span>
+                <span id="datasetFile">math_one_finetune_dataset.jsonl</span>
+            </div>
+            <div class="stats-item">
+                <span>当前条目数：</span>
+                <span id="dataCount">0</span>
+            </div>
+            <div class="stats-item">
+                <span></span>
+                <button class="btn btn-secondary" onclick="loadFromFile()" style="flex:0;padding:2mm 4mm;font-size:9pt;">🔄 从文件加载</button>
+                <input type="file" id="fileInput" accept=".jsonl" style="display:none;" onchange="handleFileUpload(event)">
+                <button class="btn btn-secondary" onclick="document.getElementById('fileInput').click()" style="flex:0;padding:2mm 4mm;font-size:9pt;margin-left:2mm;">📂 上传文件</button>
+            </div>
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="section">
+            <h3>📝 添加新数据</h3>
+
+            <div class="input-group">
+                <label>题目（input）：</label>
+                <textarea id="inputArea" placeholder="输入题目内容，例如：求函数f(x)=x^2的导数"></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>解析（output）：</label>
+                <textarea id="outputArea" placeholder="输入解析内容，例如：
+《答案》【答案】$2x$《/答案》
+《分析》【思路分析】
+根据导数定义式...
+《/分析》
+《步骤》
+第一步：...
+《/步骤》
+《注释》
+补充说明...
+《/注释》"></textarea>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-success" onclick="saveData()">💾 保存</button>
+                <button class="btn btn-secondary" onclick="previewData()">👁️ 预览</button>
+                <button class="btn btn-primary" onclick="callAI()">🤖 AI解答</button>
+                <button class="btn btn-danger" onclick="clearInput()">🗑️ 清空</button>
+            </div>
+
+            <div class="loading" id="loading" style="display:none;text-align:center;padding:10mm;">
+                <div style="font-size:12pt;color:#666;">🤔 AI思考中，请稍候...</div>
+            </div>
+
+            <div class="message" id="message"></div>
+        </div>
+
+        <!-- 预览区域 -->
+        <div class="preview-section" id="previewSection" style="display: none;">
+            <h3>👁️ 预览效果</h3>
+            <div class="preview-content" id="previewContent"></div>
+        </div>
+
+        <!-- 数据列表 -->
+        <div class="data-list">
+            <h3>📋 数据列表</h3>
+            <div id="dataList">
+                <p style="color: #999; font-size: 9pt;">加载中...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let dataset = [];
+        const DATASET_FILE = 'math_one_finetune_dataset.jsonl';
+
+        // API配置
+        const API_KEY = 'sk-phuapszjdocebfmngytmyjqwlztpcljjhtpgawwfnapozlgv';
+        const API_URL = 'https://api.siliconflow.cn/v1/chat/completions';
+        const MODEL = 'deepseek-ai/DeepSeek-V3.2';
+
+        // 标签样式 - 与 test-pdf-export.html 完全一致
+        const answerLabelStyle = 'color:#fff;background-color:#009688;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+        const analysisLabelStyle = 'color:#fff;background-color:#009688;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+        const stepLabelStyle = 'color:#fff;background-color:#E91E63;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+        const commentLabelStyle = 'color:#fff;background-color:#00BCD4;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+
+        function loadDataset() {
+            // 优先从 localStorage 加载
+            const data = localStorage.getItem('math_dataset');
+            if (data) {
+                dataset = JSON.parse(data);
+            }
+            updateDataList();
+            updateStats();
+        }
+
+        // 从 JSONL 文件加载数据
+        async function loadFromFile() {
+            try {
+                const response = await fetch('math_one_finetune_dataset.jsonl');
+                console.log('fetch响应状态:', response.status);
+                if (!response.ok) {
+                    console.log('JSONL文件不存在或加载失败, 状态码:', response.status);
+                    showMessage('请使用"上传文件"按钮加载数据', 'error');
+                    return;
+                }
+                const text = await response.text();
+                console.log('文件内容长度:', text.length);
+                const lines = text.split('\n').filter(line => line.trim());
+                console.log('有效行数:', lines.length);
+
+                const fileData = lines.map(line => {
+                    try {
+                        return JSON.parse(line);
+                    } catch {
+                        return null;
+                    }
+                }).filter(item => item && item.input && item.output);
+
+                console.log('解析成功的数据条数:', fileData.length);
+
+                if (fileData.length > 0) {
+                    // 合并数据（避免重复）
+                    const existingInputs = new Set(dataset.map(d => d.input.substring(0, 50)));
+                    const newItems = fileData.filter(d => !existingInputs.has(d.input.substring(0, 50)));
+
+                    dataset = [...dataset, ...newItems];
+                    saveDataset();
+                    updateDataList();
+                    showMessage(`已从文件加载 ${newItems.length} 条数据！`);
+                } else {
+                    showMessage('文件中没有有效数据', 'error');
+                }
+            } catch (error) {
+                console.error('加载JSONL文件失败:', error);
+                showMessage('请使用"上传文件"按钮加载数据', 'error');
+            }
+        }
+
+        // 页面加载时自动从文件加载
+        window.addEventListener('DOMContentLoaded', () => {
+            loadDataset();
+            loadFromFile();
+        });
+
+        // 处理文件上传
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const text = e.target.result;
+                    const lines = text.split('\n').filter(line => line.trim());
+
+                    const fileData = lines.map(line => {
+                        try {
+                            return JSON.parse(line);
+                        } catch {
+                            return null;
+                        }
+                    }).filter(item => item && item.input && item.output);
+
+                    if (fileData.length > 0) {
+                        // 合并数据（避免重复）
+                        const existingInputs = new Set(dataset.map(d => d.input.substring(0, 50)));
+                        const newItems = fileData.filter(d => !existingInputs.has(d.input.substring(0, 50)));
+
+                        dataset = [...dataset, ...newItems];
+                        saveDataset();
+                        updateDataList();
+                        showMessage(`已上传并加载 ${newItems.length} 条数据！`);
+                    } else {
+                        showMessage('文件中没有有效数据', 'error');
+                    }
+                } catch (error) {
+                    showMessage('文件解析失败: ' + error.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = ''; // 清空input允许重复上传同一文件
+        }
+
+        function saveDataset() {
+            localStorage.setItem('math_dataset', JSON.stringify(dataset));
+            updateStats();
+        }
+
+        function updateStats() {
+            document.getElementById('dataCount').textContent = dataset.length;
+        }
+
+        function showMessage(text, type = 'success') {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.className = `message show ${type}`;
+            setTimeout(() => msg.classList.remove('show'), 3000);
+        }
+
+        function clearInput() {
+            document.getElementById('inputArea').value = '';
+            document.getElementById('outputArea').value = '';
+            document.getElementById('previewSection').style.display = 'none';
+        }
+
+        function saveData() {
+            const input = document.getElementById('inputArea').value.trim();
+            const output = document.getElementById('outputArea').value.trim();
+
+            if (!input) {
+                showMessage('请输入题目内容', 'error');
+                return;
+            }
+
+            if (!output) {
+                showMessage('请输入解析内容', 'error');
+                return;
+            }
+
+            const item = { input, output };
+            dataset.push(item);
+            saveDataset();
+            updateDataList();
+            clearInput();
+            showMessage(`已保存！当前共 ${dataset.length} 条数据`);
+            exportToFile();
+        }
+
+        function exportToFile() {
+            const content = dataset.map(item => JSON.stringify(item)).join('\n');
+            const blob = new Blob([content], { type: 'application/jsonl' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = DATASET_FILE;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // 与 test-pdf-export.html 完全一致的 transformText 函数
+        function transformText(text) {
+            if (!text) return '';
+
+            let content = text.trim()
+                .replace(/／/g, '/')
+                .replace(/\．/g, '.');
+
+            // 将 \\( 和 \\) 转换为 \( 和 \)，以便 KaTeX 识别
+            content = content.replace(/\\\\\(/g, '\\(').replace(/\\\\\)/g, '\\)');
+            content = content.replace(/\\\\\[/g, '\\[').replace(/\\\\\]/g, '\\]');
+
+            // 先处理非 LaTeX 部分，保留 LaTeX 公式不变
+            // 使用占位符保护 LaTeX 公式
+            const latexBlocks = [];
+
+            // 保护 $$...$$ 块级公式
+            content = content.replace(/\$\$[\s\S]*?\$\$/g, (match) => {
+                latexBlocks.push(match);
+                return `__LATEX_BLOCK_${latexBlocks.length - 1}__`;
+            });
+
+            // 保护 $...$ 行内公式
+            content = content.replace(/\$[^\$]+\$/g, (match) => {
+                latexBlocks.push(match);
+                return `__LATEX_INLINE_${latexBlocks.length - 1}__`;
+            });
+
+            // 处理图片
+            content = content.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(match, alt, url) {
+                let cleanUrl = url.replace(/(_yjs|_thumb|_small|_medium|_large)(\?.*)?$/i, '$2');
+                return '<div style="width:50%;"><img src="' + cleanUrl + '" style="max-width:100%;height:auto;display:block;margin:5px 0;" alt="' + alt + '" /></div>';
+            });
+
+            // 处理 《答案》【答案】《/答案》
+            content = content.replace(/《答案》\s*【答案】\s*《\/答案》/g, '<span style="' + answerLabelStyle + '">答案</span>');
+            // 处理 《答案》【证明】《/答案》
+            content = content.replace(/《答案》\s*【证明】\s*《\/答案》/g, '<span style="' + answerLabelStyle + '">证明</span>');
+            // 处理 《答案》【解析】《/答案》
+            content = content.replace(/《答案》\s*【解析】\s*《\/答案》/g, '<span style="' + answerLabelStyle + '">答案</span>');
+            // 处理 《答案》...《/答案》
+            content = content.replace(/《答案》([\s\S]*?)《\/答案》/g, '<span style="' + answerLabelStyle + '">答案</span>$1');
+
+            // 处理 《分析》【解析】《/分析》
+            content = content.replace(/《分析》\s*【解析】\s*《\/分析》/g, '<span style="' + analysisLabelStyle + '">解析</span>');
+            // 处理 《分析》【思路分析】《/分析》
+            content = content.replace(/《分析》\s*【思路分析】\s*《\/分析》/g, '<span style="' + analysisLabelStyle + '">思路分析</span>');
+            // 处理 《分析》...《/分析》
+            content = content.replace(/《分析》([\s\S]*?)《\/分析》/g, '<span style="' + analysisLabelStyle + '">分析</span><span style="color:#009688;">$1</span>');
+
+            // 处理 《注释》...《/注释》- 青色字体
+            content = content.replace(/《注释》([\s\S]*?)《\/注释》/g, '<span style="color:#009688;">$1</span>');
+
+            // 处理 《步骤》...《/步骤》- 橙色加粗
+            content = content.replace(/《步骤》([\s\S]*?)《\/步骤》/g, '<span style="color:#FF9800;font-weight:bold;">$1</span>');
+
+            // 处理 《点评》...《/点评》- 直接删除不显示
+            content = content.replace(/《点评》[\s\S]*?《\/点评》/g, '');
+
+            // 处理 【欧几里得...】相关内容 - 直接删除不显示
+            content = content.replace(/【欧几里得[^】]*?】/g, '');
+
+            // 处理 【命题人...】相关内容 - 直接删除不显示
+            content = content.replace(/【命题人[^】]*?】/g, '');
+
+            // 处理 Markdown 标题
+            content = content.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            content = content.replace(/^## (.+)$/gm, '<h3>$1</h3>');
+            content = content.replace(/^# (.+)$/gm, '<h3>$1</h3>');
+
+            // 处理代码块
+            content = content.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+            content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+            // 处理粗体和斜体
+            content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            content = content.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+            // 处理换行
+            content = content.replace(/\n/g, '<br/>');
+
+            // 恢复 LaTeX 公式
+            content = content.replace(/__LATEX_BLOCK_(\d+)__/g, (match, index) => latexBlocks[index]);
+            content = content.replace(/__LATEX_INLINE_(\d+)__/g, (match, index) => latexBlocks[index]);
+
+            return content;
+        }
+
+        // 使用 KaTeX auto-render 渲染公式
+        function renderMath(element) {
+            if (typeof renderMathInElement === 'function') {
+                try {
+                    renderMathInElement(element, {
+                        delimiters: [
+                            {left: "$$", right: "$$", display: true},
+                            {left: "$", right: "$", display: false},
+                            {left: "\\[", right: "\\]", display: true},
+                            {left: "\\(", right: "\\)", display: false}
+                        ],
+                        throwOnError: false,
+                        trust: true,
+                        strict: false
+                    });
+                } catch (e) {
+                    console.error('KaTeX渲染错误:', e);
+                }
+            }
+        }
+
+        function previewData() {
+            const input = document.getElementById('inputArea').value.trim();
+            const output = document.getElementById('outputArea').value.trim();
+
+            if (!input && !output) {
+                showMessage('请输入内容后再预览', 'error');
+                return;
+            }
+
+            const previewContent = document.getElementById('previewContent');
+
+            // 生成预览HTML
+            let html = '<div style="margin-bottom:10mm;padding:5mm;background:#f8f9fa;border-radius:4px;">';
+
+            // 题目
+            html += '<div style="margin-bottom:5mm;"><strong>【题目】</strong></div>';
+            html += '<div style="padding:3mm;background:#fff;border-radius:4px;margin-bottom:5mm;" class="preview-body">';
+            html += transformText(input || '(题目为空)');
+            html += '</div>';
+
+            // 解析
+            html += '<div style="margin-bottom:3mm;"><strong>【解析】</strong></div>';
+            html += '<div style="padding:3mm;background:#fff;border-radius:4px;" class="preview-body">';
+            html += transformText(output || '(解析为空)');
+            html += '</div>';
+
+            html += '</div>';
+
+            previewContent.innerHTML = html;
+
+            // 渲染 KaTeX
+            renderMath(previewContent);
+
+            document.getElementById('previewSection').style.display = 'block';
+        }
+
+        // 调用AI获取解答 - Few-shot Learning 动态学习
+        async function callAI() {
+            const question = document.getElementById('inputArea').value.trim();
+            if (!question) {
+                showMessage('请先输入题目', 'error');
+                return;
+            }
+
+            // 显示加载状态
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('message').classList.remove('show');
+
+            try {
+                // 获取数据集示例
+                const examples = getExamples(question, 3);
+
+                // 构建 Few-shot Learning 提示词
+                const systemPrompt = `你是一个专业的数学解题专家，擅长高等数学、线性代数、概率论等数学科目的解题。
+
+请按照以下格式解答数学问题：
+
+《答案》【答案】《/答案》
+《分析》【思路分析】
+[详细分析解题思路]
+《/分析》
+《步骤》
+[具体步骤]
+《/步骤》
+《注释》[补充说明或注意事项]《/注释》
+
+注意：
+1. LaTeX公式使用$...$或$$...$$包裹
+2. 答案要精确，步骤要详细
+3. 分析要有逻辑性，解释为什么这样做
+4. 不要输出任何思考过程，只输出格式化答案`;
+
+                // 构建包含示例的用户消息
+                let userMessage = '';
+                if (examples.length > 0) {
+                    userMessage = '【示例学习】请参考以下示例的格式和风格：\n\n';
+                    examples.forEach((ex, i) => {
+                        userMessage += `【示例${i + 1}】\n题目：${ex.input}\n\n解析：${ex.output}\n\n`;
+                    });
+                    userMessage += '【新题目】请解答以下数学题：\n\n' + question + '\n\n请按照示例格式给出详细解答。';
+                } else {
+                    userMessage = question;
+                }
+
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: MODEL,
+                        messages: [
+                            { role: 'system', content: systemPrompt },
+                            { role: 'user', content: userMessage }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 8192
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error?.message || `API请求失败: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const answer = data.choices[0].message.content;
+
+                // 将AI返回的答案填入解析框
+                document.getElementById('outputArea').value = answer;
+
+                // 显示预览
+                document.getElementById('inputArea').value = question;
+                previewData();
+
+                // 显示使用了多少示例
+                if (examples.length > 0) {
+                    showMessage(`AI解答成功！使用了 ${examples.length} 条示例进行Few-shot学习`);
+                } else {
+                    showMessage('AI解答成功！');
+                }
+
+            } catch (error) {
+                console.error('AI调用失败:', error);
+                showMessage('AI解答失败: ' + error.message, 'error');
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        // 根据问题选择最相关的示例
+        function getExamples(question, count = 3) {
+            if (dataset.length === 0) return [];
+
+            const questionLower = question.toLowerCase();
+            const keywords = extractKeywords(questionLower);
+
+            // 计算每个示例的相似度得分
+            const scored = dataset.map(ex => {
+                const exText = (ex.input + ' ' + ex.output).toLowerCase();
+                let score = 0;
+
+                // 关键词匹配得分
+                keywords.forEach(kw => {
+                    if (exText.includes(kw)) score += 1;
+                });
+
+                // 题目长度相似度
+                const lenDiff = Math.abs(ex.input.length - question.length);
+                if (lenDiff < 200) score += (200 - lenDiff) / 200;
+
+                return { example: ex, score };
+            });
+
+            // 按得分排序，选择最高分的
+            scored.sort((a, b) => b.score - a.score);
+            return scored.slice(0, count).map(s => s.example);
+        }
+
+        // 提取关键词
+        function extractKeywords(text) {
+            // 移除LaTeX公式
+            let clean = text.replace(/\$[^$]+\$/g, ' ');
+            clean = clean.replace(/\\[^\\s]+/g, ' ');
+
+            // 提取中文词
+            const chineseWords = clean.match(/[\u4e00-\u9fa5]+/g) || [];
+            // 提取英文词
+            const englishWords = clean.match(/[a-zA-Z]+/g) || [];
+
+            // 合并并去重
+            const words = [...chineseWords, ...englishWords]
+                .filter(w => w.length >= 2)
+                .slice(0, 20);
+
+            return [...new Set(words)];
+        }
+
+        function updateDataList() {
+            const list = document.getElementById('dataList');
+
+            if (dataset.length === 0) {
+                list.innerHTML = '<p style="color: #999; font-size: 9pt;">暂无数据，请添加</p>';
+                return;
+            }
+
+            list.innerHTML = dataset.map((item, index) => `
+                <div class="data-item">
+                    <div class="item-preview">${index + 1}. ${item.input.substring(0, 100)}${item.input.length > 100 ? '...' : ''}</div>
+                    <div class="item-meta">解析长度: ${item.output.length} 字符</div>
+                    <div class="item-actions">
+                        <button class="edit-btn" onclick="loadItem(${index})">编辑</button>
+                        <button class="delete-btn" onclick="deleteItem(${index})">删除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadItem(index) {
+            const item = dataset[index];
+            document.getElementById('inputArea').value = item.input;
+            document.getElementById('outputArea').value = item.output;
+            window.scrollTo(0, 0);
+            showMessage(`已加载第 ${index + 1} 条数据，可编辑后保存`);
+        }
+
+        function deleteItem(index) {
+            if (confirm(`确定删除第 ${index + 1} 条数据吗？`)) {
+                dataset.splice(index, 1);
+                saveDataset();
+                updateDataList();
+                exportToFile();
+                showMessage('已删除');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadDataset);
+    </script>
+</body>
+</html>

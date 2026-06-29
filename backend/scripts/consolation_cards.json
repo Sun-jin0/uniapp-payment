@@ -1,0 +1,222 @@
+[
+  {
+    "name": "安慰奖 1",
+    "description": "再接再厉，下次一定！",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013251839-2ymqz9.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 2",
+    "description": "运气正在积攒中...",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013256832-hnwx1j.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 3",
+    "description": "坚持就是胜利！",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013258462-y46ma3.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 4",
+    "description": "每一次尝试都是进步",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013260800-cyphap.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 5",
+    "description": "好运即将到来",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013262032-cfwsbe.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 6",
+    "description": "继续努力，奖励在等你",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013263362-k11jel.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 7",
+    "description": "失败是成功之母",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013264690-2gmnq2.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 8",
+    "description": "保持信心，下次更好",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013265922-22zcsw.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 9",
+    "description": "学习使我快乐",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013267250-i3lb1j.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 10",
+    "description": "今天的努力，明天的收获",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013268580-srcjau.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 11",
+    "description": "加油，你是最棒的！",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013269805-7hc7tk.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 12",
+    "description": "永不放弃，终会成功",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013271853-p0nj9q.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 13",
+    "description": "相信自己，你可以的",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013273190-uo0f89.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 14",
+    "description": "每一步都算数",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013274419-hwykau.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 15",
+    "description": "成功就在不远处",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013275644-85taug.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 16",
+    "description": "坚持学习，必有回报",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013276873-eadhwm.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 17",
+    "description": "知识就是力量",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013277999-bs62hz.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 18",
+    "description": "努力不会白费",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013279327-7eyylm.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 19",
+    "description": "天道酬勤",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013280566-zbeb6z.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 20",
+    "description": "厚积薄发",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013281789-4m0t4k.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 21",
+    "description": "千里之行，始于足下",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013283119-ogi77x.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  },
+  {
+    "name": "安慰奖 22",
+    "description": "积少成多，聚沙成塔",
+    "image_url": "https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775013284354-p9gfi3.jpg",
+    "rarity": "common",
+    "tier": "consolation",
+    "probability": 0.03,
+    "is_reward": false,
+    "is_active": true
+  }
+]

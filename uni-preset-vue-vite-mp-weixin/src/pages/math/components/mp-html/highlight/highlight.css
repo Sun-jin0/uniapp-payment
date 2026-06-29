@@ -1,0 +1,97 @@
+._root .hl-pre,
+._root pre.hl-pre {
+  background-color: #f0f9f8 !important;
+  border-radius: 8rpx;
+  padding: 10rpx;
+  overflow-x: auto;
+  margin: 16rpx 0;
+  border: 1rpx solid #5FBDB5;
+  white-space: pre;
+  word-wrap: break-word;
+  line-height: 1.0;
+}
+
+._root .hl-pre::after,
+._root pre.hl-pre::after {
+  content: none;
+}
+
+._root .hl-code {
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 28rpx;
+  line-height: 1.0;
+  color: #24292e;
+  background: transparent;
+  font-weight: 500;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+._root .hl-token.comment,
+._root .hl-token.prolog,
+._root .hl-token.doctype,
+._root .hl-token.cdata {
+  color: #586069;
+  font-style: italic;
+  font-weight: 400;
+}
+
+._root .hl-token.punctuation {
+  color: #24292e;
+  font-weight: 600;
+}
+
+._root .hl-token.namespace {
+  opacity: 0.8;
+}
+
+._root .hl-token.property,
+._root .hl-token.tag,
+._root .hl-token.boolean,
+._root .hl-token.number,
+._root .hl-token.constant,
+._root .hl-token.symbol,
+._root .hl-token.deleted {
+  color: #005cc5;
+  font-weight: 600;
+}
+
+._root .hl-token.selector,
+._root .hl-token.attr-name,
+._root .hl-token.string,
+._root .hl-token.char,
+._root .hl-token.builtin,
+._root .hl-token.inserted {
+  color: #032f62;
+  font-weight: 600;
+}
+
+._root .hl-token.operator,
+._root .hl-token.entity,
+._root .hl-token.url,
+._root .language-css .hl-token.string,
+._root .style .hl-token.string {
+  color: #d73a49;
+  font-weight: 600;
+}
+
+._root .hl-token.atrule,
+._root .hl-token.attr-value,
+._root .hl-token.keyword {
+  color: #d73a49;
+  font-weight: 700;
+}
+
+._root .hl-token.function,
+._root .hl-token.class-name {
+  color: #6f42c1;
+  font-weight: 600;
+}
+
+._root .hl-token.regex,
+._root .hl-token.important,
+._root .hl-token.variable {
+  color: #e36209;
+  font-weight: 600;
+}

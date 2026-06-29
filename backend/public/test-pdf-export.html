@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一战成硕-PDF试卷导出</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #5DADE2;
+            --page-width: 210mm;
+            --page-height: 297mm;
+            --page-margin-top: 15mm;
+            --page-margin-bottom: 15mm;
+            --page-margin-sides: 20mm;
+            --q-label-fontsize: 11pt;
+            --q-content-fontsize: 11pt;
+            --q-spacing-between: 8mm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif, "SimSun", "STSong", serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f2f5;
+            -webkit-print-color-adjust: exact !important;
+        }
+
+        /* 打印样式 */
+        @media print {
+            .no-print, .page-controls { display: none !important; }
+            body { background: white !important; }
+            
+            .printable-page { 
+                margin: 0 !important; 
+                box-shadow: none !important; 
+                border: none !important; 
+                page-break-after: always; 
+                break-after: page;
+                width: var(--page-width) !important;
+                min-height: var(--page-height) !important;
+                height: auto !important;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .printable-page .questions-list {
+                flex: 1;
+            }
+            
+            .printable-page .paper-footer {
+                margin-top: auto !important;
+            }
+            
+            .printable-page:last-child { 
+                page-break-after: auto; 
+                break-after: auto;
+            }
+            
+            /* @page 规则通过 JavaScript 动态设置 */
+            
+            /* 允许题目内容自然流动，只在关键元素处避免分页 */
+            .question-item {
+                page-break-inside: auto;
+                break-inside: auto;
+            }
+            
+            /* 题目头部和题型标题避免与内容分离 */
+            .question-header {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            
+            .section-header {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            
+            /* 题目容器 */
+            .question-item {
+                margin-bottom: var(--q-spacing-between);
+            }
+            
+            /* 题目头部 */
+            .question-header {
+                font-weight: bold;
+            }
+            
+            /* 解析区域 */
+            .question-analysis {
+                margin-top: 2mm;
+                text-align: left;
+            }
+
+            .question-analysis-content {
+                text-align: left;
+                overflow: visible;
+                word-wrap: break-word;
+            }
+
+            .question-analysis-content .katex {
+                text-align: left;
+            }
+
+            .question-analysis-content .katex-display {
+                overflow: visible;
+                overflow-x: visible;
+            }
+            
+            /* 图片避免被截断 */
+            .question-image {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+
+        /* 预览样式 */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            z-index: 1000;
+            width: 300px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            font-size: 13px;
+        }
+
+        .controls h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .controls button {
+            padding: 8px 16px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 4px;
+            background: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .controls button:hover {
+            background: #3498db;
+        }
+
+        .controls input, .controls select {
+            width: 100%;
+            padding: 6px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .controls label {
+            font-size: 12px;
+            color: #666;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .controls hr {
+            margin: 10px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            color: #333;
+            cursor: pointer;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+            padding: 0;
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        .checkbox-item span {
+            margin-left: 2px;
+        }
+
+        .margin-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .margin-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .margin-label {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .margin-item input {
+            width: 100%;
+            padding: 4px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        /* 页面样式 */
+        .printable-page {
+            background: white;
+            width: var(--page-width);
+            min-height: var(--page-height);
+            margin: 20px auto;
+            padding: var(--page-margin-top) var(--page-margin-sides) var(--page-margin-bottom);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .paper-header {
+            text-align: center;
+            padding-bottom: 5mm;
+            margin-bottom: 5mm;
+        }
+
+        .paper-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 3mm;
+            font-family: "SimHei", "Heiti SC", "Microsoft YaHei", sans-serif;
+        }
+
+        .paper-info {
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .section-header {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 5px 0 10px 0;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #333;
+        }
+        .section-header-cn {
+            font-family: "SimHei", "Heiti SC", "Microsoft YaHei", sans-serif;
+            font-weight: normal;
+        }
+        .section-header-en {
+            font-family: "Times New Roman", serif;
+            font-weight: bold;
+        }
+
+        .questions-list {
+            min-height: 200mm;
+        }
+
+        .question-item {
+            margin-bottom: var(--q-spacing-between);
+        }
+
+        .question-analysis {
+            margin-top: 2mm;
+            text-align: left;
+        }
+
+        .question-analysis-content {
+            text-align: left;
+            overflow: visible;
+            word-wrap: break-word;
+        }
+
+        .question-analysis-content .katex {
+            text-align: left;
+        }
+
+        .question-analysis-content .katex-display {
+            overflow: visible;
+            overflow-x: visible;
+        }
+
+        .question-header {
+            font-weight: bold;
+            font-size: var(--q-label-fontsize);
+            margin-bottom: 2mm;
+        }
+
+        .question-body {
+            font-size: var(--q-content-fontsize);
+            line-height: 1.6;
+        }
+
+        .question-body p { margin: 0.5em 0; }
+
+        .question-image {
+            margin: 10px 0;
+        }
+
+        .question-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* KaTeX 样式 */
+        .katex-display {
+            margin: 0.5em 0 !important;
+            overflow-x: auto;
+        }
+
+        .katex { font-size: 1.1em !important; }
+
+        /* 状态提示 */
+        .loading, .error, .empty {
+            text-align: center;
+            padding: 100px 20px;
+            font-size: 16px;
+        }
+
+        .loading { color: #666; }
+        .error { color: #e74c3c; }
+        .empty { color: #999; }
+
+        /* 解析样式 */
+        .question-analysis {
+            margin-top: 3mm;
+            padding: 3mm;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 3px solid #28a745;
+            border-radius: 0 4px 4px 0;
+            font-size: calc(var(--q-content-fontsize) * 0.95);
+            line-height: 1.7;
+        }
+        .question-analysis-header {
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 2mm;
+        }
+        .question-analysis-content { color: #495057; }
+        .question-analysis-content p { margin: 0.3em 0; }
+        .question-analysis-content h3 { 
+            color: #007bff; 
+            font-size: 1em; 
+            margin: 0.5em 0 0.3em;
+        }
+        .question-analysis-content code {
+            background: #e9ecef;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: #c7254e;
+        }
+
+        /* 分数标签样式 */
+        .score-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-left: 4px;
+        }
+
+        /* 不同题型的间距类 */
+        .question-item.choice {
+            margin-bottom: var(--spacing-choice, 5mm);
+        }
+        .question-item.answer {
+            margin-bottom: var(--spacing-answer, 10mm);
+        }
+        .question-item.other {
+            margin-bottom: var(--spacing-other, 8mm);
+        }
+
+        /* 拖拽排序样式 */
+        .question-item.draggable {
+            cursor: move;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            border: 1px dashed transparent;
+            padding: 2px;
+            margin-left: -3px;
+        }
+        .question-item.draggable:hover {
+            border-color: #4a90d9;
+            background-color: rgba(74, 144, 217, 0.05);
+        }
+        .question-item.dragging {
+            opacity: 0.5;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-color: #4a90d9;
+            background-color: rgba(74, 144, 217, 0.1);
+        }
+        .question-item.drag-over {
+            border-color: #28a745;
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+        .drag-handle {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+            vertical-align: middle;
+            opacity: 0.4;
+            cursor: grab;
+        }
+        .question-item:hover .drag-handle {
+            opacity: 1;
+        }
+        .sort-mode-hint {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 12px;
+            color: #856404;
+        }
+        .type-selector {
+            display: none;
+            margin-left: 10px;
+            font-size: 11px;
+            padding: 2px 4px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            background: white;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+        .question-item.draggable .type-selector {
+            display: inline-block;
+        }
+        .type-selector:focus {
+            outline: none;
+            border-color: #4a90d9;
+        }
+        .mastery-mark {
+            float: right;
+            font-size: 10pt;
+            font-weight: normal;
+        }
+        .mastery-mark .mastery-item {
+            display: inline-block;
+            margin-left: 8px;
+        }
+        .mastery-mark .mastery-box {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #999;
+            vertical-align: middle;
+            margin-right: 2px;
+        }
+        .mastery-mark .mastery-label {
+            vertical-align: middle;
+        }
+        .mastery-mark .mastery-mastered {
+            color: #28a745;
+        }
+        .mastery-mark .mastery-fuzzy {
+            color: #ffc107;
+        }
+        .mastery-mark .mastery-unknown {
+            color: #dc3545;
+        }
+
+        /* 试卷信息样式（标题下方） */
+        .paper-info-header {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls no-print">
+        <h3 style="font-size:16px;margin-bottom:10px;">📄 PDF 导出设置</h3>
+        
+        <div id="manualInputSection" style="background:#e3f2fd;padding:8px;border-radius:4px;margin-bottom:8px;">
+            <label style="font-size:12px;">试卷 Token</label>
+            <div style="display:flex;gap:5px;">
+                <input type="text" id="paperToken" value="" style="flex:1;font-size:12px;padding:4px;" placeholder="输入Token">
+                <button onclick="loadPaper()" style="padding:4px 10px;font-size:12px;">加载</button>
+            </div>
+        </div>
+        
+        <input type="text" id="paperTitle" value="" placeholder="试卷标题" style="font-size:13px;margin-bottom:8px;">
+        
+        <div id="encryptedLinkInfo" style="display:none;">
+            <div style="background:#e8f5e9;padding:8px;border-radius:4px;margin-bottom:8px;font-size:12px;">
+                <strong>🔒 安全打印链接</strong><br>
+                <span style="color:#666;">来自智能组卷系统</span>
+            </div>
+        </div>
+        
+        <div style="background:#f5f5f5;padding:8px;border-radius:4px;margin:8px 0;">
+            <label style="margin-bottom:5px;">显示选项</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox" id="showSource"><span>来源</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="showId"><span>ID</span></label>
+                <label class="checkbox-item" id="showAnalysisLabel" style="display:none;"><input type="checkbox" id="showAnalysis"><span>解析</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="enableSort"><span>排序</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="showMastery"><span>掌握度</span></label>
+            </div>
+            <label style="font-size:12px;margin-top:5px;">题目显示</label>
+            <select id="questionDisplayMode" style="font-size:12px;padding:4px;">
+                <option value="text">仅文本</option>
+                <option value="auto">自动(优先题图)</option>
+                <option value="image">仅题图</option>
+            </select>
+        </div>
+        
+        <div style="display:flex;gap:10px;margin:8px 0;">
+            <div style="flex:1;">
+                <label style="font-size:12px;">每页题数</label>
+                <input type="number" id="questionsPerPage" value="0" min="0" style="font-size:12px;padding:4px;" placeholder="自动">
+            </div>
+            <div style="flex:1;">
+                <label style="font-size:12px;">字体 (pt)</label>
+                <input type="number" id="fontSize" value="11" min="8" max="16" style="font-size:12px;padding:4px;">
+            </div>
+        </div>
+        
+        <div style="background:#f5f5f5;padding:8px;border-radius:4px;margin:8px 0;">
+            <label style="margin-bottom:5px;"><strong>题型间距 (mm)</strong></label>
+            <div class="margin-inputs">
+                <div class="margin-item">
+                    <span class="margin-label">选择/填空</span>
+                    <input type="number" id="spacingChoice" value="5" min="0" max="50">
+                </div>
+                <div class="margin-item">
+                    <span class="margin-label">解答题</span>
+                    <input type="number" id="spacingAnswer" value="10" min="0" max="50">
+                </div>
+                <div class="margin-item">
+                    <span class="margin-label">其他</span>
+                    <input type="number" id="spacingOther" value="8" min="0" max="50">
+                </div>
+            </div>
+        </div>
+        
+        <div style="background:#f5f5f5;padding:8px;border-radius:4px;margin:8px 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                <label style="margin:0;"><strong>分数设置</strong></label>
+                <label class="checkbox-item" style="margin:0;"><input type="checkbox" id="showScore" checked> 显示</label>
+            </div>
+            <div class="margin-inputs">
+                <div class="margin-item">
+                    <span class="margin-label">选择/填空</span>
+                    <input type="number" id="scoreChoice" value="5" min="0" max="100">
+                </div>
+                <div class="margin-item">
+                    <span class="margin-label">解答首题</span>
+                    <input type="number" id="scoreAnswerFirst" value="10" min="0" max="100">
+                </div>
+                <div class="margin-item">
+                    <span class="margin-label">解答其他</span>
+                    <input type="number" id="scoreAnswerOther" value="12" min="0" max="100">
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div style="background:#f5f5f5;padding:8px;border-radius:4px;margin:8px 0;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                <label style="margin:0;"><strong>试卷信息</strong></label>
+                <label class="checkbox-item" style="margin:0;"><input type="checkbox" id="showPaperInfo"> 显示</label>
+            </div>
+            <input type="text" id="paperAuthor" placeholder="出题人" style="margin-top:3px;font-size:12px;">
+            <input type="text" id="paperExaminer" placeholder="审题人" style="font-size:12px;">
+            <input type="text" id="paperDate" placeholder="考试时间（如：120分钟）" style="font-size:12px;">
+        </div>
+        
+        <div style="background:#f5f5f5;padding:8px;border-radius:4px;margin:8px 0;">
+            <label style="margin-bottom:5px;"><strong>页边距 (mm)</strong></label>
+            <div class="margin-inputs">
+                <div class="margin-item">
+                    <span class="margin-label">上</span>
+                    <input type="number" id="marginTop" value="15" min="0" max="50">
+                </div>
+                <div class="margin-item">
+                    <span class="margin-label">下</span>
+                    <input type="number" id="marginBottom" value="15" min="0" max="50">
+                </div>
+                <div class="margin-item">
+                    <span class="margin-label">左右</span>
+                    <input type="number" id="marginSides" value="10" min="0" max="50">
+                </div>
+            </div>
+        </div>
+        
+        <div style="background:#f5f5f5;padding:8px;border-radius:4px;margin:8px 0;">
+            <label style="margin-bottom:5px;"><strong>页眉页脚</strong></label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox" id="showHeader" checked> 页眉</label>
+                <label class="checkbox-item"><input type="checkbox" id="showFooter" checked> 页脚</label>
+                <label class="checkbox-item"><input type="checkbox" id="showQRCode" checked> 小程序码</label>
+            </div>
+            <input type="text" id="headerText" value="微信小程序：研大师刷研题" placeholder="页眉内容" style="margin-top:5px;font-size:12px;">
+        </div>
+        
+        <button onclick="window.print()" style="background:#28a745;margin-top:5px;">🖨️ 打印 / 导出 PDF</button>
+    </div>
+
+    <div id="content">
+        <div class="loading">请从下拉列表选择试卷或输入试卷 Token 后点击"加载试卷"</div>
+    </div>
+
+    <script>
+        let currentQuestions = [];
+        let currentPaperTitle = '试卷';
+        let allowAnalysis = false;
+
+        // API 服务器配置 - 本地测试时使用 localhost，生产环境使用相对路径
+        const API_BASE_URL = 'http://localhost:3000';  // 本地服务器地址，可根据需要修改端口
+        // const API_BASE_URL = '';  // 生产环境：使用相对路径
+
+        // 获取 API 基础 URL（根据当前环境自动判断）
+        function getApiBaseUrl() {
+            // 如果页面是通过 file:// 协议打开的，使用本地服务器
+            if (window.location.protocol === 'file:') {
+                return API_BASE_URL;
+            }
+            // 否则使用相对路径（同域）
+            return '';
+        }
+
+        // 页面加载时检查 URL 参数
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            
+            if (token) {
+                // 有加密参数，使用新的加载方式
+                document.getElementById('manualInputSection').style.display = 'none';
+                document.getElementById('encryptedLinkInfo').style.display = 'block';
+                loadPaperWithToken(token);
+            }
+        });
+
+        // 使用加密令牌加载试卷
+        async function loadPaperWithToken(token) {
+            const container = document.getElementById('content');
+            container.innerHTML = '<div class="loading">验证打印链接并加载试卷...</div>';
+
+            try {
+                const baseUrl = getApiBaseUrl();
+                const response = await fetch(`${baseUrl}/api/math/verify-print-link?token=${encodeURIComponent(token)}`);
+                const result = await response.json();
+                
+                if (result.code !== 0 || !result.data) {
+                    throw new Error(result.message || '打印链接无效或已过期');
+                }
+                
+                const data = result.data;
+                currentQuestions = data.questions || [];
+                currentPaperTitle = data.paper?.Title || '试卷';
+                allowAnalysis = data.allowAnalysis || false;
+                
+                // 填充标题输入框
+                document.getElementById('paperTitle').value = currentPaperTitle;
+                
+                // 如果允许打印解析，显示解析选项
+                if (allowAnalysis) {
+                    document.getElementById('showAnalysisLabel').style.display = 'inline-flex';
+                    document.getElementById('showAnalysis').checked = true;
+                }
+                
+                // 应用设置并渲染
+                applySettings();
+            } catch (error) {
+                container.innerHTML = `<div class="error">加载失败: ${error.message}</div>`;
+            }
+        }
+
+        // 加载试卷内容（使用 Token 直接加载）
+        async function loadPaper() {
+            const paperTokenInput = document.getElementById('paperToken');
+            if (!paperTokenInput) {
+                alert('当前模式下无法手动加载试卷');
+                return;
+            }
+            
+            const paperToken = paperTokenInput.value.trim();
+            
+            if (!paperToken) {
+                alert('请输入试卷 Token');
+                return;
+            }
+
+            const container = document.getElementById('content');
+            container.innerHTML = '<div class="loading">加载中...</div>';
+
+            try {
+                // 使用现有的打印页面 API 获取试卷数据
+                const baseUrl = getApiBaseUrl();
+                const response = await fetch(`${baseUrl}/api/math/smart-paper/${paperToken}/print`);
+                if (!response.ok) {
+                    throw new Error('试卷不存在或链接已失效');
+                }
+                
+                const html = await response.text();
+                
+                // 提取题目数据
+                const questionsMatch = html.match(/const QUESTIONS = (\[.*?\]);/s);
+                const titleMatch = html.match(/const PAPER_TITLE = "(.*?)";/);
+                
+                if (questionsMatch && titleMatch) {
+                    currentQuestions = JSON.parse(questionsMatch[1]);
+                    currentPaperTitle = titleMatch[1];
+                    
+                    // 填充标题输入框
+                    document.getElementById('paperTitle').value = currentPaperTitle;
+                    
+                    // 应用设置并渲染
+                    applySettings();
+                } else {
+                    throw new Error('无法解析试卷数据');
+                }
+            } catch (error) {
+                container.innerHTML = `<div class="error">加载失败: ${error.message}</div>`;
+            }
+        }
+
+        // 转换文本（处理图片、公式等）
+        function transformText(text) {
+            if (!text) return '';
+
+            let content = text.trim()
+                .replace(/＄/g, '$')
+                .replace(/\.\$png/g, '.png');
+
+            // 在处理换行符之前，先保护所有 LaTeX 公式块
+            // 这样公式内的 \ne 等命令不会被错误处理
+            const latexBlocks = [];
+
+            // 保护 $$...$$ 块级公式
+            content = content.replace(/\$\$[\s\S]*?\$\$/g, (match) => {
+                latexBlocks.push(match);
+                return `__LATEX_BLOCK_${latexBlocks.length - 1}__`;
+            });
+
+            // 保护 $...$ 行内公式
+            content = content.replace(/\$[^\$]+\$/g, (match) => {
+                latexBlocks.push(match);
+                return `__LATEX_INLINE_${latexBlocks.length - 1}__`;
+            });
+
+            // 保护 \(...\) 行内公式
+            content = content.replace(/\\\([\s\S]*?\\\)/g, (match) => {
+                latexBlocks.push(match);
+                return `__LATEX_PAREN_${latexBlocks.length - 1}__`;
+            });
+
+            // 保护 \[...\] 块级公式
+            content = content.replace(/\\\[[\s\S]*?\\\]/g, (match) => {
+                latexBlocks.push(match);
+                return `__LATEX_BRACKET_${latexBlocks.length - 1}__`;
+            });
+
+            // 在处理换行符之前，先保护 LaTeX 命令中的反斜杠
+            // 保护 \ne, \neq, \nu, \ni, \not, \nabla, \neg 等命令
+            const latexCommands = [];
+            // 匹配双反斜杠或单反斜杠开头的 LaTeX 命令
+            const latexCmdPattern = /\\\\?(neq?|nu|ni|not|nabla|neg|nmid|nparallel|nsubseteq|nsupseteq|ncong|nsim|napprox|nless|ngtr|nleq|ngeq|nprec|nsucc|nvdash|nVdash|ntriangleleft|ntriangleright)(?=[a-zA-Z{}\\\s$]|$)/g;
+            content = content.replace(latexCmdPattern, (match) => {
+                latexCommands.push(match);
+                return `__LATEX_CMD_${latexCommands.length - 1}__`;
+            });
+
+            // 现在可以安全地处理换行符
+            content = content.replace(/\\r\\n/g, '\n');
+            content = content.replace(/\\n/g, '\n');
+
+            // 恢复 LaTeX 命令
+            content = content.replace(/__LATEX_CMD_(\d+)__/g, (match, index) => latexCommands[index]);
+
+            // 将 \\( 和 \\) 转换为 \( 和 \)，以便 KaTeX 识别
+            content = content.replace(/\\\\\(/g, '\\(').replace(/\\\\\)/g, '\\)');
+            content = content.replace(/\\\\\[/g, '\\[').replace(/\\\\\]/g, '\\]');
+
+            // 先处理 Markdown 图片语法 ![alt](url)
+            content = content.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(match, alt, url) {
+                // 去除 _yjs 等后缀
+                let cleanUrl = url.replace(/(_yjs|_thumb|_small|_medium|_large)(\?.*)?$/i, '$2');
+                return '<div style="width:50%;"><img src="' + cleanUrl + '" style="max-width:100%;height:auto;display:block;margin:5px 0;" alt="' + alt + '" /></div>';
+            });
+
+            // 处理独立的图片 URL（排除已经处理过的图片标签）
+            content = content.replace(/(https?:\/\/[^\s<>"]+?\.(?:png|jpg|jpeg|gif|webp))(?:_[a-zA-Z0-9]+)?(?![^<]*>)/gi, function(match, url) {
+                // 检查是否已经在 img 标签中
+                if (match.includes('<img')) return match;
+                return '<div style="width:50%;"><img src="' + url + '" style="max-width:100%;height:auto;display:block;margin:5px 0;" alt="题目图片" /></div>';
+            });
+
+            // 处理自定义标签《答案》《分析》《注释》等
+            // 标签样式 - 简洁样式
+            const answerLabelStyle = 'color:#fff;background-color:#009688;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+            const analysisLabelStyle = 'color:#fff;background-color:#009688;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+            const stepLabelStyle = 'color:#fff;background-color:#E91E63;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+            const commentLabelStyle = 'color:#fff;background-color:#00BCD4;padding:1px 6px;margin-right:6px;border-radius:4px;font-size:12px;';
+
+            // 处理 《答案》【答案】《/答案》
+            content = content.replace(/《答案》\s*【答案】\s*《\/答案》/g, `<span style="${answerLabelStyle}">答案</span>`);
+            // 处理 《答案》【证明】《/答案》
+            content = content.replace(/《答案》\s*【证明】\s*《\/答案》/g, `<span style="${answerLabelStyle}">证明</span>`);
+            // 处理 《答案》【解析】《/答案》
+            content = content.replace(/《答案》\s*【解析】\s*《\/答案》/g, `<span style="${answerLabelStyle}">答案</span>`);
+            // 处理 《答案》...《/答案》
+            content = content.replace(/《答案》([\s\S]*?)《\/答案》/g, '<span style="' + answerLabelStyle + '">答案</span>$1');
+
+            // 处理 《分析》【解析】《/分析》- 标签+青色内容
+            content = content.replace(/《分析》\s*【解析】\s*《\/分析》/g, `<span style="${analysisLabelStyle}">解析</span>`);
+            // 处理 《分析》【思路分析】《/分析》- 标签+青色内容
+            content = content.replace(/《分析》\s*【思路分析】\s*《\/分析》/g, `<span style="${analysisLabelStyle}">思路分析</span>`);
+            // 处理 《分析》...《/分析》- 标签+青色内容
+            content = content.replace(/《分析》([\s\S]*?)《\/分析》/g, '<span style="' + analysisLabelStyle + '">分析</span><span style="color:#009688;">$1</span>');
+
+            // 处理 《注释》...《/注释》- 只改变字体颜色为青色(#009688)，不加换行
+            content = content.replace(/《注释》([\s\S]*?)《\/注释》/g, '<span style="color:#009688;">$1</span>');
+
+            // 处理 《步骤》...《/步骤》- 橙色加粗，不需要标签
+            content = content.replace(/《步骤》([\s\S]*?)《\/步骤》/g, '<span style="color:#FF9800;font-weight:bold;">$1</span>');
+
+            // 处理 《点评》...《/点评》- 直接删除不显示
+            content = content.replace(/《点评》[\s\S]*?《\/点评》/g, '');
+
+            // 处理 【欧几里得...】相关内容 - 直接删除不显示
+            content = content.replace(/【欧几里得[^】]*?】/g, '');
+
+            // 处理 【命题人...】相关内容 - 直接删除不显示
+            content = content.replace(/【命题人[^】]*?】/g, '');
+
+            // 处理 Markdown 标题
+            content = content.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            content = content.replace(/^## (.+)$/gm, '<h3>$1</h3>');
+            content = content.replace(/^# (.+)$/gm, '<h3>$1</h3>');
+
+            // 处理代码块
+            content = content.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+            content = content.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+            // 处理粗体和斜体
+            content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+            content = content.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+            // 处理换行
+            content = content.replace(/\n/g, '<br/>');
+
+            // 恢复 LaTeX 公式
+            content = content.replace(/__LATEX_BLOCK_(\d+)__/g, (match, index) => latexBlocks[index]);
+            content = content.replace(/__LATEX_INLINE_(\d+)__/g, (match, index) => latexBlocks[index]);
+            content = content.replace(/__LATEX_PAREN_(\d+)__/g, (match, index) => latexBlocks[index]);
+            content = content.replace(/__LATEX_BRACKET_(\d+)__/g, (match, index) => latexBlocks[index]);
+
+            return content;
+        }
+
+        // 应用自定义设置并渲染
+        function applySettings() {
+            const qPerPageInput = document.getElementById('questionsPerPage');
+            const fontSizeInput = document.getElementById('fontSize');
+            const qPerPage = qPerPageInput ? parseInt(qPerPageInput.value) || 0 : 0;
+            const fontSize = fontSizeInput ? parseInt(fontSizeInput.value) || 11 : 11;
+            const settings = getSettings();
+            
+            const root = document.documentElement;
+            root.style.setProperty('--q-label-fontsize', fontSize + 'pt');
+            root.style.setProperty('--q-content-fontsize', fontSize + 'pt');
+            root.style.setProperty('--page-margin-top', settings.marginTop + 'mm');
+            root.style.setProperty('--page-margin-bottom', settings.marginBottom + 'mm');
+            root.style.setProperty('--page-margin-sides', settings.marginSides + 'mm');
+            // 设置题型间距 CSS 变量
+            root.style.setProperty('--spacing-choice', settings.spacingChoice + 'mm');
+            root.style.setProperty('--spacing-answer', settings.spacingAnswer + 'mm');
+            root.style.setProperty('--spacing-other', settings.spacingOther + 'mm');
+            
+            // 更新打印页边距和页码样式
+            updatePrintStyles(settings);
+            
+            // 渲染试卷
+            renderPaper(qPerPage);
+            
+            // 如果启用了排序模式，初始化拖拽功能
+            const enableSortCheckbox = document.getElementById('enableSort');
+            if (enableSortCheckbox && enableSortCheckbox.checked) {
+                setTimeout(() => initDragAndDrop(), 100);
+            }
+        }
+
+        // 初始化拖拽排序功能
+        function initDragAndDrop() {
+            const questionItems = document.querySelectorAll('.question-item');
+            questionItems.forEach(item => {
+                item.classList.add('draggable');
+                item.draggable = true;
+                const handle = item.querySelector('.drag-handle');
+                if (handle) handle.style.display = 'inline-block';
+                
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragend', handleDragEnd);
+                item.addEventListener('dragover', handleDragOver);
+                item.addEventListener('dragenter', handleDragEnter);
+                item.addEventListener('dragleave', handleDragLeave);
+                item.addEventListener('drop', handleDrop);
+            });
+            
+            // 显示排序提示
+            showSortHint();
+        }
+
+        // 禁用拖拽排序功能
+        function disableDragAndDrop() {
+            const questionItems = document.querySelectorAll('.question-item');
+            questionItems.forEach(item => {
+                item.classList.remove('draggable', 'dragging', 'drag-over');
+                item.draggable = false;
+                const handle = item.querySelector('.drag-handle');
+                if (handle) handle.style.display = 'none';
+                
+                item.removeEventListener('dragstart', handleDragStart);
+                item.removeEventListener('dragend', handleDragEnd);
+                item.removeEventListener('dragover', handleDragOver);
+                item.removeEventListener('dragenter', handleDragEnter);
+                item.removeEventListener('dragleave', handleDragLeave);
+                item.removeEventListener('drop', handleDrop);
+            });
+            
+            // 移除排序提示
+            hideSortHint();
+        }
+
+        let draggedItem = null;
+
+        function handleDragStart(e) {
+            draggedItem = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', this.dataset.questionIndex);
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            document.querySelectorAll('.question-item.drag-over').forEach(item => {
+                item.classList.remove('drag-over');
+            });
+            draggedItem = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDragEnter(e) {
+            e.preventDefault();
+            if (this !== draggedItem) {
+                this.classList.add('drag-over');
+            }
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+            
+            if (draggedItem && this !== draggedItem) {
+                const fromIndex = parseInt(draggedItem.dataset.questionIndex);
+                const toIndex = parseInt(this.dataset.questionIndex);
+                
+                // 重新排序 currentQuestions 数组
+                const movedQuestion = currentQuestions.splice(fromIndex, 1)[0];
+                currentQuestions.splice(toIndex, 0, movedQuestion);
+                
+                // 重新渲染
+                applySettings();
+            }
+        }
+
+        function showSortHint() {
+            const existingHint = document.querySelector('.sort-mode-hint');
+            if (existingHint) return;
+            
+            const hint = document.createElement('div');
+            hint.className = 'sort-mode-hint';
+            hint.innerHTML = '💡 排序模式已启用：拖拽题目可调整顺序，下拉框可修改题型，打印时请先取消排序模式';
+            
+            const content = document.getElementById('content');
+            if (content && content.firstChild) {
+                content.insertBefore(hint, content.firstChild);
+            }
+        }
+
+        function hideSortHint() {
+            const hint = document.querySelector('.sort-mode-hint');
+            if (hint) hint.remove();
+        }
+
+        // 更新打印样式
+        function updatePrintStyles(settings) {
+            // 移除旧的动态样式表
+            const oldStyle = document.getElementById('dynamic-print-styles');
+            if (oldStyle) {
+                oldStyle.remove();
+            }
+            
+            // 创建新的样式表
+            const style = document.createElement('style');
+            style.id = 'dynamic-print-styles';
+            
+            const footerRule = settings.showFooter 
+                ? `@bottom-center { content: "第 " counter(page) " 页  共 " counter(pages) " 页"; font-size: 10pt; color: #666; font-family: "SimHei", "Heiti SC", sans-serif; }`
+                : '';
+            
+            const headerText = document.getElementById('headerText').value.trim() || '微信小程序：研大师刷研题';
+            const headerRule = settings.showHeader
+                ? `@top-center { content: "${headerText}"; font-size: 10pt; color: #999; font-family: "SimHei", "Heiti SC", sans-serif; }`
+                : '';
+            
+            style.textContent = `
+                @media print {
+                    @page { 
+                        size: A4; 
+                        margin: ${settings.marginTop}mm ${settings.marginSides}mm ${settings.marginBottom}mm ${settings.marginSides}mm;
+                        ${headerRule}
+                        ${footerRule}
+                    }
+                    
+                    /* 水印样式 */
+                    .printable-page::before {
+                        content: "研大师刷研题";
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                        font-size: 60pt;
+                        color: rgba(200, 200, 200, 0.15);
+                        font-weight: bold;
+                        pointer-events: none;
+                        z-index: 1000;
+                        white-space: nowrap;
+                    }
+                }
+            `;
+            
+            document.head.appendChild(style);
+        }
+
+        // 获取设置
+        function getSettings() {
+            const getValue = (id, defaultVal) => {
+                const el = document.getElementById(id);
+                return el ? el.value : defaultVal;
+            };
+            const getChecked = (id, defaultVal = false) => {
+                const el = document.getElementById(id);
+                return el ? el.checked : defaultVal;
+            };
+            const getInt = (id, defaultVal) => {
+                const el = document.getElementById(id);
+                return el ? parseInt(el.value) || defaultVal : defaultVal;
+            };
+            const getTrim = (id, defaultVal) => {
+                const el = document.getElementById(id);
+                return el ? el.value.trim() : defaultVal;
+            };
+            
+            return {
+                displayMode: getValue('questionDisplayMode', 'text'),
+                showSource: getChecked('showSource'),
+                showId: getChecked('showId'),
+                showAnalysis: getChecked('showAnalysis'),
+                marginTop: getInt('marginTop', 15),
+                marginBottom: getInt('marginBottom', 15),
+                marginSides: getInt('marginSides', 20),
+                showHeader: getChecked('showHeader', true),
+                showFooter: getChecked('showFooter', true),
+                showQRCode: getChecked('showQRCode', true),
+                // 题型间距设置
+                spacingChoice: getInt('spacingChoice', 5),
+                spacingAnswer: getInt('spacingAnswer', 10),
+                spacingOther: getInt('spacingOther', 8),
+                // 分数设置
+                showScore: getChecked('showScore', true),
+                scoreChoice: getInt('scoreChoice', 5),
+                scoreAnswerFirst: getInt('scoreAnswerFirst', 10),
+                scoreAnswerOther: getInt('scoreAnswerOther', 12),
+                // 试卷信息
+                showPaperInfo: getChecked('showPaperInfo'),
+                paperAuthor: getTrim('paperAuthor', ''),
+                paperExaminer: getTrim('paperExaminer', ''),
+                paperDate: getTrim('paperDate', ''),
+                // 掌握程度
+                showMastery: getChecked('showMastery')
+            };
+        }
+
+        // 判断题型类型
+        function getQuestionTypeCategory(type) {
+            if (!type) return 'other';
+            const lowerType = type.toLowerCase();
+            if (lowerType.includes('选择') || lowerType.includes('填空')) {
+                return 'choice';
+            } else if (lowerType.includes('解答') || lowerType.includes('计算') || lowerType.includes('证明') || lowerType.includes('应用')) {
+                return 'answer';
+            }
+            return 'other';
+        }
+
+        // 获取题目间距
+        function getQuestionSpacing(type, settings) {
+            const category = getQuestionTypeCategory(type);
+            switch (category) {
+                case 'choice':
+                    return settings.spacingChoice;
+                case 'answer':
+                    return settings.spacingAnswer;
+                default:
+                    return settings.spacingOther;
+            }
+        }
+
+        // 获取题目分数
+        function getQuestionScore(type, isFirstAnswerQuestion, settings) {
+            const category = getQuestionTypeCategory(type);
+            switch (category) {
+                case 'choice':
+                    return settings.scoreChoice;
+                case 'answer':
+                    return isFirstAnswerQuestion ? settings.scoreAnswerFirst : settings.scoreAnswerOther;
+                default:
+                    return settings.scoreChoice;
+            }
+        }
+
+        // 渲染试卷
+        function renderPaper(qPerPage) {
+            const container = document.getElementById('content');
+            container.innerHTML = '';
+            
+            if (!currentQuestions || currentQuestions.length === 0) {
+                container.innerHTML = '<div class="empty">该试卷暂无题目</div>';
+                return;
+            }
+
+            const settings = getSettings();
+
+            // 按题型分组
+            const groups = {};
+            const typeOrder = [];
+            currentQuestions.forEach(q => {
+                const type = q.QuestionType || '其他题型';
+                if (!groups[type]) {
+                    groups[type] = [];
+                    typeOrder.push(type);
+                }
+                groups[type].push(q);
+            });
+
+            const chineseNums = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+            
+            // 先计算总分
+            let totalScore = 0;
+            const typeScores = {};
+            typeOrder.forEach((type, typeIndex) => {
+                let typeScore = 0;
+                let answerCount = 0;
+                groups[type].forEach((q, qIndex) => {
+                    const typeCategory = getQuestionTypeCategory(type);
+                    const isFirstAnswerQuestion = (typeCategory === 'answer' && answerCount === 0);
+                    if (typeCategory === 'answer') answerCount++;
+                    typeScore += getQuestionScore(type, isFirstAnswerQuestion, settings);
+                });
+                typeScores[type] = typeScore;
+                totalScore += typeScore;
+            });
+            
+            let currentPage = createPage(1, { totalScore });
+            container.appendChild(currentPage);
+            let questionsInPage = 0;
+            let pageNum = 1;
+            let globalIndex = 1;
+            let answerQuestionCount = 0; // 记录解答题数量，用于判断是否是第一题
+            
+            typeOrder.forEach((type, typeIndex) => {
+                let headerAdded = false;
+                const typeCategory = getQuestionTypeCategory(type);
+                let typeAnswerCount = 0; // 当前题型内的解答题计数
+                
+                groups[type].forEach((q, qIndexInType) => {
+                    // 获取题目在原始数组中的索引
+                    const questionIndex = currentQuestions.indexOf(q);
+                    
+                    // 检查是否需要新页面
+                    if (qPerPage > 0 && questionsInPage >= qPerPage && questionsInPage > 0) {
+                        pageNum++;
+                        currentPage = createPage(pageNum);
+                        container.appendChild(currentPage);
+                        questionsInPage = 0;
+                        headerAdded = false;
+                    }
+                    
+                    // 添加题型标题（只在第一页显示）
+                    if (!headerAdded && pageNum === 1) {
+                        const sectionHeader = document.createElement('div');
+                        sectionHeader.className = 'section-header';
+                        // 中文部分使用黑体，英文/数字部分使用新罗马加粗
+                        const chinesePart = `${chineseNums[typeIndex] || (typeIndex + 1)}、${type}`;
+                        let headerHtml = `<span class="section-header-cn">${chinesePart}</span>`;
+                        if (settings.showScore) {
+                            // 分数部分：中文用黑体，数字用新罗马加粗
+                            const qCount = groups[type].length;
+                            const qScore = typeScores[type];
+                            const scorePerQuestion = typeCategory === 'choice' ? settings.scoreChoice : 
+                                                     (typeCategory === 'answer' ? 
+                                                         (typeAnswerCount === 0 ? settings.scoreAnswerFirst : settings.scoreAnswerOther) : 
+                                                         settings.scoreChoice);
+                            // 选择题/填空题显示每小题分数，解答题不显示每小题分数
+                            if (typeCategory === 'choice') {
+                                headerHtml += `<span class="section-header-cn">（本题共</span><span class="section-header-en">${qCount}</span><span class="section-header-cn">小题，每小题</span><span class="section-header-en">${scorePerQuestion}</span><span class="section-header-cn">分，共</span><span class="section-header-en">${qScore}</span><span class="section-header-cn">分）</span>`;
+                            } else {
+                                headerHtml += `<span class="section-header-cn">（本题共</span><span class="section-header-en">${qCount}</span><span class="section-header-cn">小题，共</span><span class="section-header-en">${qScore}</span><span class="section-header-cn">分）</span>`;
+                            }
+                        }
+                        sectionHeader.innerHTML = headerHtml;
+                        currentPage.querySelector('.questions-list').appendChild(sectionHeader);
+                        headerAdded = true;
+                    }
+                    
+                    // 判断是否是解答题的第一题
+                    const isFirstAnswerQuestion = (typeCategory === 'answer' && typeAnswerCount === 0);
+                    if (typeCategory === 'answer') {
+                        typeAnswerCount++;
+                    }
+                    
+                    // 获取该题型的间距和分数
+                    const questionSpacing = getQuestionSpacing(type, settings);
+                    const questionScore = getQuestionScore(type, isFirstAnswerQuestion, settings);
+                    
+                    // 创建题目容器（题号+题目+解析作为一个整体）
+                    const qItem = document.createElement('div');
+                    qItem.className = 'question-item';
+                    qItem.style.marginBottom = questionSpacing + 'mm';
+                    qItem.dataset.questionIndex = questionIndex;
+                    qItem.dataset.questionType = type;
+                    qItem.dataset.globalIndex = globalIndex;
+                    
+                    // 题目标题
+                    const qHeader = document.createElement('div');
+                    qHeader.className = 'question-header';
+                    
+                    // 拖拽手柄（排序模式下显示）
+                    const dragHandle = document.createElement('span');
+                    dragHandle.className = 'drag-handle';
+                    dragHandle.innerHTML = '⋮⋮';
+                    dragHandle.style.display = 'none';
+                    qHeader.appendChild(dragHandle);
+                    
+                    let headerText = `${globalIndex}.`;
+                    // 选择题/填空题不显示分数，解答题显示分数
+                    if (settings.showScore && typeCategory === 'answer') {
+                        headerText += ` （本题满分${questionScore}分）`;
+                    }
+                    
+                    // 显示ID
+                    if (settings.showId && q.QuestionID) {
+                        headerText += ` [ID:${q.QuestionID}]`;
+                    }
+                    
+                    // 显示来源
+                    if (settings.showSource && (q.BookTitle || q.BookChapter)) {
+                        const source = [q.BookTitle, q.BookChapter].filter(Boolean).join(' - ');
+                        if (source) {
+                            headerText += ` (${source})`;
+                        }
+                    }
+                    
+                    const headerTextNode = document.createTextNode(headerText);
+                    qHeader.appendChild(headerTextNode);
+                    
+                    // 题型选择器（排序模式下显示）
+                    const typeSelector = document.createElement('select');
+                    typeSelector.className = 'type-selector';
+                    typeSelector.dataset.questionIndex = questionIndex;
+                    const typeOptions = ['选择题', '填空题', '解答题', '计算题', '证明题', '应用题', '其他题型'];
+                    typeOptions.forEach(optType => {
+                        const option = document.createElement('option');
+                        option.value = optType;
+                        option.textContent = optType;
+                        if (optType === type) option.selected = true;
+                        typeSelector.appendChild(option);
+                    });
+                    typeSelector.addEventListener('change', function() {
+                        const idx = parseInt(this.dataset.questionIndex);
+                        if (currentQuestions[idx]) {
+                            currentQuestions[idx].QuestionType = this.value;
+                            applySettings();
+                        }
+                    });
+                    qHeader.appendChild(typeSelector);
+                    
+                    // 掌握程度标记（右对齐，可选显示）
+                    if (settings.showMastery) {
+                        const masteryMark = document.createElement('span');
+                        masteryMark.className = 'mastery-mark';
+                        masteryMark.innerHTML = `
+                            <span class="mastery-item">
+                                <span class="mastery-box"></span>
+                                <span class="mastery-label mastery-mastered">熟练</span>
+                            </span>
+                            <span class="mastery-item">
+                                <span class="mastery-box"></span>
+                                <span class="mastery-label mastery-fuzzy">模糊</span>
+                            </span>
+                            <span class="mastery-item">
+                                <span class="mastery-box"></span>
+                                <span class="mastery-label mastery-unknown">不会</span>
+                            </span>
+                        `;
+                        qHeader.appendChild(masteryMark);
+                    }
+                    
+                    qItem.appendChild(qHeader);
+                    
+                    // 题目内容
+                    const displayMode = settings.displayMode;
+                    const hasQuestionImg = q.QuestionImg && q.QuestionImg.trim();
+                    const hasQuestionText = q.QuestionText && q.QuestionText.trim();
+                    
+                    if (displayMode === 'auto') {
+                        // 自动选择：优先题图
+                        if (hasQuestionImg) {
+                            const qImg = document.createElement('div');
+                            qImg.className = 'question-image';
+                            qImg.innerHTML = transformText(q.QuestionImg);
+                            qItem.appendChild(qImg);
+                        } else if (hasQuestionText) {
+                            const qBody = document.createElement('div');
+                            qBody.className = 'question-body';
+                            qBody.innerHTML = transformText(q.QuestionText);
+                            qItem.appendChild(qBody);
+                        }
+                    } else if (displayMode === 'text') {
+                        // 仅题目文本
+                        if (hasQuestionText) {
+                            const qBody = document.createElement('div');
+                            qBody.className = 'question-body';
+                            qBody.innerHTML = transformText(q.QuestionText);
+                            qItem.appendChild(qBody);
+                        }
+                    } else if (displayMode === 'image') {
+                        // 仅题图
+                        if (hasQuestionImg) {
+                            const qImg = document.createElement('div');
+                            qImg.className = 'question-image';
+                            qImg.innerHTML = transformText(q.QuestionImg);
+                            qItem.appendChild(qImg);
+                        }
+                    }
+                    
+                    // 解析（根据设置决定是否显示）
+                    // 优先使用 math_questiondetails 表的解析内容
+                    if (settings.showAnalysis) {
+                        let analysisContent = '';
+                        
+                        // 使用 math_questiondetails 表的解析内容
+                        if (q.analysisDetails && q.analysisDetails.length > 0) {
+                            analysisContent = q.analysisDetails.map(detail => {
+                                // 一题多解显示标签，题目详解不显示标签
+                                const typeLabel = detail.type === '一题多解' ? '<div style="color:#28a745;margin-bottom:4px;font-weight:bold;">【一题多解】</div>' : '';
+                                return `<div style="margin-bottom:8px;">${typeLabel}${transformText(detail.content)}</div>`;
+                            }).join('');
+                        }
+                        // 如果没有详细解析，回退到 OriginalAnswerText
+                        else if (q.OriginalAnswerText && q.OriginalAnswerText.trim()) {
+                            analysisContent = transformText(q.OriginalAnswerText);
+                        }
+                        
+                        if (analysisContent) {
+                            // 再次过滤【欧几里得...】和【命题人...】相关内容
+                            analysisContent = analysisContent.replace(/【欧几里得[^】]*?】/g, '');
+                            analysisContent = analysisContent.replace(/【命题人[^】]*?】/g, '');
+                            const analysisDiv = document.createElement('div');
+                            analysisDiv.className = 'question-analysis';
+                            analysisDiv.innerHTML = `
+                                <div class="question-analysis-header" style="font-weight:bold;">解析</div>
+                                <div class="question-analysis-content">${analysisContent}</div>
+                            `;
+                            qItem.appendChild(analysisDiv);
+                        }
+                    }
+                    
+                    currentPage.querySelector('.questions-list').appendChild(qItem);
+                    questionsInPage++;
+                    globalIndex++;
+                });
+            });
+            
+            // 更新所有页面的页码，添加总页数
+            const totalPages = pageNum;
+            document.querySelectorAll('.paper-footer').forEach((footer, index) => {
+                const currentPageNum = index + 1;
+                footer.innerHTML = `<span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">第</span><span style="font-family: 'Times New Roman', serif; font-weight: bold;">${currentPageNum}</span><span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">页　共</span><span style="font-family: 'Times New Roman', serif; font-weight: bold;">${totalPages}</span><span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">页</span>`;
+            });
+            
+            // 渲染 KaTeX
+            setTimeout(renderMath, 100);
+        }
+
+        // 创建页面
+        function createPage(num, paperInfo = null) {
+            const settings = getSettings();
+            const page = document.createElement('div');
+            page.className = 'printable-page';
+            page.style.paddingTop = settings.marginTop + 'mm';
+            page.style.paddingBottom = settings.marginBottom + 'mm';
+            page.style.paddingLeft = settings.marginSides + 'mm';
+            page.style.paddingRight = settings.marginSides + 'mm';
+            
+            // 从输入框获取标题，如果没有则使用默认标题
+            const paperTitle = document.getElementById('paperTitle').value.trim() || currentPaperTitle || '试卷';
+            
+            // 预览时页眉（只在第一页显示，居中）
+            let previewHeaderHtml = '';
+            if (num === 1 && settings.showHeader) {
+                const headerTextValue = document.getElementById('headerText').value.trim() || '微信小程序：研大师刷研题';
+                previewHeaderHtml = `
+                    <div class="preview-header no-print" style="position: absolute; top: 5mm; left: ${settings.marginSides}mm; right: ${settings.marginSides}mm; text-align: center; font-size: 10pt; color: #999; font-family: 'SimHei', 'Heiti SC', sans-serif;">
+                        ${headerTextValue}
+                    </div>
+                `;
+            }
+            
+            // 标题始终显示（独立于页眉设置），第一页根据选项显示二维码在右侧
+            let qrcodeHtml = '';
+            if (num === 1 && settings.showQRCode) {
+                qrcodeHtml = `
+                    <div class="paper-qrcode" style="position: absolute; top: 5mm; right: ${settings.marginSides}mm;">
+                        <img src="https://s3.hi168.com/hi168-26998-7111ilq6/uploads/1775378893885-1fbkdx.png" style="height: 80px;" alt="微信小程序">
+                    </div>
+                `;
+            }
+            
+            let headerHtml = `
+                <div class="paper-header" style="${settings.showHeader ? '' : 'border-bottom: none; margin-bottom: 0; padding-bottom: 0;'}">
+                    <div class="paper-title">${paperTitle}</div>
+                </div>
+            `;
+            
+            // 在标题下方添加试卷信息（只在第一页显示）
+            if (num === 1 && settings.showPaperInfo && paperInfo) {
+                let infoItems = [];
+                if (settings.paperAuthor) infoItems.push(`<span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">出题人：${settings.paperAuthor}</span>`);
+                if (settings.paperExaminer) infoItems.push(`<span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">审题人：${settings.paperExaminer}</span>`);
+                if (settings.paperDate) infoItems.push(`<span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">考试时间：${settings.paperDate}</span>`);
+                if (settings.showScore) infoItems.push(`<span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">总分：</span><span style="font-family: 'Times New Roman', serif; font-weight: bold;">${paperInfo.totalScore}</span><span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">分</span>`);
+                
+                if (infoItems.length > 0) {
+                    headerHtml += `
+                        <div class="paper-info-header" style="text-align: center; font-size: 10pt; color: #666; margin-top: 3mm;">
+                            ${infoItems.join('<span style="font-family: \'SimHei\', \'Heiti SC\', sans-serif;">　　</span>')}
+                        </div>
+                    `;
+                }
+            }
+            
+            // 页码使用 CSS @page 规则在打印时自动添加
+            // 预览时显示页码（总页数在渲染完成后更新）
+            let footerHtml = '';
+            if (settings.showFooter) {
+                footerHtml = `
+                    <div class="paper-footer no-print" style="text-align: center; font-size: 10pt; color: #666; margin-top: 10mm; padding-top: 5mm; border-top: 1px solid #eee;">
+                        <span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">第</span><span style="font-family: 'Times New Roman', serif; font-weight: bold;">${num}</span><span style="font-family: 'SimHei', 'Heiti SC', sans-serif;">页</span>
+                    </div>
+                `;
+            }
+            
+            page.innerHTML = previewHeaderHtml + qrcodeHtml + headerHtml + '<div class="questions-list"></div>' + footerHtml;
+            return page;
+        }
+
+        // 渲染 KaTeX
+        function renderMath() {
+            if (typeof renderMathInElement === 'function') {
+                try {
+                    // 先检查是否有未渲染的公式
+                    document.querySelectorAll('.question-analysis-content, .question-body').forEach(el => {
+                        let text = el.innerHTML;
+                        console.log('原始内容:', text);
+                        
+                        // 将 HTML 实体转义的反斜杠还原
+                        text = text.replace(/&amp;/g, '\\');
+                        
+                        // 修复 \ne 不等号问题：将 \ne 转换为 \neq（KaTeX 更好支持）
+                        // 需要确保 \ne 后面不是 q（避免重复转换 \neq）
+                        text = text.replace(/\\ne(?!q)/g, '\\neq');
+                        
+                        // 检查是否有 aligned 环境
+                        const hasAligned = text.includes('begin{aligned') || text.includes('\\begin{aligned');
+                        
+                        if (hasAligned) {
+                            console.log('发现 aligned 环境');
+                        }
+                        
+                        // 如果内容包含 aligned 但没有被 $$ 包裹，手动添加
+                        if (hasAligned && !text.includes('$$')) {
+                            text = text.replace(/\\begin{aligned}/g, '$$ $$\\begin{aligned}');
+                            text = text.replace(/\\end{aligned}/g, '\\end{aligned} $$ ');
+                        }
+                        
+                        el.innerHTML = text;
+                        console.log('修改后内容:', text);
+                    });
+                    
+                    // 渲染所有数学公式
+                    renderMathInElement(document.body, {
+                        delimiters: [
+                            {left: "$$", right: "$$", display: true},
+                            {left: "$", right: "$", display: false},
+                            {left: "\\[", right: "\\]", display: true},
+                            {left: "\\(", right: "\\)", display: false}
+                        ],
+                        throwOnError: false,
+                        trust: true,
+                        strict: false
+                    });
+                } catch (e) {
+                    console.error('KaTeX 渲染错误:', e);
+                }
+            }
+        }
+
+        // 页面加载时获取试卷列表
+        window.onload = function() {
+            // 初始化打印样式
+            updatePrintStyles(getSettings());
+            
+            // 添加设置变更监听器
+            document.getElementById('questionDisplayMode').addEventListener('change', applySettings);
+            // 辅助函数：安全添加事件监听器
+            const safeAddListener = (id, event, handler) => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener(event, handler);
+            };
+            
+            safeAddListener('showSource', 'change', applySettings);
+            safeAddListener('showId', 'change', applySettings);
+            safeAddListener('showAnalysis', 'change', applySettings);
+            safeAddListener('questionsPerPage', 'change', applySettings);
+            safeAddListener('fontSize', 'change', applySettings);
+            safeAddListener('marginTop', 'change', applySettings);
+            safeAddListener('marginBottom', 'change', applySettings);
+            safeAddListener('marginSides', 'change', applySettings);
+            safeAddListener('showHeader', 'change', applySettings);
+            safeAddListener('showFooter', 'change', applySettings);
+            safeAddListener('showQRCode', 'change', applySettings);
+            safeAddListener('headerText', 'input', applySettings);
+            // 试卷标题（使用 input 事件实时更新）
+            safeAddListener('paperTitle', 'input', applySettings);
+            // 题型间距和分数设置
+            safeAddListener('spacingChoice', 'change', applySettings);
+            safeAddListener('spacingAnswer', 'change', applySettings);
+            safeAddListener('spacingOther', 'change', applySettings);
+            safeAddListener('showScore', 'change', applySettings);
+            safeAddListener('scoreChoice', 'change', applySettings);
+            safeAddListener('scoreAnswerFirst', 'change', applySettings);
+            safeAddListener('scoreAnswerOther', 'change', applySettings);
+            // 试卷信息设置
+            safeAddListener('showPaperInfo', 'change', applySettings);
+            safeAddListener('paperAuthor', 'input', applySettings);
+            safeAddListener('paperExaminer', 'input', applySettings);
+            safeAddListener('paperDate', 'input', applySettings);
+            // 掌握程度
+            safeAddListener('showMastery', 'change', applySettings);
+            // 排序模式
+            safeAddListener('enableSort', 'change', function() {
+                const checkbox = document.getElementById('enableSort');
+                if (checkbox.checked) {
+                    initDragAndDrop();
+                } else {
+                    disableDragAndDrop();
+                }
+            });
+        };
+    </script>
+</body>
+</html>

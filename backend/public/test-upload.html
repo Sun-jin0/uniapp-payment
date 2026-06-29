@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSS上传测试页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .card-title {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9ff;
+        }
+        .upload-area:hover {
+            background: #eef1ff;
+            border-color: #764ba2;
+        }
+        .upload-area.dragover {
+            background: #e0e5ff;
+            border-color: #764ba2;
+        }
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        .upload-text {
+            color: #666;
+            font-size: 16px;
+        }
+        .upload-hint {
+            color: #999;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .preview-area {
+            margin-top: 20px;
+            display: none;
+        }
+        .preview-area.show {
+            display: block;
+        }
+        .preview-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .preview-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .result-area {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        .result-area.success {
+            display: block;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .result-area.error {
+            display: block;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .result-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .result-url {
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 14px;
+            background: rgba(255,255,255,0.5);
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .loading.show {
+            display: block;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .file-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            display: none;
+        }
+        .file-info.show {
+            display: block;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .info-label {
+            color: #666;
+        }
+        .info-value {
+            color: #333;
+            font-weight: 500;
+        }
+        .config-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .config-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .config-item {
+            margin-bottom: 5px;
+            color: #666;
+        }
+        .config-item span {
+            color: #333;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 OSS图床上传测试</h1>
+        
+        <div class="card">
+            <div class="config-info">
+                <h3>📋 当前配置</h3>
+                <div class="config-item">Endpoint: <span>https://s3.hi168.com</span></div>
+                <div class="config-item">Bucket: <span>hi168-26998-7111ilq6</span></div>
+                <div class="config-item">Region: <span>us-west-1</span></div>
+            </div>
+            
+            <h2 class="card-title">📤 上传图片</h2>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <div class="upload-text">点击选择图片或拖拽文件到此处</div>
+                <div class="upload-hint">支持 JPG、PNG、GIF、WebP 格式</div>
+                <input type="file" id="fileInput" accept="image/*">
+            </div>
+            
+            <div class="file-info" id="fileInfo">
+                <div class="info-row">
+                    <span class="info-label">文件名:</span>
+                    <span class="info-value" id="fileName">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">文件大小:</span>
+                    <span class="info-value" id="fileSize">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">文件类型:</span>
+                    <span class="info-value" id="fileType">-</span>
+                </div>
+            </div>
+            
+            <div class="preview-area" id="previewArea">
+                <div class="preview-title">图片预览:</div>
+                <img class="preview-image" id="previewImage" src="" alt="预览">
+            </div>
+            
+            <button class="btn" id="uploadBtn" disabled>开始上传</button>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <div>正在上传中...</div>
+            </div>
+            
+            <div class="result-area" id="resultArea">
+                <div class="result-title" id="resultTitle"></div>
+                <div id="resultMessage"></div>
+                <div class="result-url" id="resultUrl"></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">📝 上传历史</h2>
+            <div id="uploadHistory">
+                <p style="color: #999; text-align: center;">暂无上传记录</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const fileInfo = document.getElementById('fileInfo');
+        const previewArea = document.getElementById('previewArea');
+        const previewImage = document.getElementById('previewImage');
+        const loading = document.getElementById('loading');
+        const resultArea = document.getElementById('resultArea');
+        const uploadHistory = document.getElementById('uploadHistory');
+        
+        let selectedFile = null;
+        let history = [];
+        
+        // 点击上传区域
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        // 拖拽事件
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        
+        // 文件选择
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        
+        // 处理文件
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                showResult('error', '错误', '请选择图片文件');
+                return;
+            }
+            
+            selectedFile = file;
+            
+            // 显示文件信息
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = formatFileSize(file.size);
+            document.getElementById('fileType').textContent = file.type;
+            fileInfo.classList.add('show');
+            
+            // 显示预览
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+                previewArea.classList.add('show');
+            };
+            reader.readAsDataURL(file);
+            
+            uploadBtn.disabled = false;
+            hideResult();
+        }
+        
+        // 格式化文件大小
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // 上传按钮
+        uploadBtn.addEventListener('click', async () => {
+            if (!selectedFile) return;
+            
+            uploadBtn.disabled = true;
+            loading.classList.add('show');
+            hideResult();
+            
+            try {
+                const formData = new FormData();
+                formData.append('image', selectedFile);
+                
+                const response = await fetch('/api/upload/image', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.code === 0 || result.code === 200) {
+                    const url = result.data?.url || result.data;
+                    showResult('success', '✅ 上传成功', '图片已成功上传到OSS图床', url);
+                    addToHistory(selectedFile.name, url);
+                } else {
+                    showResult('error', '❌ 上传失败', result.message || '未知错误');
+                }
+            } catch (error) {
+                showResult('error', '❌ 上传失败', error.message || '网络错误');
+            } finally {
+                loading.classList.remove('show');
+                uploadBtn.disabled = false;
+            }
+        });
+        
+        // 显示结果
+        function showResult(type, title, message, url = '') {
+            resultArea.className = 'result-area ' + type;
+            document.getElementById('resultTitle').textContent = title;
+            document.getElementById('resultMessage').textContent = message;
+            document.getElementById('resultUrl').textContent = url ? 'URL: ' + url : '';
+        }
+        
+        // 隐藏结果
+        function hideResult() {
+            resultArea.className = 'result-area';
+        }
+        
+        // 添加到历史
+        function addToHistory(filename, url) {
+            history.unshift({ filename, url, time: new Date().toLocaleString() });
+            updateHistoryDisplay();
+        }
+        
+        // 更新历史显示
+        function updateHistoryDisplay() {
+            if (history.length === 0) {
+                uploadHistory.innerHTML = '<p style="color: #999; text-align: center;">暂无上传记录</p>';
+                return;
+            }
+            
+            uploadHistory.innerHTML = history.map((item, index) => `
+                <div style="padding: 15px; border-bottom: 1px solid #eee; ${index === 0 ? 'background: #f8f9ff;' : ''}">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-weight: 500; color: #333;">${item.filename}</div>
+                            <div style="font-size: 12px; color: #999; margin-top: 5px;">${item.time}</div>
+                        </div>
+                        <a href="${item.url}" target="_blank" style="color: #667eea; text-decoration: none; font-size: 14px;">查看</a>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 12px; color: #666; word-break: break-all; font-family: monospace; background: #f5f5f5; padding: 8px; border-radius: 4px;">
+                        ${item.url}
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
