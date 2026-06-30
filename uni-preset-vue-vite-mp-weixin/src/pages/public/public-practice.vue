@@ -1487,6 +1487,13 @@ const toggleRecitation = () => {
 };
 
 onLoad(async (options) => {
+  // 未登录直接跳转登录
+  const token = uni.getStorageSync('token');
+  if (!token) {
+    uni.reLaunch({ url: '/pages/login/login' });
+    return;
+  }
+
   const systemInfo = uni.getSystemInfoSync();
   statusBarHeight.value = systemInfo.statusBarHeight;
   currentUserId.value = uni.getStorageSync('userId');

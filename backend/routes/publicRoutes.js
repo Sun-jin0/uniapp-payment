@@ -3,7 +3,7 @@ const router = express.Router();
 const appConfigController = require('../controllers/appConfigController');
 const publicController = require('../controllers/publicController');
 const panResourceController = require('../controllers/panResourceController');
-const { auth, adminAuth, optionalAuth } = require('../middleware/auth');
+const { auth, adminAuth } = require('../middleware/auth');
 
 // Pan Resource routes
 router.get('/pan-resources', panResourceController.getPanResources);
@@ -65,7 +65,7 @@ router.get('/exam-types', publicController.getExamTypes);
 // Public Question Bank routes
 router.get('/question-bank/categories', publicController.getCategories);
 router.get('/question-bank/books', publicController.getBooks);
-router.get('/question-bank/questions', optionalAuth, publicController.getQuestions);
+router.get('/question-bank/questions', auth, publicController.getQuestions);
 router.post('/question-bank/submit-answer', auth, publicController.submitAnswer);
 router.post('/question-bank/toggle-favorite', auth, publicController.toggleFavorite);
 router.post('/question-bank/update-progress', auth, publicController.updatePracticeProgress);

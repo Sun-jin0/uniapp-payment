@@ -324,6 +324,13 @@ const handleClearRecord = () => {
 };
 
 const startPractice = (mode, extra = null) => {
+  // 未登录直接跳转登录
+  const token = uni.getStorageSync('token');
+  if (!token) {
+    uni.reLaunch({ url: '/pages/login/login' });
+    return;
+  }
+
   // 检查是否有保存的进度
   let progressKey = null;
   if (mode === 'continue') {

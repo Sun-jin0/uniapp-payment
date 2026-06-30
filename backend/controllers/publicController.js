@@ -275,7 +275,7 @@ exports.getBooks = async (req, res) => {
 exports.getQuestions = async (req, res) => {
   try {
     const { bookId, page, pageSize = 20, chapterId, type, mode } = req.query;
-    const userId = req.userId || null; // optionalAuth 下可能未登录
+    const userId = req.userId; // 已经通过 auth 中间件
     
     if (!bookId) {
       return res.json(successResponse([], 'bookId is required'));
@@ -286,17 +286,6 @@ exports.getQuestions = async (req, res) => {
     // 验证 bookId 是否为有效数字
     if (isNaN(bId)) {
       return res.json(successResponse([], 'Invalid bookId'));
-    }
-
-    // 未登录时，错题和收藏模式直接返回空
-    if (!userId && (mode === 'wrong' || mode === 'favorite')) {
-      return res.json(successResponse({
-        list: [],
-        total: 0,
-        lastIndex: 0,
-        page: page ? parseInt(page) : 1,
-        pageSize: page ? parseInt(pageSize) : 0
-      }, '请先登录'));
     }
 
     let chapterRange = null;
@@ -319,7 +308,7 @@ exports.getQuestions = async (req, res) => {
       LEFT JOIN public_favorite_questions f ON q.id = f.questionId AND f.userId = ?
     `;
 
-    const params = [userId || 0];
+    const params = [userId];
 
     if (mode === 'wrong') {
       baseSql += ` INNER JOIN public_wrong_questions w ON q.id = w.questionId AND w.userId = ? `;
@@ -389,9 +378,9 @@ exports.getQuestions = async (req, res) => {
     const [countResult] = await pool.query(countSql, countParams);
     const total = countResult[0].total;
 
-    // 获取上次进度（仅登录用户）
+    // 获取上次进度
     let lastIndex = 0;
-    if (userId && (!page || parseInt(page) === 1)) {
+    if (!page || parseInt(page) === 1) {
       const [progress] = await pool.query(
         'SELECT lastIndex FROM public_user_progress WHERE userId = ? AND bookId = ?',
         [userId, bookId]

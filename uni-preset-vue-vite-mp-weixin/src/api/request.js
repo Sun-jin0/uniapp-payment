@@ -49,11 +49,11 @@ const request = (options) => {
             }
           } else if (res.statusCode === 401 || res.statusCode === 403) {
             // 处理 Token 过期或无权限
-            // 默认不自动跳转登录页，由业务方在需要时引导登录，避免未浏览页面就强制登录
-            const shouldRedirect = options.redirectToLogin === true;
+            // 默认自动跳转登录页，业务方可通过 redirectToLogin=false 关闭
+            const shouldRedirect = options.redirectToLogin !== false;
             if (shouldRedirect && !options.noToast) {
               uni.showToast({
-                title: res.statusCode === 401 ? '未授权，请重新登录' : '权限不足',
+                title: res.statusCode === 401 ? '请先登录' : '权限不足',
                 icon: 'none'
               })
             }
@@ -65,7 +65,7 @@ const request = (options) => {
               const currentPage = pages[pages.length - 1]?.route;
               if (currentPage !== 'pages/login/login') {
                 setTimeout(() => {
-                  uni.navigateTo({
+                  uni.reLaunch({
                     url: '/pages/login/login'
                   })
                 }, 1500)
