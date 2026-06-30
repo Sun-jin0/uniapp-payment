@@ -122,7 +122,8 @@ cd backend
 npm install
 npm run admin:build
 pm2 restart uniapp-backend
-```
+```# Frontend URL for print linksFRONTEND_URL=https://yizhansa.cn
+
 
 ### 5. 前端小程序项目部署（H5 模式）
 ```bash

@@ -1253,6 +1253,9 @@ const fetchRelatedArticles = async () => {
 };
 
 const fetchNotes = async (questionId) => {
+  // 未登录不加载笔记，避免 401 触发跳转
+  const token = uni.getStorageSync('token');
+  if (!token) return;
   try {
     const res = await publicApi.getQuestionNotes({ questionId });
     if (res.code === 0) {
@@ -1487,13 +1490,6 @@ const toggleRecitation = () => {
 };
 
 onLoad(async (options) => {
-  // 未登录直接跳转登录
-  const token = uni.getStorageSync('token');
-  if (!token) {
-    uni.reLaunch({ url: '/pages/login/login' });
-    return;
-  }
-
   const systemInfo = uni.getSystemInfoSync();
   statusBarHeight.value = systemInfo.statusBarHeight;
   currentUserId.value = uni.getStorageSync('userId');
@@ -1553,9 +1549,13 @@ onLoad(async (options) => {
 
 const initData = () => {
   fetchQuestions();
-  fetchUserSettings();
   fetchRelatedArticles();
   fetchChapters(); // 加载章节信息以显示当前章节名称
+  // 登录后才获取用户设置，避免未登录时 401 触发跳转
+  const token = uni.getStorageSync('token');
+  if (token) {
+    fetchUserSettings();
+  }
 };
 
 const fetchUserSettings = async () => {
@@ -1784,7 +1784,10 @@ const fetchQuestions = async (isFirstLoad = true) => {
     }
   } catch (error) {
     console.error('fetchQuestions error:', error);
-    uni.showToast({ title: '加载失败', icon: 'none' });
+    // 401/403 由 request.js 统一处理跳转，这里不再覆盖提示
+    if (error?.code !== 1 && error?.message !== '未授权，请先登录') {
+      uni.showToast({ title: '加载失败', icon: 'none' });
+    }
   } finally {
     if (isFirstLoad) {
       loading.value = false;

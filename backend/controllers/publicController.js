@@ -275,7 +275,8 @@ exports.getBooks = async (req, res) => {
 exports.getQuestions = async (req, res) => {
   try {
     const { bookId, page, pageSize = 20, chapterId, type, mode } = req.query;
-    const userId = req.userId; // 已经通过 auth 中间件
+    const userId = req.userId; // optionalAuth 中间件，可能为 undefined
+    const isLoggedIn = !!userId;
     
     if (!bookId) {
       return res.json(successResponse([], 'bookId is required'));
@@ -286,6 +287,11 @@ exports.getQuestions = async (req, res) => {
     // 验证 bookId 是否为有效数字
     if (isNaN(bId)) {
       return res.json(successResponse([], 'Invalid bookId'));
+    }
+
+    // 未登录用户不支持错题和收藏模式
+    if (!isLoggedIn && (mode === 'wrong' || mode === 'favorite')) {
+      return res.json(successResponse({ list: [], total: 0, lastIndex: 0, page: 1, pageSize: parseInt(pageSize) || 20 }));
     }
 
     let chapterRange = null;
@@ -300,15 +306,25 @@ exports.getQuestions = async (req, res) => {
     }
 
     // 基础 SQL 逻辑构建
-    let baseSql = `
-      SELECT q.*, s.averageScore, s.totalAttempts, 
-             IF(f.id IS NOT NULL, 1, 0) as isFavorite
-      FROM public_questions q
-      LEFT JOIN public_question_stats s ON q.id = s.questionId
-      LEFT JOIN public_favorite_questions f ON q.id = f.questionId AND f.userId = ?
-    `;
+    let baseSql;
+    const params = [];
 
-    const params = [userId];
+    if (isLoggedIn) {
+      baseSql = `
+        SELECT q.*, s.averageScore, s.totalAttempts, 
+               IF(f.id IS NOT NULL, 1, 0) as isFavorite
+        FROM public_questions q
+        LEFT JOIN public_question_stats s ON q.id = s.questionId
+        LEFT JOIN public_favorite_questions f ON q.id = f.questionId AND f.userId = ?
+      `;
+      params.push(userId);
+    } else {
+      baseSql = `
+        SELECT q.*, s.averageScore, s.totalAttempts, 0 as isFavorite
+        FROM public_questions q
+        LEFT JOIN public_question_stats s ON q.id = s.questionId
+      `;
+    }
 
     if (mode === 'wrong') {
       baseSql += ` INNER JOIN public_wrong_questions w ON q.id = w.questionId AND w.userId = ? `;
@@ -320,7 +336,8 @@ exports.getQuestions = async (req, res) => {
         INNER JOIN public_favorite_questions f ON q.id = f.questionId AND f.userId = ?
         LEFT JOIN public_question_stats s ON q.id = s.questionId
       `;
-      params[0] = userId;
+      if (params.length > 0) params[0] = userId;
+      else params.push(userId);
     }
 
     baseSql += ` WHERE q.bookId = ? `;
@@ -378,9 +395,9 @@ exports.getQuestions = async (req, res) => {
     const [countResult] = await pool.query(countSql, countParams);
     const total = countResult[0].total;
 
-    // 获取上次进度
+    // 获取上次进度（仅登录用户）
     let lastIndex = 0;
-    if (!page || parseInt(page) === 1) {
+    if (isLoggedIn && (!page || parseInt(page) === 1)) {
       const [progress] = await pool.query(
         'SELECT lastIndex FROM public_user_progress WHERE userId = ? AND bookId = ?',
         [userId, bookId]
