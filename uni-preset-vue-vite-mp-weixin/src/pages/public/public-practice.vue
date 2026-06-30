@@ -1823,17 +1823,20 @@ const onSwiperChange = (e) => {
 };
 
 const saveProgress = async (index) => {
-  try {
-    await publicApi.updatePracticeProgress({
-      bookId: bookId.value,
-      lastIndex: index
-    });
-    
-    // 保存到本地进度列表
-    savePracticeProgressToList(index);
-  } catch (error) {
-    console.error('saveProgress error:', error);
+  const token = uni.getStorageSync('token');
+  if (token) {
+    try {
+      await publicApi.updatePracticeProgress({
+        bookId: bookId.value,
+        lastIndex: index
+      });
+    } catch (error) {
+      console.error('saveProgress error:', error);
+    }
   }
+  
+  // 保存到本地进度列表
+  savePracticeProgressToList(index);
 };
 
 // 会员弹窗方法
@@ -2076,14 +2079,17 @@ const confirmAnswer = async (qIndex) => {
   // 触发相关资料和笔记加载
   onQuestionActive(qIndex);
   
-  // 提交答题记录到后端更新平均分
-  try {
-    await publicApi.submitAnswer({
-      questionId: question.id,
-      isCorrect: state.isCorrect
-    });
-  } catch (error) {
-    console.error('submitAnswer error:', error);
+  // 提交答题记录到后端更新平均分（仅登录用户）
+  const token = uni.getStorageSync('token');
+  if (token) {
+    try {
+      await publicApi.submitAnswer({
+        questionId: question.id,
+        isCorrect: state.isCorrect
+      });
+    } catch (error) {
+      console.error('submitAnswer error:', error);
+    }
   }
   
   if (state.isCorrect) {
@@ -2118,14 +2124,17 @@ const handleCardAction = async (action, qIndex) => {
   state.showAnswer = true;
   state.showCardAnswer = true;
   
-  // 提交答题记录
-  try {
-    await publicApi.submitAnswer({
-      questionId: question.id,
-      isCorrect: state.isCorrect
-    });
-  } catch (error) {
-    console.error('handleCardAction submitAnswer error:', error);
+  // 提交答题记录（仅登录用户）
+  const token = uni.getStorageSync('token');
+  if (token) {
+    try {
+      await publicApi.submitAnswer({
+        questionId: question.id,
+        isCorrect: state.isCorrect
+      });
+    } catch (error) {
+      console.error('handleCardAction submitAnswer error:', error);
+    }
   }
   
   // 自动下一题
@@ -2292,6 +2301,12 @@ const getSheetItemClass = (index) => {
 };
 
 const toggleFavorite = async () => {
+  const token = uni.getStorageSync('token');
+  if (!token) {
+    uni.showToast({ title: '请先登录', icon: 'none' });
+    return;
+  }
+
   const question = questions.value[currentIndex.value];
   const state = questionStates.value[currentIndex.value];
   if (!question || !state) return;
